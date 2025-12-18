@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Link from 'next/link'
 import { SettingsIcon } from 'lucide-react'
 import { ThemeToggleBtn } from '@/components/common/theme-toggle'
 
@@ -13,14 +14,16 @@ export function ChatSidebarTools({ ...props }: {} & React.ComponentPropsWithoutR
                         <ThemeToggleBtn IconClassname='size-4' />
                     </SidebarMenuItem>
                     <SidebarMenuItem>
-                        <SidebarMenuButton
-                            tooltip={{
-                                children: 'Settings',
-                                hidden: false,
-                            }}
-                        >
-                            <SettingsIcon />
-                        </SidebarMenuButton>
+                        <Link href={'/settings'} className='w-full'>
+                            <SidebarMenuButton
+                                tooltip={{
+                                    children: 'Settings',
+                                    hidden: false,
+                                }}
+                            >
+                                <SettingsIcon />
+                            </SidebarMenuButton>
+                        </Link>
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarGroupContent>

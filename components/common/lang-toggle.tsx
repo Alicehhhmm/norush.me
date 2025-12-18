@@ -22,9 +22,10 @@ interface LanguageSwitcherProps {
     currentLanguage?: Locale
     options?: LanguageOption[]
     showLabel?: boolean
+    onChange?: (lang: Locale) => void
 }
 
-export const LangToggle: FC<LanguageSwitcherProps> = ({ className, currentLanguage, options = [], showLabel = false }) => {
+export const LangToggle: FC<LanguageSwitcherProps> = ({ className, currentLanguage, options = [], showLabel = false, onChange }) => {
     const { replace } = useRouter()
     const pathname = usePathname()
     const locales = useLocale()
@@ -47,6 +48,8 @@ export const LangToggle: FC<LanguageSwitcherProps> = ({ className, currentLangua
         startTransition(() => {
             replace(pathname!, { locale: newLocale })
         })
+
+        onChange?.(newLocale)
     }
 
     // filter map

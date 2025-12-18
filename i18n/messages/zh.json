@@ -47,6 +47,54 @@
             "uiux": "uiux",
             "web": "Web端",
             "mobile": "移动端"
+        },
+        "settings": {
+            "languagePattern": {
+                "label": "语言"
+            },
+            "facadePatterns": {
+                "label": "外观主题",
+                "desc": "选择最适合您项目的外观主题。",
+                "options": {
+                    "light": {
+                        "label": "浅色",
+                        "desc": "使用浅色配色方案。"
+                    },
+                    "dark": {
+                        "label": "深色",
+                        "desc": "使用深色配色方案。"
+                    },
+                    "system": {
+                        "label": "跟随系统",
+                        "desc": "遵循系统主题设置。"
+                    }
+                }
+            },
+            "colorTheme": {
+                "label": "色彩主题",
+                "options": {
+                    "default": {
+                        "label": "默认颜色",
+                        "desc": "黑、白、灰的中性色彩主题。"
+                    },
+                    "warm": {
+                        "label": "暖色",
+                        "desc": "温暖的橙色主题，舒适且友好。"
+                    },
+                    "cool": {
+                        "label": "冷色",
+                        "desc": "清新的蓝色主题，简洁且专注。"
+                    },
+                    "fluo": {
+                        "label": "荧光色",
+                        "desc": "充满活力的亮绿色主题。"
+                    },
+                    "claude": {
+                        "label": "Claude Ai 主题",
+                        "desc": "类似 Claude Ai 网站的主题。"
+                    }
+                }
+            }
         }
     },
     "home": {

@@ -47,6 +47,54 @@
             "uiux": "uiux",
             "web": "web design",
             "mobile": "mobile design"
+        },
+        "settings": {
+            "languagePattern": {
+                "label": "Language Pattern"
+            },
+            "facadePatterns": {
+                "label": "Facade Patterns",
+                "desc": "Choose the facade pattern that best fits your project.",
+                "options": {
+                    "light": {
+                        "label": "Light Color",
+                        "desc": "Use the light color scheme."
+                    },
+                    "dark": {
+                        "label": "Dark Color",
+                        "desc": "Use the dark color scheme."
+                    },
+                    "system": {
+                        "label": "Follow System",
+                        "desc": "Follow the system's theme."
+                    }
+                }
+            },
+            "colorTheme": {
+                "label": "Color theme",
+                "options": {
+                    "default": {
+                        "label": "default Color",
+                        "desc": "Black, white and gray neutral color theme."
+                    },
+                    "warm": {
+                        "label": "Warm",
+                        "desc": "Warm orange theme, comfortable and friendly."
+                    },
+                    "cool": {
+                        "label": "Cool",
+                        "desc": "Fresh blue theme, clean and focused"
+                    },
+                    "fluo": {
+                        "label": "Fluo",
+                        "desc": "Vibrant green theme, full of vitality"
+                    },
+                    "claude": {
+                        "label": "Claude",
+                        "desc": "Claude theme"
+                    }
+                }
+            }
         }
     },
     "home": {
