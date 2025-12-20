@@ -1,0 +1,10 @@
+packages:
+    - packages/*
+    - apps/*
+
+# https://pnpm.io/settings#onlybuiltdependencies
+# These are the dependencies that we trust to safely
+# run installation scripts.
+onlyBuiltDependencies:
+    - '@swc/core'
+    - esbuild
