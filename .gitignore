@@ -13,9 +13,10 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
+# Next.js Build Output
+.next
+build
+next-env.d.ts
 
 # production
 /build
@@ -34,12 +35,33 @@ yarn-error.log*
 .env*
 !.env.example
 
-# vercel
+# Storybook
+storybook-static
+build-storybook.log
+.nyc_output
+
+# Vercel Files
 .vercel
+.turbo
+cache
+
+# Cache Files
+.eslintmdcache
+.stylelintcache
+.prettiercache
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Metadata Files
+CODEOWNERS
+
+# Public Folders
+apps/site/public
+
+# Distributed Files
+dist
 
 # AI
 .cursor

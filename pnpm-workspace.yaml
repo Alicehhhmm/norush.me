@@ -1,10 +1,21 @@
 packages:
-    - packages/*
-    - apps/*
+  - packages/*
+  - apps/*
 
 # https://pnpm.io/settings#onlybuiltdependencies
 # These are the dependencies that we trust to safely
 # run installation scripts.
 onlyBuiltDependencies:
-    - '@swc/core'
-    - esbuild
+  - '@swc/core'
+  - '@tailwindcss/oxide'
+  - esbuild
+
+# https://pnpm.io/settings#catalogmode
+catalog:
+  '@types/node': ^24.10.1
+  '@types/react': ^19.2.7
+  classnames: ~2.5.1
+  cross-env: ^10.0.0
+  react: ^19.2.3
+  tailwindcss: ~4.1.17
+  typescript: 5.9.3

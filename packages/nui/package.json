@@ -1,0 +1,23 @@
+{
+    "name": "@nw/ui",
+    "version": "0.0.0",
+    "type": "module",
+    "exports": {
+        "./src/*": "./src/*",
+        "./src/*/*": "./src/*/*"
+    },
+    "files": [
+        "src"
+    ],
+    "scripts": {
+        "lint": "eslint src --ext .ts,.tsx",
+        "type-check": "tsc --noEmit"
+    },
+    "license": "ISC",
+    "packageManager": "pnpm@10.12.1",
+    "devDependencies": {
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "typescript": "^5"
+    }
+}
