@@ -1,40 +1,42 @@
+@reference '../../../styles/globals.css';
+
 .directoryItem {
-    @apply list-none
-    transition-all duration-300
-    text-sm font-normal
-    text-gray-500 
-    dark:text-white
+  @apply cursor-pointer
+    list-none text-sm
+    font-normal text-gray-500
+    transition-all 
+    duration-300
     hover:text-gray-700/90 
-    cursor-pointer;
+    dark:text-white;
 }
 
 .subtitle {
-    @apply block
-    rounded-tl-lg
-    rounded-bl-lg 
-    py-1
-    text-xs
-    font-medium
-    hover:bg-accent/50 
-    dark:text-gray-600/90 
-    transition-colors 
+  @apply hover:bg-accent/50
     text-foreground/60
-    ease-out;
+    block 
+    rounded-tl-lg
+    rounded-bl-lg
+    py-1
+    text-xs 
+    font-medium 
+    transition-colors 
+    ease-out
+    dark:text-gray-600/90;
 
-    &:hover,
-    &:active {
-        @apply text-lime-500
+  &:hover,
+  &:active {
+    @apply dark:bg-fluo-background
         bg-gray-200/60
-        dark:bg-fluo-background;
-    }
+        text-lime-500;
+  }
 
-    &.active {
-        @apply text-lime-500
+  &.active {
+    @apply dark:bg-fluo-background
         bg-gray-950/90
-        dark:bg-fluo-background;
-    }
+        text-lime-500;
+  }
 }
 
 .directoryItem span {
-    @apply block text-sm px-3;
+  @apply block px-3 text-sm;
 }

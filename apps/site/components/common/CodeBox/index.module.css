@@ -1,55 +1,57 @@
+@reference '../../../styles/globals.css';
+
 .root {
-    @apply w-full
+  @apply w-full
     rounded-xl
     border
     border-neutral-900
     bg-neutral-950;
 
-    .content {
-        @apply m-0
+  .content {
+    @apply m-0
         p-4;
 
-        & > code {
-            @apply font-ibm-plex-mono
-            font-normal
+    & > code {
+      @apply font-ibm-plex-mono
             grid
             overflow-x-auto
             bg-transparent
             p-0
             text-sm
             leading-snug
+            font-normal
             text-neutral-400
             [counter-reset:line];
 
-            & > [class='line'] {
-                @apply relative
+      & > [class='line'] {
+        @apply relative
                 min-w-0
                 pl-8;
 
-                &:not(:empty:last-child)::before {
-                    @apply inline-block
+        &:not(:empty:last-child)::before {
+          @apply inline-block
                     content-[''];
-                }
+        }
 
-                /* 代码块左侧行号样式 */
-                &:not(:empty:last-child)::after {
-                    @apply w-5
-                    font-ibm-plex-mono
+        /* 代码块左侧行号样式 */
+        &:not(:empty:last-child)::after {
+          @apply font-ibm-plex-mono
                     absolute
-                    left-0
                     top-0
+                    left-0
                     mr-4
+                    w-5
                     text-right
                     text-neutral-600
                     [content:counter(line)]
                     [counter-increment:line];
-                }
-            }
         }
+      }
     }
+  }
 
-    & > .footer {
-        @apply flex
+  & > .footer {
+    @apply flex
         items-center
         justify-between
         border-t
@@ -59,23 +61,23 @@
         text-sm
         font-medium;
 
-        & > .language {
-            @apply text-neutral-400;
-        }
-
-        & > .action {
-            @apply px-3 py-2 font-medium;
-        }
+    & > .language {
+      @apply text-neutral-400;
     }
+
+    & > .action {
+      @apply px-3 py-2 font-medium;
+    }
+  }
 }
 
 .notification {
-    @apply flex
+  @apply flex
     items-center
-    text-lime-500
-    gap-3;
+    gap-3
+    text-lime-500;
 }
 
 .icon {
-    @apply size-4;
+  @apply size-4;
 }

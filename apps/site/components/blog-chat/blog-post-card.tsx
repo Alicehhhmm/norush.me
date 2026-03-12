@@ -1,73 +1,90 @@
-import { User, Calendar } from 'lucide-react'
-import { useTranslations } from 'next-intl'
+import { User, Calendar } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
-import { cn } from '@/lib/utils'
-import { formatDate } from '@/lib/date'
-import { Badge } from '@/components/ui/badge'
-import { Link } from '@/components/common'
-import ArticleCover from '@/components/common/ArticleCover'
-import type { BlogCategory } from '@/types/blog'
+import { cn } from '@/lib/utils';
+import { formatDate } from '@/lib/date';
+import { Badge } from '@/components/ui/badge';
+import { Link } from '@/components/common';
+import ArticleCover from '@/components/common/ArticleCover';
+import type { BlogCategory } from '@/types/blog';
 
 type BlogPostCardProps = {
-    title: string
-    category: BlogCategory
-    description?: string
-    author?: string
-    date?: Date
-    slug?: string
-}
+  title: string;
+  category: BlogCategory;
+  description?: string;
+  author?: string;
+  date?: Date;
+  slug?: string;
+};
 
-export const BlogPostCard = ({ title, category, description, author, date, slug }: BlogPostCardProps) => {
-    const t = useTranslations()
+export const BlogPostCard = ({
+  title,
+  category,
+  description,
+  author,
+  date,
+  slug,
+}: BlogPostCardProps) => {
+  const t = useTranslations();
 
-    return (
-        <article className='flex flex-col group relative w-full bg-white dark:bg-neutral-900/40 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200'>
-            <Link href={slug} className='w-full overflow-hidden m-0 cursor-pointer'>
-                <ArticleCover title={title} type={category} className='rounded-tl-lg rounded-tr-lg' />
-            </Link>
+  return (
+    <article className="group relative flex w-full flex-col overflow-hidden rounded-lg bg-white shadow-xs transition-shadow duration-200 hover:shadow-md dark:bg-neutral-900/40">
+      <Link href={slug} className="m-0 w-full cursor-pointer overflow-hidden">
+        <ArticleCover
+          title={title}
+          type={category}
+          className="rounded-tl-lg rounded-tr-lg"
+        />
+      </Link>
 
-            <div className='space-y-3 p-4 flex-1 flex flex-col'>
-                {category && (
-                    <Badge
-                        className={cn(
-                            'w-fit px-3 py-1 text-xs font-semibold uppercase tracking-wider',
-                            'text-lime-500 cursor-pointer rounded-md',
-                            'hover:bg-lime-100 transition-colors dark:bg-neutral-900/30'
-                        )}
-                    >
-                        {t(`layouts.blog.categories.${category}`)}
-                    </Badge>
-                )}
+      <div className="flex flex-1 flex-col space-y-3 p-4">
+        {category && (
+          <Badge
+            className={cn(
+              'w-fit px-3 py-1 text-xs font-semibold tracking-wider uppercase',
+              'cursor-pointer rounded-md text-lime-500',
+              'transition-colors hover:bg-lime-100 dark:bg-neutral-900/30'
+            )}
+          >
+            {t(`layouts.blog.categories.${category}`)}
+          </Badge>
+        )}
 
-                <Link
-                    href={slug}
-                    className={cn(
-                        'text-xl font-bold text-gray-900 dark:text-foreground/60 leading-tight',
-                        'hover:text-lime-400 transition-colors hover:underline flex-1 order-1'
-                    )}
-                >
-                    {title}
-                </Link>
+        <Link
+          href={slug}
+          className={cn(
+            'dark:text-foreground/60 text-xl leading-tight font-bold text-gray-900',
+            'order-1 flex-1 transition-colors hover:text-lime-400 hover:underline'
+          )}
+        >
+          {title}
+        </Link>
 
-                {description && <p className='text-gray-600 leading-relaxed line-clamp-3 order-2'>{description}</p>}
+        {description && (
+          <p className="order-2 line-clamp-3 leading-relaxed text-gray-600">
+            {description}
+          </p>
+        )}
 
-                <footer className='flex flex-row items-center justify-between order-3'>
-                    <div className='space-y-1'>
-                        <div className='flex items-center gap-1 text-sm'>
-                            <User className='w-4 h-4 text-gray-400 flex-shrink-0' />
-                            <span className='text-gray-600 dark:text-foreground/50 px-2.5 py-1'>{author ?? 'Untitled'}</span>
-                        </div>
-
-                        {/* 日期 */}
-                        {date && (
-                            <div className='flex items-center gap-1 text-sm text-gray-400 dark:text-foreground/30'>
-                                <Calendar className='w-4 h-4 mr-1.5 text-gray-400 dark:text-foreground/30 flex-shrink-0' />
-                                <time>{formatDate(date)}</time>
-                            </div>
-                        )}
-                    </div>
-                </footer>
+        <footer className="order-3 flex flex-row items-center justify-between">
+          <div className="space-y-1">
+            <div className="flex items-center gap-1 text-sm">
+              <User className="h-4 w-4 shrink-0 text-gray-400" />
+              <span className="dark:text-foreground/50 px-2.5 py-1 text-gray-600">
+                {author ?? 'Untitled'}
+              </span>
             </div>
-        </article>
-    )
-}
+
+            {/* 日期 */}
+            {date && (
+              <div className="dark:text-foreground/30 flex items-center gap-1 text-sm text-gray-400">
+                <Calendar className="dark:text-foreground/30 mr-1.5 h-4 w-4 shrink-0 text-gray-400" />
+                <time>{formatDate(date)}</time>
+              </div>
+            )}
+          </div>
+        </footer>
+      </div>
+    </article>
+  );
+};
