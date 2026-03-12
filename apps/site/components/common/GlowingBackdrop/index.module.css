@@ -1,10 +1,8 @@
 @reference '../../../styles/globals.css';
 
 .glowingBackdrop {
-  @apply /*
-    */
-    absolute
-    top-0 left-0 -z-10
+  @apply absolute
+    top-0 left-0
     size-full
     opacity-50
     md:opacity-100;
