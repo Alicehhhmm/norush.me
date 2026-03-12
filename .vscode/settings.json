@@ -106,4 +106,8 @@
         "*.wat": "$(capture).wasm",
         "*.xaml": "$(capture).xaml.cs"
     },
+  "css.lint.unknownAtRules": "ignore",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

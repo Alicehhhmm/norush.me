@@ -1,5 +1,5 @@
-import { createHighlighterCoreSync } from '@shikijs/core';
-import { createJavaScriptRegexEngine } from '@shikijs/engine-javascript';
+import { createHighlighterCoreSync } from 'shiki/core';
+import { createJavaScriptRegexEngine } from 'shiki/engine/javascript';
 
 import { LANGUAGES, DEFAULT_THEME } from '@/core/shiki.config.mjs';
 
@@ -25,7 +25,7 @@ export const highlightToHtml = (code: string, language: string) => {
   return shiki
     .codeToHtml(code, { lang: language, theme: DEFAULT_THEME })
     .match(/<code>(.+?)<\/code>/s)![1];
-}
+};
 
 /**
  * 将代码高亮为 HAST（HTML Abstract Syntax Tree）格式

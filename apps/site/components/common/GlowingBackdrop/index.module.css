@@ -1,27 +1,29 @@
+@reference "../../../styles/tailwind-theme.css";
+
 .glowingBackdrop {
-    @apply absolute
-    left-0
-    top-0
-    /* -z-10 */
+  @apply /*
+    */
+    absolute
+    top-0 left-0 -z-10
     size-full
     opacity-50
     md:opacity-100;
 
-    &::after {
-        @apply absolute
+  &::after {
+    @apply bg-fluo-primary
+      dark:bg-fluo-deep
+      absolute
       inset-0
       m-auto
       aspect-square
       w-[300px]
       rounded-full
-      bg-fluo-primary
       blur-[120px]
-      content-['']
-      dark:bg-fluo-deep;
-    }
+      content-[''];
+  }
 
-    .glowingBackdrop svg {
-        @apply absolute
+  .glowingBackdrop svg {
+    @apply absolute
       inset-0
       m-auto
       aspect-[1.67]
@@ -29,5 +31,5 @@
       object-cover
       text-neutral-300
       dark:text-neutral-900/75;
-    }
+  }
 }
