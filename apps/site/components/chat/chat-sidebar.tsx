@@ -59,7 +59,7 @@ export const ChatSidebar: FC<ChatSidebarProps> = ({ data, sidebarProps }) => {
   return (
     <Sidebar
       collapsible="icon"
-      className="overflow-hidden [&>[data-sidebar=sidebar]]:flex-row"
+      className="overflow-hidden *:data-[sidebar=sidebar]:flex-row"
       {...sidebarProps}
     >
       {/* 第一个侧边栏: 菜单栏导航组件 */}
