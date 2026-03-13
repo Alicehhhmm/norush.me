@@ -7,6 +7,7 @@ export * from './chat';
 export * from './icon';
 export * from './user';
 export * from './formatted-message';
-export * from './settings'
-export * from './links'
+export * from './website';
+export * from './links';
 export * from './bookmark';
+export * from './page';
