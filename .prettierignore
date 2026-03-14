@@ -1,0 +1,47 @@
+# Commonly ignored Node.js files
+node_modules
+.DS_Store
+.env
+out
+coverage
+pnpm-lock.yaml
+
+# npm Compatibility
+npm-debug.log
+.npm
+package-lock.json
+
+# Next.js Build Output
+.next
+build
+next-env.d.ts
+
+# Test Runner
+
+
+# Storybook
+storybook-static
+build-storybook.log
+.nyc_output
+
+# Vercel Files
+.vercel
+.turbo
+cache
+
+# Cache Files
+.eslintmdcache
+.stylelintcache
+.prettiercache
+
+# TypeScript
+tsconfig.tsbuildinfo
+
+# Metadata Files
+CODEOWNERS
+
+# Public Folders
+apps/site/public
+
+# Distributed Files
+dist

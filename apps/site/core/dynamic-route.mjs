@@ -1,0 +1,301 @@
+'use strict';
+
+import { cache } from 'react';
+import { VFile } from 'vfile';
+import matter from 'gray-matter';
+import { readFile } from 'node:fs/promises';
+import { join, normalize, sep } from 'node:path';
+
+import { siteConfig } from '@/config/next.json.mjs';
+import { IS_DEV_ENV, BASE_URL, BASE_PATH } from '@/core/next.constants.mjs';
+import {
+  DYNAMIC_ROUTES,
+  IGNORED_ROUTES,
+  PAGE_METADATA,
+} from './next.dynamic.constants.mjs';
+import { POSTS_FOLDER_NAME } from './dynamic-route-constants';
+
+import { availableLocaleCodes, defaultLocale } from './next.locales.mjs';
+import { getMarkdownFiles } from './complier/next.helpers.mjs';
+import { compile } from './complier/complier.mdx.mjs';
+import { MDX_COMPONENTS } from './complier/complier.mdx.components.mjs';
+
+const baseUrlAndPath = `${BASE_URL}${BASE_PATH}`;
+
+/**
+ * [中文文档]
+ * 将文件系统路径转换为路由对象
+ *
+ * @params {string} [locale=defaultLocale.code] - BCP 47语言标签
+ * @params {string} [path=''] - 文件系统路径（操作系统特定格式）
+ * @return {Object} 路由配置对象
+ * @property {string} locale - 目标语言代码
+ * @property {string[]} path - 标准化路由分段
+ * @example
+ * Windows系统
+ * mapPathToRoute('zh-CN', 'docs\\api\\rest.mdx')  → { locale: 'zh-CN', path: ['docs', 'api', 'rest'] }
+ *
+ * Unix系统
+ * mapPathToRoute('en-US', 'blog/news') → { locale: 'en-US', path: ['blog','news'] }
+ * @note 使用操作系统特定的路径分隔符, 保证不同操作系统的兼容性 (('node:path').sep)
+ * @usage 从文件系统结构生成静态路由
+ */
+const mapPathToRoute = (locale = defaultLocale.code, path = '') => ({
+  locale,
+  path: path.split(sep),
+});
+
+/**
+ * 将路由对象转换为浏览器可用的URL
+ * Reconstructs URL path from path segments
+ *
+ * @param {string[]} [path=[]] - Route segments array
+ * @returns {string} Normalized URL path (always uses '/' separator)
+ * @example
+ * getPathname(['blog', 'news']) → 'blog/news'
+ */
+const getPathname = (path = []) => path.join('/');
+
+/**
+ * 该方法用于存储 Markdown 文件内容
+ * - 在开发环境下，禁用缓存
+ *
+ * @returns {Map|null} 缓存对象
+ */
+const createCachedMarkdownCache = () => {
+  if (IS_DEV_ENV) {
+    return {
+      has: () => false,
+      set: () => {},
+      get: () => null,
+    };
+  }
+
+  return new Map();
+};
+
+const getDynamicRouter = async () => {
+  const pathnameToFilename = new Map();
+  const cachedMarkdownFiles = createCachedMarkdownCache();
+
+  // 获取指定文件夹下, 特定语言路径的所有md(x)文件
+  // 返回[ 'index.mdx', 'blog\\index.md']
+  const websitePages = await getMarkdownFiles(
+    process.cwd(),
+    `${POSTS_FOLDER_NAME}/${defaultLocale.code}`
+  );
+
+  websitePages.forEach(filename => {
+    // This Regular Expression is used to remove the `index.md(x)` suffix
+    // of a name and to remove the `.md(x)` extensions of a filename.
+    let pathname = filename.replace(/((\/)?(index))?\.mdx?$/i, '');
+    // blog\\index.md -> blog\index
+
+    if (pathname.length > 1 && pathname.endsWith(sep)) {
+      pathname = pathname.substring(0, pathname.length - 1);
+      // blog\ ->  blog
+    }
+
+    pathname = normalize(pathname).replace('.', '');
+
+    // We map the pathname to the filename to be able to quickly
+    // resolve the filename for a given pathname
+    pathnameToFilename.set(pathname, filename);
+  });
+
+  /**
+   * ZH: 该方法返回所给语言环境中存在的所有路由的列表
+   * This method returns a list of all routes that exist for a given locale
+   *
+   * @param {string} locale
+   * @returns {Promise<Array<string>>}
+   */
+  const getRoutesByLanguage = async (locale = defaultLocale.code) => {
+    const shouldIgnoreStaticRoute = pathname =>
+      IGNORED_ROUTES.every(e => !e({ pathname, locale }));
+
+    return [...pathnameToFilename.keys()]
+      .filter(shouldIgnoreStaticRoute)
+      .concat([...DYNAMIC_ROUTES.keys()]);
+  };
+
+  /**
+   * 获取本地的 Markdown 文件(原)内容
+   *
+   * @param {string} locale
+   * @param {string} pathname
+   * @returns {Promise<{ source: string; filename: string }>}
+   */
+  const _getMarkdownFile = async (locale = '', pathname = '') => {
+    const normalizedPathname = normalize(pathname).replace('.', '');
+
+    // 检查路径是否存在于路径到文件名的映射中(如果存在，则该路由可以渲染)
+    if (pathnameToFilename.has(normalizedPathname)) {
+      const filename = pathnameToFilename.get(normalizedPathname);
+      const filepath = join(
+        process.cwd(),
+        `${POSTS_FOLDER_NAME}`,
+        locale,
+        filename
+      );
+
+      // 检查缓存中是否已存在本地版本的文件内容(如果存在，则直接返回缓存内容)
+      if (cachedMarkdownFiles.has(`${locale}${normalizedPathname}`)) {
+        const fileContent = cachedMarkdownFiles.get(
+          `${locale}${normalizedPathname}`
+        );
+
+        return { source: fileContent, filename };
+      }
+
+      // 开始读取本地文件内容
+      const fileLanguageContent = await readFile(filepath, 'utf8').catch(
+        () => undefined
+      );
+
+      // 如果成功读取到本地文件内容，则将其加入缓存并返回
+      if (fileLanguageContent && typeof fileLanguageContent === 'string') {
+        cachedMarkdownFiles.set(
+          `${locale}${normalizedPathname}`,
+          fileLanguageContent
+        );
+
+        return { source: fileLanguageContent, filename };
+      }
+
+      // 避免无限递归：
+      // 当前语言是默认语言（例如 'en'），且文件不存在，则返回空内容
+      if (locale === defaultLocale.code) {
+        return { filename: '', source: '' };
+      }
+
+      // 如果本地版本不存在，则尝试获取默认语言版本的内容
+      const { source: fileContent } = await _getMarkdownFile(
+        defaultLocale.code,
+        pathname
+      );
+
+      // 将默认语言版本的内容加入本地缓存，以提高后续读取性能
+      cachedMarkdownFiles.set(`${locale}${normalizedPathname}`, fileContent);
+
+      return { source: fileContent, filename };
+    }
+
+    return { filename: '', source: '' };
+  };
+
+  /**
+   * 该方法在服务端运行 MDX 编译器，并返回解析后的 JSX
+   * 用于将文件内容，编译为页面中可渲染的React组件
+   *
+   * @param {string} source Markdown/MDX 源内容
+   * @param {string} filename 文件名
+   */
+  const _getMDXContent = async (source = '', filename = '') => {
+    // 创建一个 VFile（虚拟文件），以便在将 Markdown 源内容序列化（编译）为 MDX 后，能够访问一些上下文数据
+    const sourceAsVirtualFile = new VFile(source);
+
+    // 确定解析器和插件支持的文件格式
+    const fileExtension = filename.endsWith('.mdx') ? 'mdx' : 'md';
+
+    // 将虚拟化后的MDX源内容（VFile）作为字符串传递给MDXProvider解析
+    return compile(sourceAsVirtualFile, fileExtension, MDX_COMPONENTS);
+  };
+
+  /**
+   * This method generates the Next.js App Router Metadata
+   * that can be used for each page to provide metadata
+   *
+   * @param {string} locale
+   * @param {string} path
+   * @returns {Promise<import('next').Metadata>}
+   */
+  const _getPageMetadata = async (locale = defaultLocale.code, path = '') => {
+    const pageMetadata = { ...PAGE_METADATA };
+
+    const { source = '' } = await getMarkdownFile(locale, path);
+
+    const { data } = matter(source);
+
+    const getUrlForPathname = (l, p) =>
+      `${baseUrlAndPath}/${l}${p ? `/${p}` : ''}`;
+
+    // Default Title for the page
+    pageMetadata.title = data.title
+      ? `${siteConfig.title} — ${data.title}`
+      : siteConfig.title;
+
+    pageMetadata.description = data.description
+      ? data.description
+      : siteConfig.description;
+
+    // Default Twitter Title for the page
+    // pageMetadata.twitter.title = pageMetadata.title;
+
+    // Default Open Graph Image for the page
+    // pageMetadata.openGraph.images = [
+    //   ENABLE_STATIC_EXPORT
+    //     ? `${defaultLocale.code}/next-data/og/announcement/Run JavaScript Everywhere`
+    //     : `${defaultLocale.code}/next-data/og/${data.category ?? DEFAULT_CATEGORY_OG_TYPE}/${pageMetadata.title}`,
+    // ];
+
+    // Default canonical URL for the page
+    pageMetadata.alternates.canonical =
+      data.canonical ?? getUrlForPathname(locale, path);
+
+    // Default alternate URL for the page in the default locale
+    pageMetadata.alternates.languages['x-default'] = getUrlForPathname(
+      defaultLocale.code,
+      path
+    );
+
+    // Retrieves a matching blog feed for the category of the blog post
+    // If no matching blog feed is found, we simply fallback to the default blog feed
+    const matchingBlogFeed = siteConfig.rssFeeds.find(
+      feed => feed.category === data.category
+    );
+
+    // Adds the RSS Feed URL to the page metadata, if a matching feed is found
+    // otherwise, we fallback to the default blog feed
+    pageMetadata.alternates.types['application/rss+xml'] = getUrlForPathname(
+      locale,
+      `feed/${matchingBlogFeed?.file ?? 'blog.xml'}`
+    );
+
+    // Iterate all languages to generate alternate URLs for each language
+    availableLocaleCodes.forEach(currentLocale => {
+      pageMetadata.alternates.languages[currentLocale] = getUrlForPathname(
+        currentLocale,
+        path
+      );
+    });
+
+    return pageMetadata;
+  };
+
+  // Creates a Cached Version of the Markdown File Resolver
+  const getMarkdownFile = cache(async (locale, pathname) => {
+    return await _getMarkdownFile(locale, pathname);
+  });
+
+  // Creates a Cached Version of the MDX Compiler
+  const getMDXContent = cache(async (source, filename) => {
+    return await _getMDXContent(source, filename);
+  });
+
+  // Creates a Cached Version of the Page Metadata Context
+  const getPageMetadata = cache(async (locale, path) => {
+    return await _getPageMetadata(locale, path);
+  });
+
+  return {
+    mapPathToRoute,
+    getPathname,
+    getRoutesByLanguage,
+    getMarkdownFile,
+    getMDXContent,
+    getPageMetadata,
+  };
+};
+
+export const dynamicRouter = await getDynamicRouter();

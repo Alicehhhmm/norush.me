@@ -1,0 +1,108 @@
+{
+  "name": "@nw/ui",
+  "version": "0.0.1",
+  "type": "module",
+  "homepage": "https://github.com/Alicehhhmm/norush.me/tree/main/packages/nui#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alicehhhmm/norush.me.git",
+    "directory": "packages/nui"
+  },
+  "license": "MIT",
+  "author": "Norush",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "types": "./dist/esm/index.d.ts",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./*": {
+      "types": "./dist/esm/*/index.d.ts",
+      "import": "./dist/esm/*/index.js",
+      "require": "./dist/cjs/*/index.cjs"
+    },
+    "./styles": {
+      "import": "./dist/esm/styles/index.css",
+      "require": "./dist/cjs/styles/index.css"
+    },
+    "./styles/*": {
+      "import": "./dist/esm/styles/*.css",
+      "require": "./dist/cjs/styles/*.css"
+    }
+  },
+  "imports": {
+    "#ui/*": [
+      "./src/*",
+      "./src/*.tsx",
+      "./src/*/index.tsx",
+      "./src/*.ts",
+      "./src/*/index.ts"
+    ]
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "rslib build --watch",
+    "cls": "rimraf node_modules",
+    "build": "rimraf dist && rslib build",
+    "storybook": "storybook dev -p 6006",
+    "build:storybook": "storybook build",
+    "lint": "pnpm lint:js && pnpm lint:css",
+    "lint:css": "stylelint \"**/*.css\" --allow-empty-input --cache --cache-strategy=content --cache-location=.stylelintcache",
+    "lint:css:fix": "pnpm lint:css -- --fix",
+    "lint:js": "eslint \"**/*.{js,mjs,ts,tsx}\"",
+    "lint:js:fix": "pnpm lint:js -- --fix",
+    "lint:types": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.2",
+    "@storybook/addon-styling-webpack": "^3.0.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "catalog:",
+    "tailwind-merge": "^3.0.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@rsbuild/core": "~1.7.0",
+    "@rsbuild/plugin-react": "^1.4.2",
+    "@rslib/core": "^0.19.1",
+    "@storybook/addon-docs": "^10.1.10",
+    "@storybook/addon-onboarding": "^10.1.10",
+    "@storybook/react": "^10.1.10",
+    "@tailwindcss/postcss": "~4.1.18",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "eslint": "^9.39.1",
+    "eslint-plugin-storybook": "^10.1.11",
+    "globals": "^16.5.0",
+    "jsdom": "^26.1.0",
+    "postcss": "^8.5.6",
+    "postcss-calc": "^10.1.1",
+    "postcss-loader": "^8.2.0",
+    "react": "catalog:",
+    "rimraf": "^6.0.1",
+    "storybook": "^10.1.10",
+    "storybook-addon-rslib": "^3.2.0",
+    "storybook-react-rsbuild": "^3.2.0",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1",
+    "stylelint-order": "7.0.1",
+    "stylelint-selector-bem-pattern": "4.0.1",
+    "tailwindcss": "4.1.18",
+    "typescript": "catalog:",
+    "typescript-eslint": "^8.48.0",
+    "vitest": "^4.0.16"
+  }
+}

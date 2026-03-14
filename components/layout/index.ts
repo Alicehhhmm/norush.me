@@ -1,8 +1,0 @@
-import dynamic from 'next/dynamic'
-export { DefaultLayout } from './default-layout'
-export { HomeLayout } from './home-layout'
-export { ArticleLayout } from './article-layout'
-export { PostLayout } from './posts'
-export { ProjectLayout } from './project-layout'
-export { BookletLayout } from './booklet-layout'
-export { default as WithLayout } from './with-layout'

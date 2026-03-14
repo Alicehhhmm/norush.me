@@ -1,0 +1,195 @@
+{
+  "topNavigation": {
+    "blog": {
+      "link": "/blog",
+      "label": "system.nav.blog",
+      "subMenu": []
+    },
+    "booklet": {
+      "link": "/booklet",
+      "label": "system.nav.booklet",
+      "subMenu": []
+    },
+    "projects": {
+      "link": "/projects",
+      "label": "system.nav.projects",
+      "subMenu": []
+    },
+    "bookmarks": {
+      "link": "/bookmarks",
+      "label": "system.nav.bookmarks",
+      "subMenu": []
+    },
+    "design": {
+      "link": "/design",
+      "label": "system.nav.design",
+      "subMenu": []
+    }
+  },
+  "chatNavigation": {
+    "blog": {
+      "link": "/blog",
+      "label": "system.nav.blog",
+      "icon": "home"
+    },
+    "booklet": {
+      "link": "/booklet",
+      "label": "system.nav.booklet",
+      "icon": "booklet"
+    },
+    "projects": {
+      "link": "/projects",
+      "label": "system.nav.projects",
+      "icon": "projects"
+    },
+    "bookmarks": {
+      "link": "/bookmarks",
+      "label": "system.nav.bookmarks",
+      "icon": "bookmarks"
+    },
+    "design": {
+      "link": "/design",
+      "label": "system.nav.design",
+      "icon": "design"
+    }
+  },
+  "socialLinks": [
+    {
+      "icon": "github",
+      "name": "system.links.github",
+      "link": "https://github.com/Alicehhhmm",
+      "target": "blank"
+    },
+    {
+      "icon": "juejin",
+      "name": "system.links.juejin",
+      "link": "",
+      "target": "blank"
+    },
+    {
+      "icon": "gmail",
+      "name": "system.links.gmail",
+      "link": "",
+      "target": "blank"
+    },
+    {
+      "icon": "twitter",
+      "name": "system.links.twitter",
+      "link": "",
+      "target": "blank"
+    },
+    {
+      "icon": "linkedin",
+      "name": "system.links.linkedin",
+      "link": "",
+      "target": "blank"
+    }
+  ],
+  "sideNavigation": {
+    "blog": {
+      "label": "system.nav.blog",
+      "items": {
+        "all": {
+          "label": "layouts.blog.categories.all",
+          "link": "/blog/all"
+        },
+        "news": {
+          "label": "layouts.blog.categories.news",
+          "link": "/blog/news"
+        },
+        "announcements": {
+          "label": "layouts.blog.categories.announcements",
+          "link": "/blog/announcements"
+        },
+        "release": {
+          "label": "layouts.blog.categories.release",
+          "link": "/blog/release"
+        },
+        "vulnerability": {
+          "label": "layouts.blog.categories.vulnerability",
+          "link": "/blog/vulnerability"
+        },
+        "other": {
+          "label": "layouts.blog.categories.other",
+          "link": "/blog/other"
+        }
+      }
+    },
+    "booklet": {
+      "label": "components.navigation.booklet.label",
+      "items": {
+        "canvas": {
+          "label": "components.navigation.booklet.links.canvas",
+          "link": "/booklet/canvas"
+        }
+      }
+    },
+    "bookmarks": {
+      "label": "system.nav.bookmarks",
+      "items": {
+        "tools": {
+          "label": "layouts.bookmarks.categories.tools",
+          "link": "/bookmarks/tools"
+        },
+        "books": {
+          "label": "layouts.bookmarks.categories.books",
+          "link": "/bookmarks/books"
+        },
+        "frontend": {
+          "label": "layouts.bookmarks.categories.frontend",
+          "link": "/bookmarks/frontend"
+        },
+        "backend": {
+          "label": "layouts.bookmarks.categories.backend",
+          "link": "/bookmarks/backend"
+        },
+        "rust": {
+          "label": "layouts.bookmarks.categories.rust",
+          "link": "/bookmarks/rust"
+        },
+        "editor": {
+          "label": "layouts.bookmarks.categories.editor",
+          "link": "/bookmarks/editor"
+        },
+        "design": {
+          "label": "layouts.bookmarks.categories.design",
+          "link": "/bookmarks/design"
+        },
+        "icons": {
+          "label": "layouts.bookmarks.categories.icons",
+          "link": "/bookmarks/icons"
+        },
+        "css": {
+          "label": "layouts.bookmarks.categories.css",
+          "link": "/bookmarks/css"
+        },
+        "inspiration": {
+          "label": "layouts.bookmarks.categories.inspiration",
+          "link": "/bookmarks/inspiration"
+        },
+        "material": {
+          "label": "layouts.bookmarks.categories.material",
+          "link": "/bookmarks/material"
+        },
+        "github-start": {
+          "label": "layouts.bookmarks.categories.github-start",
+          "link": "/bookmarks/github-start"
+        }
+      }
+    }
+  },
+  "sourceRepositoryNav": {
+    "site": [
+      {
+        "label": "system.links.resumemy",
+        "link": "https://github.com/Alicehhhmm/resumemy"
+      }
+    ],
+    "self": [
+      {
+        "label": "",
+        "link": "#"
+      }
+    ]
+  }
+}

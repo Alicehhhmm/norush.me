@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+**/*node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -13,9 +13,10 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
+# Next.js Build Output
+.next
+build
+next-env.d.ts
 
 # production
 /build
@@ -34,12 +35,42 @@ yarn-error.log*
 .env*
 !.env.example
 
-# vercel
+# Storybook
+*storybook.log
+storybook-static
+build-storybook.log
+.nyc_output
+
+# Vercel Files
 .vercel
+.turbo
+cache
+
+# Cache Files
+.eslintmdcache
+.stylelintcache
+.prettiercache
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 
+# Metadata Files
+CODEOWNERS
+
+# Public Folders
+apps/site/public
+
+# Distributed Files
+dist
+
 # AI
 .cursor
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# rspack
+.rspack-profile-*/

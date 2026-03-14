@@ -1,0 +1,11 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# 手动加载 fnm 环境
+export FNM_DIR="/e/dev/fnm"
+export PATH="$FNM_DIR:$PATH"
+eval "$(fnm env --shell bash)"
+
+# lint and format staged files
+
+node --run lint:staged
