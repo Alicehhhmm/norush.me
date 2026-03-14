@@ -42,8 +42,6 @@ export const NavHeader = () => {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 100, damping: 20 }}
       className={cn(
         'fixed top-0 right-0 left-0 z-30 m-auto h-15 transition-all duration-200',
