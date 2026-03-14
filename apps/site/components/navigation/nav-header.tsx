@@ -1,13 +1,17 @@
 'use client';
 
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 
 import { ThemeToggleBtn, ActionLink, LangToggle } from '@/components/common';
 import { NavItem, MobileNav, NavLogo } from '@/components/navigation';
 import { GitHub } from '@/components/icons/social';
 
 import { useSiteNavigation } from '@/hooks/server';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { siteNavigation } from '@/config/next.json.mjs';
+import { cn } from '@/lib/utils';
 
 export const NavHeader = () => {
   const { navigationItems } = useSiteNavigation();
@@ -28,17 +32,35 @@ export const NavHeader = () => {
     label: t(link.label),
   }))[0];
 
+  // Effect motion
+  const isMobile = useIsMobile();
+  const { scrollY } = useScroll();
+  const [scrollYAction, setScrollYAction] = useState(false);
+  useMotionValueEvent(scrollY, 'change', latest => {
+    setScrollYAction(latest > 60);
+  });
+
   return (
-    <div className="border-border/40 bg-background/95 supports-backdrop-filter:bg-background/80 fixed top-0 right-0 left-0 z-30 h-[60px] w-full border-b backdrop-blur-sm">
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+      className={cn(
+        'fixed top-0 right-0 left-0 z-30 m-auto h-15 transition-all duration-200',
+        scrollYAction
+          ? isMobile
+            ? 'bg-background/80 w-full shadow-2xs backdrop-blur-sm'
+            : 'shadow-3dcard bg-background dark:bg-muted/20 top-1 w-[calc(100%-220px)] rounded-xl dark:backdrop-blur-xl dark:backdrop-saturate-180'
+          : 'border-border/40 w-full border-b bg-transparent'
+      )}
+    >
       <div className="flex h-full items-center justify-between px-4 sm:px-6 lg:px-20">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <div className="flex items-center space-x-2">
-            <NavLogo />
-            <h2 className="text-foreground hidden text-xl font-bold sm:text-2xl lg:inline-block">
-              Norush website
-            </h2>
-          </div>
+          <NavLogo />
+          <h2 className="text-foreground hidden text-xl font-bold sm:text-2xl lg:inline-block">
+            Norush website
+          </h2>
         </div>
 
         <div className="flex items-center gap-2">
@@ -63,6 +85,6 @@ export const NavHeader = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.nav>
   );
 };
