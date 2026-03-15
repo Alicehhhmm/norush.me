@@ -1,12 +1,12 @@
-import { siteNavigation, bookmarksJSON } from '@/config/next.json.mjs'
+import { siteNavigation, bookmarksJSON } from '@/config/next.json.mjs';
 
-const DEFAULT_CATEGORY = 'all'
+const DEFAULT_CATEGORY = 'all';
 
 // 统一缓存对象
 const cache = {
-    categories: new Map(),
-    bookmarks: new Map(),
-}
+  categories: new Map(),
+  bookmarks: new Map(),
+};
 
 /**
  * 获取指定导航键对应的书签类别
@@ -14,16 +14,16 @@ const cache = {
  * @returns {string[]} 类别数组
  */
 export function getBookmarksCategories(keys = []) {
-    const cacheKey = keys.slice().sort().join('-') || 'empty'
-    if (cache.categories.has(cacheKey)) return cache.categories.get(cacheKey)
+  const cacheKey = keys.slice().sort().join('-') || 'empty';
+  if (cache.categories.has(cacheKey)) return cache.categories.get(cacheKey);
 
-    const categories = keys.flatMap(key => {
-        const navItem = siteNavigation.sideNavigation[key]
-        return navItem?.items ? Object.keys(navItem.items) : []
-    })
+  const categories = keys.flatMap(key => {
+    const navItem = siteNavigation.sideNavigation[key];
+    return navItem?.items ? Object.keys(navItem.items) : [];
+  });
 
-    cache.categories.set(cacheKey, categories)
-    return categories
+  cache.categories.set(cacheKey, categories);
+  return categories;
 }
 
 /**
@@ -31,18 +31,23 @@ export function getBookmarksCategories(keys = []) {
  * @returns {Promise<{ categories: string[], bookmarksMap: Map<string, any[]>}>}
  */
 export async function generateBookmarks() {
-    const cacheKey = 'global'
-    if (cache.bookmarks.has(cacheKey)) return cache.bookmarks.get(cacheKey)
+  const cacheKey = 'global';
+  if (cache.bookmarks.has(cacheKey)) return cache.bookmarks.get(cacheKey);
 
-    const dynamicCategories = getBookmarksCategories(['bookmarks'])
+  const dynamicCategories = getBookmarksCategories(['bookmarks']);
 
-    const bookmarksMap = new Map(Object.entries(bookmarksJSON).map(([category, items]) => [category, Array.isArray(items) ? items : []]))
+  const bookmarksMap = new Map(
+    Object.entries(bookmarksJSON).map(([category, items]) => [
+      category,
+      Array.isArray(items) ? items : [],
+    ])
+  );
 
-    const result = {
-        categories: [DEFAULT_CATEGORY, ...dynamicCategories],
-        bookmarksMap,
-    }
-    
-    cache.bookmarks.set(cacheKey, result)
-    return result
+  const result = {
+    categories: [DEFAULT_CATEGORY, ...dynamicCategories],
+    bookmarksMap,
+  };
+
+  cache.bookmarks.set(cacheKey, result);
+  return result;
 }

@@ -28,7 +28,7 @@ export function SettingsForm() {
     <div className="space-y-8 p-6">
       {/* Lang Selection */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-foreground">
+        <h3 className="text-foreground text-sm font-medium">
           {t('system.settings.languagePattern.label')}
         </h3>
         <LangToggle showLabel onChange={lang => setLanguage(lang)} />

@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react';
 
 /**
  * useIntersectionObserver
@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react'
  * A typed React hook that wraps the **Intersection Observer** API, letting you
  * track when a specific DOM element enters or leaves the viewport (or any root
  * scrolling container).
- * 
+ *
  * @param ref — `React.RefObject<T>` that points to the element you want observed.
  * @param options — Optional configuration:
  * | Option | Type | Default | Description |
@@ -46,60 +46,59 @@ import { useEffect, useRef, useState } from 'react'
  */
 
 interface OptionsType extends IntersectionObserverInit {
-    /** Stop observing after first intersection */
-    once: boolean
-    /** Disable observer without detaching hook logic */
-    enabled: boolean
-    /** Fired after internal state is updated */
-    onIntersect?: (entry: IntersectionObserverEntry) => void
+  /** Stop observing after first intersection */
+  once: boolean;
+  /** Disable observer without detaching hook logic */
+  enabled: boolean;
+  /** Fired after internal state is updated */
+  onIntersect?: (entry: IntersectionObserverEntry) => void;
 }
 
-export function useIntersectionObserver<T extends Element = Element> (
-    ref: React.RefObject<T>,
-    options: Partial<OptionsType> = {},
+export function useIntersectionObserver<T extends Element = Element>(
+  ref: React.RefObject<T>,
+  options: Partial<OptionsType> = {}
 ): [boolean, IntersectionObserverEntry | undefined] {
-    const {
-        root = null,
-        rootMargin = '0px',
-        threshold = 0,
-        once = false,
-        enabled = true,
-        onIntersect,
-    } = options
+  const {
+    root = null,
+    rootMargin = '0px',
+    threshold = 0,
+    once = false,
+    enabled = true,
+    onIntersect,
+  } = options;
 
-    // Preserve latest callback without re-subscribing observer each render.
-    const savedCallback = useRef(onIntersect)
-    savedCallback.current = onIntersect
+  // Preserve latest callback without re-subscribing observer each render.
+  const savedCallback = useRef(onIntersect);
+  savedCallback.current = onIntersect;
 
-    const [entry, setEntry] = useState<IntersectionObserverEntry>()
-    const [isIntersecting, setIsIntersecting] = useState(false)
+  const [entry, setEntry] = useState<IntersectionObserverEntry>();
+  const [isIntersecting, setIsIntersecting] = useState(false);
 
-    useEffect(() => {
-        if (!enabled) return
-        if (typeof IntersectionObserver === 'undefined') return
+  useEffect(() => {
+    if (!enabled) return;
+    if (typeof IntersectionObserver === 'undefined') return;
 
-        const target = ref.current
-        if (!target) return
+    const target = ref.current;
+    if (!target) return;
 
-        const observer = new IntersectionObserver(
-            ([e]) => {
-                setEntry(e)
-                setIsIntersecting(e.isIntersecting)
+    const observer = new IntersectionObserver(
+      ([e]) => {
+        setEntry(e);
+        setIsIntersecting(e.isIntersecting);
 
-                if (e.isIntersecting && savedCallback.current) {
-                    savedCallback.current(e)
-                }
-                if (e.isIntersecting && once) {
-                    observer.unobserve(e.target)
-                }
-            },
-            { root, rootMargin, threshold },
-        )
+        if (e.isIntersecting && savedCallback.current) {
+          savedCallback.current(e);
+        }
+        if (e.isIntersecting && once) {
+          observer.unobserve(e.target);
+        }
+      },
+      { root, rootMargin, threshold }
+    );
 
-        observer.observe(target)
-        return () => observer.disconnect()
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [ref, root, rootMargin, JSON.stringify(threshold), once, enabled]);
 
-    }, [ref, root, rootMargin, JSON.stringify(threshold), once, enabled])
-
-    return [isIntersecting, entry]
+  return [isIntersecting, entry];
 }

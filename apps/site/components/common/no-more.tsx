@@ -1,10 +1,10 @@
-import type { FC, ReactNode } from 'react'
-import { cn } from '@/lib/utils'
+import type { FC, ReactNode } from 'react';
+import { cn } from '@/lib/utils';
 
 interface NoMoreProps {
-    icon?: ReactNode
-    text?: string
-    className?: string
+  icon?: ReactNode;
+  text?: string;
+  className?: string;
 }
 
 /**
@@ -21,13 +21,22 @@ interface NoMoreProps {
  * <NoMore icon="📚" text="没有更多内容了" />
  * <NoMore icon={<CheckCircle className="w-4 h-4 text-green-500" />} />
  */
-export const NoMore: FC<NoMoreProps> = ({ icon = '🎉', text = '已经到底啦', className }) => {
-    return (
-        <div className={cn('my-6 flex items-center justify-center text-xs text-muted-foreground/80', className)}>
-            <span className='inline-flex items-center gap-1'>
-                <span>{text}</span>
-                {icon}
-            </span>
-        </div>
-    )
-}
+export const NoMore: FC<NoMoreProps> = ({
+  icon = '🎉',
+  text = '已经到底啦',
+  className,
+}) => {
+  return (
+    <div
+      className={cn(
+        'text-muted-foreground/80 my-6 flex items-center justify-center text-xs',
+        className
+      )}
+    >
+      <span className="inline-flex items-center gap-1">
+        <span>{text}</span>
+        {icon}
+      </span>
+    </div>
+  );
+};

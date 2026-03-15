@@ -1,14 +1,14 @@
-import type { FC, PropsWithChildren } from 'react'
+import type { FC, PropsWithChildren } from 'react';
 
-import { NavHeader } from '@/components/navigation/nav-header'
-import WithFooter from '@/components/WithFooter'
+import { NavHeader } from '@/components/navigation/nav-header';
+import WithFooter from '@/components/WithFooter';
 
 export const DefaultLayout: FC<PropsWithChildren> = ({ children }) => {
-    return (
-        <>
-            <NavHeader />
-            <main className='pt-[60px] min-h-[calc(100vh-86.4px)]'>{children}</main>
-            <WithFooter />
-        </>
-    )
-}
+  return (
+    <>
+      <NavHeader />
+      <main className="min-h-[calc(100vh-86.4px)] pt-[60px]">{children}</main>
+      <WithFooter />
+    </>
+  );
+};

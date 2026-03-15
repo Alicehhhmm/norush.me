@@ -7,27 +7,27 @@ title: 响应式网格组件使用文档
 默认参数展示三列响应式布局：
 
 <ResponsiveGrid>
-    <div style={{ padding: '1rem', background: '#f0f4ff' }}>区块1</div>
-    <div style={{ padding: '1rem', background: '#fff4f0' }}>区块2</div>
-    <div style={{ padding: '1rem', background: '#f4fff0' }}>区块3</div>
+  <div style={{ padding: '1rem', background: '#f0f4ff' }}>区块1</div>
+  <div style={{ padding: '1rem', background: '#fff4f0' }}>区块2</div>
+  <div style={{ padding: '1rem', background: '#f4fff0' }}>区块3</div>
 </ResponsiveGrid>
 
 ## 自定义参数
 
 ### 案例 1：紧凑布局
 
-<ResponsiveGrid minWidth={200} gap='1rem' padding='0.5rem'>
-    {[...Array(6)].map((_, i) => (
-        <div
-            key={i}
-            style={{
-                padding: '1rem',
-                background: `hsl(${i * 60}, 50%, 90%)`,
-            }}
-        >
-            项目 {i + 1}
-        </div>
-    ))}
+<ResponsiveGrid minWidth={200} gap="1rem" padding="0.5rem">
+  {[...Array(6)].map((_, i) => (
+    <div
+      key={i}
+      style={{
+        padding: '1rem',
+        background: `hsl(${i * 60}, 50%, 90%)`,
+      }}
+    >
+      项目 {i + 1}
+    </div>
+  ))}
 </ResponsiveGrid>
 
 ### 案例 2：媒体对象布局
@@ -69,21 +69,21 @@ title: 响应式网格组件使用文档
 
 调整浏览器窗口大小查看响应效果：
 
-<ResponsiveGrid breakpoint='480px'>
-    <div
-        style={{
-            padding: '1rem',
-            background: '#ffd70033',
-        }}
-    >
-        移动端单列布局
-    </div>
-    <div
-        style={{
-            padding: '1rem',
-            background: '#87ceeb33',
-        }}
-    >
-        小屏幕自动堆叠
-    </div>
+<ResponsiveGrid breakpoint="480px">
+  <div
+    style={{
+      padding: '1rem',
+      background: '#ffd70033',
+    }}
+  >
+    移动端单列布局
+  </div>
+  <div
+    style={{
+      padding: '1rem',
+      background: '#87ceeb33',
+    }}
+  >
+    小屏幕自动堆叠
+  </div>
 </ResponsiveGrid>

@@ -1,9 +1,15 @@
-export type PostLayoutType = 'grid' | 'list'
+export type PostLayoutType = 'grid' | 'list';
 
 /**
  * tabs 栏默认可预览类型
  */
-export type BlogPreviewType = 'all' | 'news' | 'announcements' | 'release' | 'vulnerability' | 'other';
+export type BlogPreviewType =
+  | 'all'
+  | 'news'
+  | 'announcements'
+  | 'release'
+  | 'vulnerability'
+  | 'other';
 
 /**
  * 博客文章的所有分类
@@ -13,55 +19,55 @@ export type BlogPreviewType = 'all' | 'news' | 'announcements' | 'release' | 'vu
 export type BlogCategory = IntlMessageKeys<'layouts.blog.categories'>;
 
 export interface BlogPost {
-    title: string;
-    author: string;
-    username?: string;
-    category: string;
-    categories: Array<BlogCategory>;
-    date: Date;
-    slug: string;
+  title: string;
+  author: string;
+  username?: string;
+  category: string;
+  categories: Array<BlogCategory>;
+  date: Date;
+  slug: string;
 }
 
 export interface BlogData {
-    posts: Array<BlogPost>;
-    categories: Array<BlogCategory>;
+  posts: Array<BlogPost>;
+  categories: Array<BlogCategory>;
 }
 
 export interface BlogPagination {
-    next: number | null;
-    prev: number | null;
-    pages: number;
-    total: number;
+  next: number | null;
+  prev: number | null;
+  pages: number;
+  total: number;
 }
 
 export interface BlogPostsRSC {
-    posts: Array<BlogPost>;
-    pagination: BlogPagination;
-    category?: string;
+  posts: Array<BlogPost>;
+  pagination: BlogPagination;
+  category?: string;
 }
 
 export type LinkTab = {
-    key: string;
-    label: string;
-    link: string
+  key: string;
+  label: string;
+  link: string;
 };
 
 export interface ExtendedType extends BlogPost {
-    category: string;
-    coverImage?: string
-    excerpt?: string
-    description?: string
+  category: string;
+  coverImage?: string;
+  excerpt?: string;
+  description?: string;
 }
 
 export interface ArticleColumn {
-    title: string;
-    author: string;
-    username?: string;
-    category: string;
-    date: Date;
-    slug: string;
-    coverImage?: string
-    viewCount?: number
-    commentCount?: number
-    description?: string
+  title: string;
+  author: string;
+  username?: string;
+  category: string;
+  date: Date;
+  slug: string;
+  coverImage?: string;
+  viewCount?: number;
+  commentCount?: number;
+  description?: string;
 }

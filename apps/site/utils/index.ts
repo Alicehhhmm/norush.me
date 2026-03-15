@@ -1,1 +1,1 @@
-export * from './transformHeadingsToTOC'
+export * from './transformHeadingsToTOC';

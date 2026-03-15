@@ -1,6 +1,12 @@
-'use strict'
+'use strict';
 
-import { getAvailableLocales, getAvailableLocaleCodes, getDefaultLocale, getAvailableLocalesMap, getAllLocaleCodes } from '@/i18n/lib'
+import {
+  getAvailableLocales,
+  getAvailableLocaleCodes,
+  getDefaultLocale,
+  getAvailableLocalesMap,
+  getAllLocaleCodes,
+} from '@/i18n/lib';
 
 /**
  * [English Docs]
@@ -15,7 +21,7 @@ import { getAvailableLocales, getAvailableLocaleCodes, getDefaultLocale, getAvai
  * 支持的全部语言代码（BCP 47格式）
  * @usage 语言检测及完整语言列表展示
  */
-const allLocaleCodes = getAllLocaleCodes()
+const allLocaleCodes = getAllLocaleCodes();
 
 /**
  * [English Docs]
@@ -35,7 +41,7 @@ const allLocaleCodes = getAllLocaleCodes()
  * 已激活的语言配置（符合RFC 5646标准）
  * @usage 语言选择组件数据源
  */
-const availableLocales = getAvailableLocales()
+const availableLocales = getAvailableLocales();
 
 /**
  * [English Docs]
@@ -53,7 +59,7 @@ const availableLocales = getAvailableLocales()
  * @example ['zh-CN', 'en-US']
  * @usage 路由验证及缓存键生成
  */
-const availableLocaleCodes = getAvailableLocaleCodes()
+const availableLocaleCodes = getAvailableLocaleCodes();
 
 /**
  * -----------------------------------------------------------
@@ -72,7 +78,7 @@ const availableLocaleCodes = getAvailableLocaleCodes()
  * [中文文档]
  * 默认语言配置（回退策略）
  */
-const defaultLocale = getDefaultLocale()
+const defaultLocale = getDefaultLocale();
 
 /**
  * -----------------------------------------------------------
@@ -96,6 +102,12 @@ const defaultLocale = getDefaultLocale()
  * @returns {Object} 语言配置的键值对集合
  * @usage 快速元数据查询及验证
  */
-const availableLocalesMap = getAvailableLocalesMap()
+const availableLocalesMap = getAvailableLocalesMap();
 
-export { allLocaleCodes, availableLocales, availableLocaleCodes, availableLocalesMap, defaultLocale }
+export {
+  allLocaleCodes,
+  availableLocales,
+  availableLocaleCodes,
+  availableLocalesMap,
+  defaultLocale,
+};

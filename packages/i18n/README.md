@@ -1,3 +1,3 @@
 # @nw/i18n
 
--   website internationalization package for 'Norush.me'.
+- website internationalization package for 'Norush.me'.

@@ -3,9 +3,9 @@ title: 综合Markdown功能演示
 author: 技术文档团队
 date: 2025-03-15
 tags:
-    - markdown语法
-    - 技术写作
-    - 文档模板
+  - markdown语法
+  - 技术写作
+  - 文档模板
 description: 完整Markdown功能演示文档，包含标准语法与扩展功能实现
 ---
 
@@ -15,8 +15,8 @@ description: 完整Markdown功能演示文档，包含标准语法与扩展功�
 
 **优质开源项目推荐**
 
--   **[pica](https://nodeca.github.io/pica/demo/)** - 浏览器端高质量快速图片缩放库
--   **[babelfish](https://github.com/nodeca/babelfish/)** - 开发者友好国际化方案，支持复数形式与简洁语法
+- **[pica](https://nodeca.github.io/pica/demo/)** - 浏览器端高质量快速图片缩放库
+- **[babelfish](https://github.com/nodeca/babelfish/)** - 开发者友好国际化方案，支持复数形式与简洁语法
 
 ---
 
@@ -76,13 +76,13 @@ _另一种斜体形式_
 
 ### 无序列表
 
--   列表项使用 `+`, `-` 或 `*` 开头
--   子列表通过缩进实现：
-    -   符号变更强制新列表开始：
-        -   自由排版项
-        *   混合符号示例
-        -   最后一项
--   简单易用！
+- 列表项使用 `+`, `-` 或 `*` 开头
+- 子列表通过缩进实现：
+  - 符号变更强制新列表开始：
+    - 自由排版项
+    * 混合符号示例
+    - 最后一项
+- 简单易用！
 
 ### 有序列表
 
@@ -171,8 +171,8 @@ var fibonacci = function(n) {
 
 ### 上下标
 
--   19^th^ 上标示例
--   H~2~O 下标示例
+- 19^th^ 上标示例
+- H~2~O 下标示例
 
 ### 插入文本
 

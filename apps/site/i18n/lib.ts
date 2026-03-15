@@ -1,6 +1,6 @@
 'use strict';
 
-import localeConfig from "./config.json";
+import localeConfig from './config.json';
 
 // TODO: Multilingual pattern selection method
 
@@ -11,9 +11,8 @@ import localeConfig from "./config.json";
  * @returns {Promise<Record<string, any>>} The imported locale
  */
 export const importLocale = async (locale: string) => {
-    return import(`./messages/${locale}.json`).then(f => f.default);
+  return import(`./messages/${locale}.json`).then(f => f.default);
 };
-
 
 /**
  * A set of available and enabled locales for the website
@@ -23,21 +22,20 @@ export const importLocale = async (locale: string) => {
  * @returns {Array<import('../types').LocaleConfig>}
  */
 export const getAvailableLocales = () =>
-    localeConfig.filter(locale => locale.enabled);
+  localeConfig.filter(locale => locale.enabled);
 
 // This gives an easy way of accessing all available locale codes
 export const getAvailableLocaleCodes = () =>
-    getAvailableLocales().map(locale => locale.code);
+  getAvailableLocales().map(locale => locale.code);
 
 // This provides the default locale information for the Next.js Application
 // This is marked by the unique `locale.default` property on the `en` locale
 export const getDefaultLocale = () =>
-    getAvailableLocales().find(locale => locale.default);
+  getAvailableLocales().find(locale => locale.default);
 
 // Creates a Map of available locales for easy access
 export const getAvailableLocalesMap = () =>
-    Object.fromEntries(localeConfig.map(locale => [locale.code, locale]));
-
+  Object.fromEntries(localeConfig.map(locale => [locale.code, locale]));
 
 // Creates all supported locales
 export const getAllLocaleCodes = () => localeConfig.map(locale => locale.code);

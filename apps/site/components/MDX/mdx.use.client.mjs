@@ -1,8 +1,8 @@
-'use strict'
+'use strict';
 
-import { Button } from '@/components/ui/button'
-import { Link } from '@/components/common'
-import MDXCodeBox from '@/components/MDX/CodeBox'
+import { Button } from '@/components/ui/button';
+import { Link } from '@/components/common';
+import MDXCodeBox from '@/components/MDX/CodeBox';
 
 /**
  * 所有MDX中需要的客户端组件列表
@@ -10,8 +10,8 @@ import MDXCodeBox from '@/components/MDX/CodeBox'
  * @satisfies {import('mdx/types').MDXComponents}
  */
 export const clientMdxComponents = {
-    Button: Button,
-}
+  Button: Button,
+};
 
 /**
  * 所有 HTML 元素需要映射到对应 React 组件的列表
@@ -19,6 +19,6 @@ export const clientMdxComponents = {
  * @type {import('mdx/types').MDXComponents}
  */
 export const htmlComponents = {
-    a: Link,
-    pre: MDXCodeBox,
-}
+  a: Link,
+  pre: MDXCodeBox,
+};

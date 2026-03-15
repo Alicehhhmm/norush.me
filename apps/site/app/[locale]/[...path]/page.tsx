@@ -1,21 +1,28 @@
-import { setGlobClientContext } from '@/core/server'
-import { setRequestLocale } from 'next-intl/server'
-import { notFound, redirect } from 'next/navigation'
+import { setGlobClientContext } from '@/core/server';
+import { setRequestLocale } from 'next-intl/server';
+import { notFound, redirect } from 'next/navigation';
 
-import { ENABLE_STATIC_EXPORT, ENABLE_STATIC_EXPORT_LOCALE } from '@/core/dynamic-route-constants'
-import { dynamicRouter } from '@/core/dynamic-route.mjs'
-import { DYNAMIC_ROUTES } from '@/core/next.dynamic.constants.mjs'
-import { allLocaleCodes, availableLocaleCodes, defaultLocale } from '@/core/next.locales.mjs'
+import {
+  ENABLE_STATIC_EXPORT,
+  ENABLE_STATIC_EXPORT_LOCALE,
+} from '@/core/dynamic-route-constants';
+import { dynamicRouter } from '@/core/dynamic-route.mjs';
+import { DYNAMIC_ROUTES } from '@/core/next.dynamic.constants.mjs';
+import {
+  allLocaleCodes,
+  availableLocaleCodes,
+  defaultLocale,
+} from '@/core/next.locales.mjs';
 
-import { WithLayout } from '@/components/layout'
-import { MatterProvider } from '@/components/providers/matter-provider'
+import { WithLayout } from '@/components/layout';
+import { MatterProvider } from '@/components/providers/matter-provider';
 
 type DynamicPageParamsProps = {
-    params: {
-        locale: string
-        path?: string[]
-    }
-}
+  params: {
+    locale: string;
+    path?: string[];
+  };
+};
 
 /**
  * [中文文档]
@@ -43,26 +50,30 @@ type DynamicPageParamsProps = {
  * @see https://nextjs.org/docs/app/api-reference/functions/generate-static-params
  */
 export async function generateStaticParams() {
-    // When static export disabled
-    if (!ENABLE_STATIC_EXPORT) {
-        return []
-    }
+  // When static export disabled
+  if (!ENABLE_STATIC_EXPORT) {
+    return [];
+  }
 
-    // When static export enabled
-    const locales = ENABLE_STATIC_EXPORT_LOCALE ? availableLocaleCodes : [defaultLocale.code]
+  // When static export enabled
+  const locales = ENABLE_STATIC_EXPORT_LOCALE
+    ? availableLocaleCodes
+    : [defaultLocale.code];
 
-    // 获取当前语言模式下，所有映射的路由路径
-    const getRoutesForLocale = async (locale: string) => {
-        const routes = await dynamicRouter.getRoutesByLanguage(locale)
-        // [ 'blog', 'blog\\new\\new-welcon' ]
-        return routes.map(pathname => dynamicRouter.mapPathToRoute(locale, pathname))
-    }
+  // 获取当前语言模式下，所有映射的路由路径
+  const getRoutesForLocale = async (locale: string) => {
+    const routes = await dynamicRouter.getRoutesByLanguage(locale);
+    // [ 'blog', 'blog\\new\\new-welcon' ]
+    return routes.map(pathname =>
+      dynamicRouter.mapPathToRoute(locale, pathname)
+    );
+  };
 
-    // Generates all possible routes for all available locales [{ locale: 'zh', path: [ 'demo' ] }, ...]
-    const routes = await Promise.all(locales.map(getRoutesForLocale))
-    // console.log('Generates routes@', routes.flat().sort())
+  // Generates all possible routes for all available locales [{ locale: 'zh', path: [ 'demo' ] }, ...]
+  const routes = await Promise.all(locales.map(getRoutesForLocale));
+  // console.log('Generates routes@', routes.flat().sort())
 
-    return routes.flat().sort()
+  return routes.flat().sort();
 }
 
 /**
@@ -72,77 +83,81 @@ export async function generateStaticParams() {
  * @returns {JSX.Element} 返回对应的页面布局组件或404页面
  */
 const DynamicPage = async ({ params }: DynamicPageParamsProps) => {
-    const { locale, path = [] } = await params
+  const { locale, path = [] } = await params;
 
-    // 验证语言配置是否有效
-    if (!availableLocaleCodes.includes(locale)) {
-        setRequestLocale(defaultLocale.code)
+  // 验证语言配置是否有效
+  if (!availableLocaleCodes.includes(locale)) {
+    setRequestLocale(defaultLocale.code);
 
-        if (!allLocaleCodes.includes(locale)) {
-            return notFound()
-        }
-
-        // Redirect to the default locale path
-        const pathname = dynamicRouter.getPathname(path)
-
-        return redirect(`/${defaultLocale.code}/${pathname}`)
+    if (!allLocaleCodes.includes(locale)) {
+      return notFound();
     }
 
-    // Gets the current full pathname for a given path
-    const pathname = dynamicRouter.getPathname(path)
+    // Redirect to the default locale path
+    const pathname = dynamicRouter.getPathname(path);
 
-    const staticGeneratedLayout = DYNAMIC_ROUTES.get(pathname)
+    return redirect(`/${defaultLocale.code}/${pathname}`);
+  }
 
-    if (staticGeneratedLayout != undefined) {
-        const sharedContext = { pathname: `/${pathname}` }
+  // Gets the current full pathname for a given path
+  const pathname = dynamicRouter.getPathname(path);
 
-        // 设置服务端请求的全局共享上下文
-        // 客户端需要通过 MatterProvider 传递
-        setGlobClientContext(sharedContext)
+  const staticGeneratedLayout = DYNAMIC_ROUTES.get(pathname);
 
-        return (
-            <MatterProvider {...sharedContext}>
-                <WithLayout layout={staticGeneratedLayout}></WithLayout>
-            </MatterProvider>
-        )
-    }
+  if (staticGeneratedLayout != undefined) {
+    const sharedContext = { pathname: `/${pathname}` };
 
-    // 根据当前文章动态路由路径，读取md文件内容
-    const { source, filename } = await dynamicRouter.getMarkdownFile(locale, pathname)
+    // 设置服务端请求的全局共享上下文
+    // 客户端需要通过 MatterProvider 传递
+    setGlobClientContext(sharedContext);
 
-    if (source.length && filename.length) {
-        // 解析文件内容：根据提供的文件名、原文件md(x)内容解析并
-        // 返回：可渲染的Html、ReactJSX组件内容content、以及相关文件信息
-        const { content, frontmatter, headings, readingTime } = await dynamicRouter.getMDXContent(source, filename)
+    return (
+      <MatterProvider {...sharedContext}>
+        <WithLayout layout={staticGeneratedLayout}></WithLayout>
+      </MatterProvider>
+    );
+  }
 
-        const sharedContext = {
-            frontmatter,
-            headings,
-            pathname: `/${pathname}`,
-            readingTime,
-            filename,
-        }
+  // 根据当前文章动态路由路径，读取md文件内容
+  const { source, filename } = await dynamicRouter.getMarkdownFile(
+    locale,
+    pathname
+  );
 
-        // 设置服务端请求的全局共享上下文
-        // 以及客户端需要的 MatterProvider
-        setGlobClientContext(sharedContext)
+  if (source.length && filename.length) {
+    // 解析文件内容：根据提供的文件名、原文件md(x)内容解析并
+    // 返回：可渲染的Html、ReactJSX组件内容content、以及相关文件信息
+    const { content, frontmatter, headings, readingTime } =
+      await dynamicRouter.getMDXContent(source, filename);
 
-        // 根据文章frontmatter信息中的layout,动态选中对应的布局模块
-        return (
-            <MatterProvider {...sharedContext}>
-                <WithLayout layout={frontmatter.layout}>{content}</WithLayout>
-            </MatterProvider>
-        )
-    }
+    const sharedContext = {
+      frontmatter,
+      headings,
+      pathname: `/${pathname}`,
+      readingTime,
+      filename,
+    };
 
-    // 404
-    return notFound()
-}
+    // 设置服务端请求的全局共享上下文
+    // 以及客户端需要的 MatterProvider
+    setGlobClientContext(sharedContext);
+
+    // 根据文章frontmatter信息中的layout,动态选中对应的布局模块
+    return (
+      <MatterProvider {...sharedContext}>
+        <WithLayout layout={frontmatter.layout}>{content}</WithLayout>
+      </MatterProvider>
+    );
+  }
+
+  // 404
+  return notFound();
+};
 
 // @see https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic
-export const dynamicParams = false
+export const dynamicParams = false;
 
 // @see https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
-export const revalidate = 300
+export const revalidate = 300;
 
-export default DynamicPage
+export default DynamicPage;

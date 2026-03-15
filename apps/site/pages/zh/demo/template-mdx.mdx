@@ -3,9 +3,9 @@ title: 综合Markdown功能演示
 author: 技术文档团队
 date: 2025-03-15
 tags:
-    - markdown语法
-    - 技术写作
-    - 文档模板
+  - markdown语法
+  - 技术写作
+  - 文档模板
 description: 完整Markdown功能演示文档，包含标准语法与扩展功能实现
 ---
 
@@ -15,8 +15,8 @@ description: 完整Markdown功能演示文档，包含标准语法与扩展功�
 
 **优质开源项目推荐**
 
--   **[pica](https://nodeca.github.io/pica/demo/)** - 浏览器端高质量快速图片缩放库
--   **[babelfish](https://github.com/nodeca/babelfish/)** - 开发者友好国际化方案，支持复数形式与简洁语法
+- **[pica](https://nodeca.github.io/pica/demo/)** - 浏览器端高质量快速图片缩放库
+- **[babelfish](https://github.com/nodeca/babelfish/)** - 开发者友好国际化方案，支持复数形式与简洁语法
 
 > :::
 
@@ -72,12 +72,12 @@ _另一种斜体形式_
 
 ### 无序列表
 
--   列表项使用 `+`, `-` 或 `*` 开头
--   子列表通过缩进实现：
-    -   符号变更强制新列表开始：
-        -   自由排版项
-        *   混合符号示例
-        -   最后一项
+- 列表项使用 `+`, `-` 或 `*` 开头
+- 子列表通过缩进实现：
+  - 符号变更强制新列表开始：
+    - 自由排版项
+    * 混合符号示例
+    - 最后一项
 
 ### 有序列表
 
@@ -117,9 +117,9 @@ _另一种斜体形式_
 
 ```js
 var fibonacci = function (n) {
-    if (n < 2) return n
-    return fibonacci(n - 1) + fibonacci(n - 2)
-}
+  if (n < 2) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+};
 ```
 
 ## 表格系统
@@ -165,8 +165,8 @@ var fibonacci = function (n) {
 
 ### 上下标
 
--   19^th^ 上标示例
--   H~2~O 下标示例
+- 19^th^ 上标示例
+- H~2~O 下标示例
 
 ### 插入文本
 
@@ -237,7 +237,7 @@ C -->|不满足| E[结束]
 ## 响应式布局（纯 CSS 实现）
 
 <div
-    style='
+  style="
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
@@ -245,11 +245,11 @@ C -->|不满足| E[结束]
     @media (min-width: 768px) {
         grid-template-columns: repeat(3, 1fr);
     }
-'
+"
 >
-    <div style='padding: 1rem; background-color: #eff6ff'>响应区块1</div>
-    <div style='padding: 1rem; background-color: #ecfdf5'>响应区块2</div>
-    <div style='padding: 1rem; background-color: #fefce8'>响应区块3</div>
+  <div style="padding: 1rem; background-color: #eff6ff">响应区块1</div>
+  <div style="padding: 1rem; background-color: #ecfdf5">响应区块2</div>
+  <div style="padding: 1rem; background-color: #fefce8">响应区块3</div>
 </div>
 
 ## 外部组件-响应式布局（纯 CSS 实现）
@@ -332,12 +332,12 @@ C -->|不满足| E[结束]
 
 > 外部导入的组件
 
-import ResponsiveGrid from '../components/ResponsiveGrid'
+import ResponsiveGrid from '../components/ResponsiveGrid';
 
-<ResponsiveGrid minWidth={280} gap='2rem'>
-    <div>自适应项1</div>
-    <div>自适应项2</div>
-    <div>自适应项3</div>
+<ResponsiveGrid minWidth={280} gap="2rem">
+  <div>自适应项1</div>
+  <div>自适应项2</div>
+  <div>自适应项3</div>
 </ResponsiveGrid>
 
 ## 文档信息

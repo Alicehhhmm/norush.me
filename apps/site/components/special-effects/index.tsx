@@ -1,6 +1,6 @@
-export { HexagonGrid } from './HexagonGrid'
-export { RectangleGrid } from './RectangleGrid'
-export { HexagonGridAnimation } from './HexagonGridAnimation'
-export { InkEffects } from './InkEffects'
-export { default as ClickConfetti } from './ClickConfetti'
-export { default as CelebrationEffect } from './CelebrationEffect'
+export { HexagonGrid } from './HexagonGrid';
+export { RectangleGrid } from './RectangleGrid';
+export { HexagonGridAnimation } from './HexagonGridAnimation';
+export { InkEffects } from './InkEffects';
+export { default as ClickConfetti } from './ClickConfetti';
+export { default as CelebrationEffect } from './CelebrationEffect';

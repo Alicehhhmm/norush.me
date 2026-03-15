@@ -27,20 +27,20 @@ Take a look at this code snippet and then we can unpack it together:
 
 ```ts
 type User = {
-    name: string
-    age: number
-}
+  name: string;
+  age: number;
+};
 
 function isAdult(user: User): boolean {
-    return user.age >= 18
+  return user.age >= 18;
 }
 
 const justine = {
-    name: 'Justine',
-    age: 23,
-} satisfies User
+  name: 'Justine',
+  age: 23,
+} satisfies User;
 
-const isJustineAnAdult = isAdult(justine)
+const isJustineAnAdult = isAdult(justine);
 ```
 
 The first part (with the `type` keyword) is responsible for declaring our custom object type representing users. Later we utilize this newly created type to create function `isAdult` that accepts one argument of type `User` and returns `boolean`. After this, we create `justine`, our example data that can be used for calling the previously defined function. Finally, we create a new variable with information on whether `justine` is an adult.
@@ -57,7 +57,7 @@ The code part is regular JavaScript with additional TypeScript-specific syntax f
 
 ```ts displayName="example.ts"
 function greet(name: string) {
-    console.log(`Hello, ${name}!`)
+  console.log(`Hello, ${name}!`);
 }
 ```
 
@@ -74,13 +74,13 @@ npm add --save-dev @types/node
 These type definitions allow TypeScript to understand Node.js APIs and provide proper type checking and autocompletion when you use functions like `fs.readFile` or `http.createServer`. For example:
 
 ```js
-import * as fs from 'fs'
+import * as fs from 'fs';
 
 fs.readFile('example.txt', 'foo', (err, data) => {
-    //                          ^^^ Argument of type '"foo"' is not assignable to parameter of type …
-    if (err) throw err
-    console.log(data)
-})
+  //                          ^^^ Argument of type '"foo"' is not assignable to parameter of type …
+  if (err) throw err;
+  console.log(data);
+});
 ```
 
 Many popular JavaScript libraries have their type definitions available under the `@types` namespace, maintained by the DefinitelyTyped community. This enables seamless integration of existing JavaScript libraries with TypeScript projects.

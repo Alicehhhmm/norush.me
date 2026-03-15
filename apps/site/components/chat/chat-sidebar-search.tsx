@@ -1,12 +1,12 @@
-import { SidebarInput } from '../ui/sidebar'
+import { SidebarInput } from '../ui/sidebar';
 
-type Props = {}
+type Props = {};
 export const ChatSidebarSearch = ({}: Props) => {
-    // TODO: add search functionality
+  // TODO: add search functionality
 
-    return (
-        <div>
-            <SidebarInput placeholder='Type to search...' />
-        </div>
-    )
-}
+  return (
+    <div>
+      <SidebarInput placeholder="Type to search..." />
+    </div>
+  );
+};

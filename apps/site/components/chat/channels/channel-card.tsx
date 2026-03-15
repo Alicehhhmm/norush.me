@@ -37,7 +37,7 @@ export const SidebarChannelCard: FC<SidebarChannelCardProps> = ({
         onClick?.();
       }}
       className={cn(
-        'flex flex-col items-start gap-2 whitespace-nowrap border-b  p-4 text-sm leading-tight last:border-b-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
+        'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2  border-b p-4 text-sm leading-tight whitespace-nowrap last:border-b-0',
         active && 'bg-sidebar-accent text-sidebar-accent-foreground',
         className
       )}
@@ -53,7 +53,7 @@ export const SidebarChannelCard: FC<SidebarChannelCardProps> = ({
         </span>
       </div>
       {group.desc && (
-        <span className="line-clamp-2 w-[260px] whitespace-break-spaces text-xs">
+        <span className="line-clamp-2 w-[260px] text-xs whitespace-break-spaces">
           {group.desc}
         </span>
       )}

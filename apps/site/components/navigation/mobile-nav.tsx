@@ -43,12 +43,12 @@ export const MobileNav: FC<MobileNavProps> = ({ navigationList }) => {
     <div className="flex items-center md:hidden">
       <button
         type="button"
-        className="relative h-10 w-10 rounded-lg hover:bg-accent/50"
+        className="hover:bg-accent/50 relative h-10 w-10 rounded-lg"
         aria-label="移动端导航按钮"
         aria-expanded={isOpen}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           {isOpen ? (
             <X className="h-5 w-5 transition-all duration-300 ease-out" />
           ) : (
@@ -74,7 +74,7 @@ export const MobileNav: FC<MobileNavProps> = ({ navigationList }) => {
             {navigationList.map(item => (
               <div
                 key={item.key}
-                className="border-b border-border/20 last:border-0"
+                className="border-border/20 border-b last:border-0"
               >
                 <div
                   className={cn(
@@ -98,12 +98,12 @@ export const MobileNav: FC<MobileNavProps> = ({ navigationList }) => {
             ))}
           </nav>
 
-          <div className="border-t border-border/20 bg-accent/5 p-4 pt-3 sm:p-6">
+          <div className="border-border/20 bg-accent/5 border-t p-4 pt-3 sm:p-6">
             <div className="mb-3 flex justify-center gap-3">
               <LangToggle />
               <ThemeToggle />
             </div>
-            <p className="text-center text-[0.8rem] leading-5 text-muted-foreground/80">
+            <p className="text-muted-foreground/80 text-center text-[0.8rem] leading-5">
               © {new Date().getFullYear()}Norush. All rights reserved.
             </p>
           </div>

@@ -6,21 +6,16 @@ import { MatterContext } from '@/components/providers/matter-provider';
 import type { ClientSharedServerContext } from '@/types/server';
 
 export const useGlobClientContext = (): ClientSharedServerContext => {
-    const {
-        frontmatter,
-        pathname,
-        readingTime,
-        filename,
-        headings,
-    } = useContext(MatterContext);
+  const { frontmatter, pathname, readingTime, filename, headings } =
+    useContext(MatterContext);
 
-    return {
-        pathname,
-        frontmatter,
-        readingTime,
-        filename,
-        headings
-    };
+  return {
+    pathname,
+    frontmatter,
+    readingTime,
+    filename,
+    headings,
+  };
 };
 
 export default useGlobClientContext;

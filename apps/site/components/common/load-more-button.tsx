@@ -1,48 +1,48 @@
-import type { FC, ReactNode } from 'react'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import type { FC, ReactNode } from 'react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 interface LoadMoreButtonProps {
-    /**
-     * 点击按钮时触发的回调函数，通常用于加载下一页数据。
-     */
-    onClick: () => void
+  /**
+   * 点击按钮时触发的回调函数，通常用于加载下一页数据。
+   */
+  onClick: () => void;
 
-    /**
-     * 是否处于加载中状态。
-     * 控制按钮禁用状态和文案切换。
-     */
-    isLoading: boolean
+  /**
+   * 是否处于加载中状态。
+   * 控制按钮禁用状态和文案切换。
+   */
+  isLoading: boolean;
 
-    /**
-     * 按钮正常状态下的显示文本（默认："加载更多"）。
-     */
-    label?: string
+  /**
+   * 按钮正常状态下的显示文本（默认："加载更多"）。
+   */
+  label?: string;
 
-    /**
-     * 加载中状态下显示的文案（默认："加载中..."）。
-     */
-    loadingLabel?: string
+  /**
+   * 加载中状态下显示的文案（默认："加载中..."）。
+   */
+  loadingLabel?: string;
 
-    /**
-     * 按钮前置图标，可传入任意 ReactNode。
-     */
-    icon?: ReactNode
+  /**
+   * 按钮前置图标，可传入任意 ReactNode。
+   */
+  icon?: ReactNode;
 
-    /**
-     * 包裹按钮的外层容器 className（默认居中布局）。
-     */
-    className?: string
+  /**
+   * 包裹按钮的外层容器 className（默认居中布局）。
+   */
+  className?: string;
 
-    /**
-     * 按钮自身的额外 className，用于自定义样式。
-     */
-    buttonClassName?: string
+  /**
+   * 按钮自身的额外 className，用于自定义样式。
+   */
+  buttonClassName?: string;
 
-    /**
-     * 强制禁用按钮，即使不是 loading 状态（默认 false）。
-     */
-    disabled?: boolean
+  /**
+   * 强制禁用按钮，即使不是 loading 状态（默认 false）。
+   */
+  disabled?: boolean;
 }
 
 /**
@@ -77,27 +77,38 @@ interface LoadMoreButtonProps {
  * ```
  */
 export const LoadMoreButton: FC<LoadMoreButtonProps> = ({
-    onClick,
-    isLoading,
-    label = '加载更多',
-    loadingLabel = '加载中...',
-    icon,
-    className,
-    buttonClassName,
-    disabled = false,
+  onClick,
+  isLoading,
+  label = '加载更多',
+  loadingLabel = '加载中...',
+  icon,
+  className,
+  buttonClassName,
+  disabled = false,
 }) => {
-    return (
-        <div className={cn('mt-4 flex flex-col items-center justify-center', className)}>
-            <Button size='sm' variant='outline' onClick={onClick} className={cn(buttonClassName)} disabled={isLoading || disabled}>
-                {isLoading ? (
-                    loadingLabel
-                ) : (
-                    <>
-                        {label}
-                        {icon && <span className='mr-1'>{icon}</span>}
-                    </>
-                )}
-            </Button>
-        </div>
-    )
-}
+  return (
+    <div
+      className={cn(
+        'mt-4 flex flex-col items-center justify-center',
+        className
+      )}
+    >
+      <Button
+        size="sm"
+        variant="outline"
+        onClick={onClick}
+        className={cn(buttonClassName)}
+        disabled={isLoading || disabled}
+      >
+        {isLoading ? (
+          loadingLabel
+        ) : (
+          <>
+            {label}
+            {icon && <span className="mr-1">{icon}</span>}
+          </>
+        )}
+      </Button>
+    </div>
+  );
+};

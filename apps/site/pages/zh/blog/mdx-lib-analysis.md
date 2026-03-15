@@ -72,12 +72,15 @@ date: 2025-03-20
 通过 Remark 插件链处理内容：
 
 ```javascript
-import remarkGfm from 'remark-gfm'
-import remarkHeadings from '@vcarl/remark-headings'
-import remarkReadingTime from 'remark-reading-time'
+import remarkGfm from 'remark-gfm';
+import remarkHeadings from '@vcarl/remark-headings';
+import remarkReadingTime from 'remark-reading-time';
 
 // 配置示例
-const processor = unified().use(remarkGfm).use(remarkHeadings).use(remarkReadingTime)
+const processor = unified()
+  .use(remarkGfm)
+  .use(remarkHeadings)
+  .use(remarkReadingTime);
 ```
 
 ### 3. MDX 编译
@@ -85,10 +88,10 @@ const processor = unified().use(remarkGfm).use(remarkHeadings).use(remarkReading
 通过 **`@mdx-js/mdx`** 转换为 React 组件：
 
 ```javascript
-import { compile } from '@mdx-js/mdx'
+import { compile } from '@mdx-js/mdx';
 
-const mdxContent = `# Hello MDX`
-const jsxCode = await compile(mdxContent)
+const mdxContent = `# Hello MDX`;
+const jsxCode = await compile(mdxContent);
 ```
 
 ### 4. HTML 增强
@@ -96,11 +99,13 @@ const jsxCode = await compile(mdxContent)
 使用 Rehype 插件优化输出：
 
 ```javascript
-import rehypeSlug from 'rehype-slug'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 // 标题会变为: <h2 id="section"><a href="#section">#</a>Section</h2>
-const processor = unified().use(rehypeSlug).use(rehypeAutolinkHeadings, { behavior: 'append' })
+const processor = unified()
+  .use(rehypeSlug)
+  .use(rehypeAutolinkHeadings, { behavior: 'append' });
 ```
 
 ### 5. 代码高亮
@@ -108,10 +113,10 @@ const processor = unified().use(rehypeSlug).use(rehypeAutolinkHeadings, { behavi
 通过 **`shiki`** 实现专业级高亮：
 
 ```javascript
-import { getHighlighter } from 'shiki'
+import { getHighlighter } from 'shiki';
 
-const highlighter = await getHighlighter({ theme: 'github-dark' })
-const html = highlighter.codeToHtml(`console.log("Hello")`, { lang: 'js' })
+const highlighter = await getHighlighter({ theme: 'github-dark' });
+const html = highlighter.codeToHtml(`console.log("Hello")`, { lang: 'js' });
 ```
 
 ---

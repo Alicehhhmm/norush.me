@@ -1,25 +1,25 @@
-import type { FC, ComponentProps } from 'react'
+import type { FC, ComponentProps } from 'react';
 
-import { Link as LocalizedLink } from '@/i18n/routing'
+import { Link as LocalizedLink } from '@/i18n/routing';
 
 type LinkProps = Omit<ComponentProps<typeof LocalizedLink>, 'href'> & {
-    href?: string
-}
+  href?: string;
+};
 
 const Link: FC<LinkProps> = ({ children, href, ...props }) => {
-    if (!href || href.toString().startsWith('http')) {
-        return (
-            <a href={href} {...props}>
-                {children}
-            </a>
-        )
-    }
-
+  if (!href || href.toString().startsWith('http')) {
     return (
-        <LocalizedLink href={href?.toString()} {...props}>
-            {children}
-        </LocalizedLink>
-    )
-}
+      <a href={href} {...props}>
+        {children}
+      </a>
+    );
+  }
 
-export default Link
+  return (
+    <LocalizedLink href={href?.toString()} {...props}>
+      {children}
+    </LocalizedLink>
+  );
+};
+
+export default Link;
