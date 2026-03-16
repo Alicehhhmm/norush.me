@@ -6,6 +6,9 @@ import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { NavHeader } from '@/components/navigation';
 import WithFooter from '@/components/WithFooter';
 
+import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
+
 const FOOTER_HEIGHT = 80;
 const HIDE_START = 0.0; // 开始隐藏
 const HIDE_END = 0.1; // 完全隐藏
@@ -14,6 +17,7 @@ const SHOW_END = 0.98; // 完全显示
 
 export const HomeLayout: FC<PropsWithChildren> = ({ children }) => {
   const { scrollYProgress } = useScroll();
+  const isMobile = useIsMobile();
 
   const y = useSpring(
     useTransform(
@@ -36,7 +40,10 @@ export const HomeLayout: FC<PropsWithChildren> = ({ children }) => {
       <main className="flex-1 overflow-hidden pt-15 pb-20">{children}</main>
 
       <motion.footer
-        className="fixed right-0 bottom-0 left-0 flex-none"
+        className={cn(
+          'flex-none',
+          !isMobile && 'fixed right-0 bottom-0 left-0'
+        )}
         style={{
           y,
           opacity,

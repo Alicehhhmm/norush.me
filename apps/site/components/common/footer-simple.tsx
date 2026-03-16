@@ -40,11 +40,10 @@ export const FooterSimple: FC<{
     <footer
       className={cn(
         'border-border/80 mt-auto border-t',
-        'bg-background/95 supports-backdrop-filter:bg-background/80 backdrop-blur-sm',
-        'max-sm:px-4'
+        'bg-background/95 supports-backdrop-filter:bg-background/80 backdrop-blur-sm'
       )}
     >
-      <div className="mx-20 py-4 max-sm:mx-4 max-sm:py-3 sm:px-6 md:px-8 lg:px-4">
+      <div className="mx-20 py-4 max-sm:mx-4 max-sm:py-3 ">
         <div className="flex flex-row flex-wrap justify-between gap-y-4 sm:flex-col md:flex-row">
           <div className="order-1 flex items-center justify-center gap-2 max-sm:order-2 max-sm:w-full">
             <RightsReserved companyName="Norush" />
