@@ -1,35 +1,17 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "lib": ["DOM", "ES2020"],
+    "lib": ["DOM", "DOM.Iterable", "ES2020"],
     "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "skipLibCheck": true,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "skipLibCheck": true,
-    "useDefineForClassFields": true,
-
-    /* Modules */
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": false,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-
-    /* Type Checking */
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noUncheckedIndexedAccess": true,
-
-    /* Completeness */
-    "skipDefaultLibCheck": true,
-
-    /* Path */
-    "baseUrl": ".",
+    "baseUrl": "./src",
+    "rootDir": "./src",
     "outDir": "./dist",
     "paths": {
       "#ui/*": ["./src/*"],

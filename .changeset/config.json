@@ -1,15 +1,13 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "$schema": "https://unpkg.com/@changesets/config@3.1.0/schema.json",
   "changelog": [
-    [
-      "@changesets/changelog-github",
-      {
-        "repo": "Alicehhhmm/norush.me"
-      }
-    ]
+    "@changesets/changelog-github",
+    {
+      "repo": "Alicehhhmm/norush.me"
+    }
   ],
   "commit": false,
-  "fixed": [],
+  "fixed": [["@nw/*"]],
   "linked": [],
   "access": "public",
   "baseBranch": "main",
@@ -18,5 +16,9 @@
   "privatePackages": {
     "version": true,
     "tag": true
+  },
+  "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
+    "onlyUpdatePeerDependentsWhenOutOfRange": true,
+    "updateInternalDependents": "always"
   }
 }

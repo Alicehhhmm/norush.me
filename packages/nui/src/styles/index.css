@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+
+/* 组件样式入口文件 */
+@import './tailwind.css';
+@import './globle.css';

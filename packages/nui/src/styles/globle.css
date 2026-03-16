@@ -1,58 +1,88 @@
 @import 'tailwindcss';
 
+/* 全局 CSS 变量 - 浅色主题 */
 @layer base {
   :root {
-    --background: #fff;
-    --foreground: #0a0a0a;
-    --muted: #f1f5f9;
-    --muted-foreground: #64748b;
-    --popover: #fff;
-    --popover-foreground: #0a0a0a;
-    --border: #e2e8f0;
-    --input: #e2e8f0;
-    --card: #fff;
-    --card-foreground: #0a0a0a;
-    --primary: #0f172a;
-    --primary-foreground: #f8fafc;
-    --secondary: #f1f5f9;
-    --secondary-foreground: #0f172a;
-    --accent: #f1f5f9;
-    --accent-foreground: #0f172a;
-    --destructive: #ef4444;
-    --destructive-foreground: #f8fafc;
-    --ring: #94a3b8;
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.577 0.245 27.325);
+    --ring: oklch(0.708 0 0);
     --radius: 0.5rem;
   }
 
+  /* 深色主题 */
   .dark {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --muted: #334155;
-    --muted-foreground: #94a3b8;
-    --popover: #0a0a0a;
-    --popover-foreground: #ededed;
-    --border: #334155;
-    --input: #334155;
-    --card: #0a0a0a;
-    --card-foreground: #ededed;
-    --primary: #e2e8f0;
-    --primary-foreground: #0a0a0a;
-    --secondary: #1e293b;
-    --secondary-foreground: #e2e8f0;
-    --accent: #1e293b;
-    --accent-foreground: #e2e8f0;
-    --destructive: #7f1d1d;
-    --destructive-foreground: #f8fafc;
-    --ring: #64748b;
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --popover: oklch(0.145 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --border: oklch(0.269 0 0);
+    --input: oklch(0.269 0 0);
+    --card: oklch(0.145 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.985 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.396 0.141 25.723);
+    --destructive-foreground: oklch(0.637 0.237 25.331);
+    --ring: oklch(0.439 0 0);
   }
 }
 
+/* 基础样式重置 */
 @layer base {
   * {
     @apply border-border;
   }
 
+  html {
+    @apply antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
+
+  /* 确保所有元素使用 border-box */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* 移除默认边距 */
+  * {
+    margin: 0;
+  }
+}
+
+/* 辅助类 */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }

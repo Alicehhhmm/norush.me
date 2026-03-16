@@ -3,36 +3,16 @@ import { defineConfig } from '@rslib/core';
 
 export default defineConfig({
   lib: [
-    {
-      format: 'esm',
-      dts: true,
-      output: {
-        distPath: { root: 'dist/esm' },
-        minify: false,
-      },
-    },
-    {
-      format: 'cjs',
-      dts: true,
-      output: {
-        distPath: { root: 'dist/cjs' },
-        minify: false,
-      },
-    },
+    { format: 'esm', dts: true, output: { distPath: { root: 'dist/esm' } } },
+    { format: 'cjs', dts: true, output: { distPath: { root: 'dist/cjs' } } },
   ],
   source: {
-    entry: {
-      index: './src/index.tsx',
-    },
-    exclude: [
-      '**/stories/**',
-      '**/*.stories.*',
-      '**/__tests__/**',
-      '**/*.test.*',
-    ],
+    entry: { index: './src/index.tsx' },
+    exclude: ['**/stories/**', '**/*.stories.*', '**/*.test.*', '**/*.spec.*'],
   },
   output: {
     target: 'web',
+    sourceMap: true,
   },
   plugins: [pluginReact()],
 });
