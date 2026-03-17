@@ -1,0 +1,68 @@
+:root {
+  --scrollbar-track: #f1f1f1;
+  --scrollbar-thumb: #c1c1c1;
+  --scrollbar-thumb-hover: #1db854;
+  --scrollbar-width: 12px;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-fluo::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+.scrollbar-fluo::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track);
+}
+
+.scrollbar-fluo::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.scrollbar-fluo::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+/* 悬停渐变效果 */
+.scrollbar-hover::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+.scrollbar-hover::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-hover::-webkit-scrollbar-thumb {
+  background: transparent !important;
+  border-radius: 8px !important;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition:
+    all 0.3s ease,
+    border 0.3s ease;
+}
+
+.scrollbar-hover:hover::-webkit-scrollbar-track {
+  /* 悬停隐藏轨道颜色 */
+  background: transparent;
+}
+
+.scrollbar-hover:hover::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb) !important;
+  border-radius: 8px !important;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition:
+    all 0.3s ease,
+    border 0.3s ease;
+}

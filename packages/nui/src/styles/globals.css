@@ -1,0 +1,22 @@
+@layer base {
+  :root {
+    --header-height: calc(var(--spacing, 0.25rem) * 16);
+  }
+
+  /* @See https://tailwindcss.com/docs/upgrade-guide#default-border-color */
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  /* @See https://tailwindcss.com/docs/upgrade-guide#buttons-use-the-default-cursor */
+  button,
+  [role='button'] {
+    &:not(:disabled) {
+      @apply cursor-pointer;
+    }
+  }
+}

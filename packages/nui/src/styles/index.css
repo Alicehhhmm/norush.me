@@ -1,5 +1,13 @@
-@import 'tailwindcss';
+/* @see https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Syntax/At-rules */
+@charset "utf-8";
 
-/* 组件样式入口文件 */
-@import './tailwind.css';
-@import './globle.css';
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import './globals.css' layer(base);
+@import './shadcnui.css' layer(base);
+@import './animations.css' layer(utilities);
+@import './scrollbar.css' layer(utilities);
+@import './markdown.css' layer(utilities);
+@import './nw-theme.css' layer(nw-theme);
+@import './theme.css' layer(utilities);
+@import './theme-config.css' layer(utilities);
