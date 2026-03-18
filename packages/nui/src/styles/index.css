@@ -3,11 +3,13 @@
 
 @import 'tailwindcss';
 @import 'tw-animate-css';
-@import './globals.css' layer(base);
-@import './shadcnui.css' layer(base);
+@import './globals.css';
+@import './shadcnui.css';
 @import './animations.css' layer(utilities);
 @import './scrollbar.css' layer(utilities);
 @import './markdown.css' layer(utilities);
+@import './theme.css';
+@import './theme-config.css';
 @import './nw-theme.css' layer(nw-theme);
-@import './theme.css' layer(utilities);
-@import './theme-config.css' layer(utilities);
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));

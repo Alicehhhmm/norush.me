@@ -1,8 +1,6 @@
 /**
  * Tailwind CSS V4 Theme Configuration
  */
-@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *))
-
 @theme {
   /* ========== Colors (对应 theme.extend.colors) ========== */
   --color-background: hsl(var(--background));
