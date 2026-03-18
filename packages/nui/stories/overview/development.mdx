@@ -1,0 +1,436 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Overview/Development" />
+
+# 开发指南
+
+本指南将帮助你设置本地开发环境并参与 @nw/ui 的开发。
+
+## 📋 前置要求
+
+- **Node.js** >= 24.11.0
+- **pnpm** >= 10.24.0
+- **Git** >= 2.30.0
+
+## 🚀 快速开始
+
+### 1. Fork 和克隆仓库
+
+```bash
+# Fork 仓库
+# 访问 https://github.com/Alicehhhmm/norush.me 并点击 Fork
+
+# 克隆你的 fork
+git clone https://github.com/YOUR_USERNAME/norush.me.git
+cd norush.me
+```
+
+### 2. 安装依赖
+
+```bash
+pnpm install
+```
+
+### 3. 启动开发服务器
+
+```bash
+# 启动 @nw/ui 的开发服务器
+pnpm dev --filter=@nw/ui
+```
+
+### 4. 启动 Storybook
+
+```bash
+# 在新的终端窗口
+pnpm storybook --filter=@nw/ui
+```
+
+访问 http://localhost:6006 查看组件文档。
+
+## 📁 项目结构
+
+```
+packages/nui/
+├── src/                    # 源代码
+│   ├── button/            # 组件目录
+│   │   ├── Button.tsx     # 组件实现
+│   │   └── index.ts       # 导出
+│   ├── styles/            # 样式文件
+│   │   ├── index.css      # 样式入口
+│   │   ├── tailwind.css   # Tailwind 配置
+│   │   └── globle.css     # 全局变量
+│   ├── utils/             # 工具函数
+│   │   ├── cn.ts          # className 合并
+│   │   └── index.ts
+│   ├── types/             # 类型定义
+│   │   └── index.ts
+│   └── index.tsx          # 主入口
+├── stories/               # Storybook 文档
+│   ├── docs/              # 文档文件
+│   └── general/           # 组件故事
+├── tests/                 # 测试文件
+├── package.json
+└── tsconfig.json
+```
+
+## 🛠️ 开发命令
+
+### 构建
+
+```bash
+# 构建 @nw/ui
+pnpm build --filter=@nw/ui
+
+# 监听模式
+pnpm dev --filter=@nw/ui
+```
+
+### 测试
+
+```bash
+# 运行测试
+pnpm test --filter=@nw/ui
+
+# 监听模式
+pnpm test:watch --filter=@nw/ui
+
+# 生成覆盖率报告
+pnpm test:coverage --filter=@nw/ui
+```
+
+### Lint
+
+```bash
+# 运行所有 lint
+pnpm lint --filter=@nw/ui
+
+# 修复 lint 问题
+pnpm lint:fix --filter=@nw/ui
+
+# 仅检查 JS/TS
+pnpm lint:js --filter=@nw/ui
+
+# 仅检查 CSS
+pnpm lint:css --filter=@nw/ui
+
+# 类型检查
+pnpm lint:types --filter=@nw/ui
+```
+
+### 清理
+
+```bash
+# 清理构建产物和依赖
+pnpm clean --filter=@nw/ui
+```
+
+## 📝 开发流程
+
+### 1. 创建新分支
+
+```bash
+git checkout -b feature/your-feature-name
+```
+
+### 2. 开发组件
+
+#### 创建组件文件
+
+```tsx
+// src/button/Button.tsx
+import * as React from 'react';
+import { cn } from '#ui/utils';
+
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'default' | 'primary';
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant = 'default', ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={cn('base-styles', variant, className)}
+        {...props}
+      />
+    );
+  }
+);
+Button.displayName = 'Button';
+
+export { Button };
+```
+
+#### 创建导出文件
+
+```ts
+// src/button/index.ts
+export { Button } from './Button';
+export type { ButtonProps } from './Button';
+```
+
+#### 编写测试
+
+```tsx
+// tests/button.test.tsx
+import { describe, it, expect } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { Button } from '#ui/button';
+
+describe('Button', () => {
+  it('renders correctly', () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByRole('button')).toBeInTheDocument();
+  });
+});
+```
+
+#### 创建 Storybook 故事
+
+```tsx
+// stories/general/Button.stories.tsx
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
+import { Button } from '#ui/button';
+
+const meta = {
+  title: 'General/Button',
+  component: Button,
+  tags: ['autodocs'],
+} satisfies Meta<typeof Button>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    children: 'Button',
+    variant: 'default',
+  },
+};
+```
+
+### 3. 运行测试和 Lint
+
+```bash
+# 确保所有检查通过
+pnpm test --filter=@nw/ui
+pnpm lint --filter=@nw/ui
+pnpm lint:types --filter=@nw/ui
+```
+
+### 4. 创建变更集
+
+```bash
+pnpm changeset:add
+```
+
+按照提示选择包和版本类型：
+
+- `major` - 破坏性变更
+- `minor` - 新功能
+- `patch` - Bug 修复
+
+### 5. 提交代码
+
+```bash
+git add .
+git commit -m "feat(button): add new variant prop"
+```
+
+### 6. 推送并创建 PR
+
+```bash
+git push origin feature/your-feature-name
+```
+
+然后到 GitHub 创建 Pull Request。
+
+## 📐 代码规范
+
+### 命名约定
+
+- **组件**: PascalCase (e.g., `Button`, `CardHeader`)
+- **工具函数**: camelCase (e.g., `cn`, `mergeRefs`)
+- **类型**: PascalCase (e.g., `ButtonProps`, `VariantProps`)
+- **CSS 变量**: kebab-case (e.g., `--primary-color`)
+- **文件**: 与组件名一致
+
+### 导入顺序
+
+```ts
+// 1. React
+import * as React from 'react';
+
+// 2. 第三方库
+import { cva } from 'class-variance-authority';
+import { clsx } from 'clsx';
+
+// 3. 内部模块
+import { cn } from '#ui/utils';
+
+// 4. 类型
+import type { ButtonProps } from './types';
+```
+
+### 组件结构
+
+```tsx
+// 1. 导入
+import * as React from 'react';
+
+// 2. 样式变体定义
+const buttonVariants = cva('base-styles', {
+  variants: {
+    variant: {
+      default: 'default-styles',
+      primary: 'primary-styles',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
+
+// 3. Props 类型定义
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'default' | 'primary';
+}
+
+// 4. 组件实现
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(buttonVariants({ variant, className }))}
+        {...props}
+      />
+    );
+  }
+);
+Button.displayName = 'Button';
+
+// 5. 导出
+export { Button, buttonVariants };
+```
+
+## 🧪 测试指南
+
+### 单元测试
+
+```tsx
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { Button } from '#ui/button';
+
+describe('Button', () => {
+  it('renders correctly', () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByRole('button')).toBeInTheDocument();
+  });
+
+  it('handles click events', () => {
+    const handleClick = vi.fn();
+    render(<Button onClick={handleClick}>Click me</Button>);
+    fireEvent.click(screen.getByRole('button'));
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('forwards ref correctly', () => {
+    const ref = { current: null };
+    render(<Button ref={ref}>Click me</Button>);
+    expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+  });
+});
+```
+
+### 测试覆盖率
+
+确保新组件的测试覆盖率达到 80% 以上：
+
+```bash
+pnpm test:coverage --filter=@nw/ui
+```
+
+## 📚 Storybook 文档
+
+### 编写故事
+
+```tsx
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
+import { Button } from '#ui/button';
+
+const meta = {
+  title: 'General/Button',
+  component: Button,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    variant: {
+      control: 'radio',
+      options: ['default', 'primary'],
+    },
+  },
+} satisfies Meta<typeof Button>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    children: 'Button',
+    variant: 'default',
+  },
+};
+
+export const Primary: Story = {
+  args: {
+    ...Default.args,
+    variant: 'primary',
+  },
+};
+```
+
+## 🔧 常见问题
+
+### 样式没有生效？
+
+确保导入了样式文件：
+
+```tsx
+// src/index.tsx
+import './styles/index.css';
+```
+
+### 类型错误？
+
+运行类型检查：
+
+```bash
+pnpm lint:types --filter=@nw/ui
+```
+
+### 构建失败？
+
+清理后重新构建：
+
+```bash
+pnpm clean --filter=@nw/ui
+pnpm build --filter=@nw/ui
+```
+
+## 📖 相关资源
+
+- [React 文档](https://react.dev/)
+- [TypeScript 文档](https://www.typescriptlang.org/)
+- [Tailwind CSS 文档](https://tailwindcss.com/)
+- [Storybook 文档](https://storybook.js.org/)
+- [Vitest 文档](https://vitest.dev/)
+
+## 🤝 需要帮助？
+
+- 查看 [FAQ](./faq.mdx)
+- 查看现有的 [Issues](https://github.com/Alicehhhmm/norush.me/issues)
+- 创建新的 [Discussion](https://github.com/Alicehhhmm/norush.me/discussions)
