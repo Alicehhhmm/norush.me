@@ -164,6 +164,11 @@
   --spacing-sdbw: var(--nr-sidebar);
   --spacing-top-boundary: var(--nr-top-boundary);
 
+  /* ========== shadow ========== */
+  --shadow-3dcard:
+    0 2px 2px rgb(0 0 0 / 0.1), 0 7px 13px -3px rgb(0 0 0 / 0.2),
+    inset 0 -3px 0px rgb(0 0 0 / 0.12);
+
   /* ========== Font Size (对应 theme.extend.fontSize) ========== */
   --font-weight-regular: 400;
   --font-weight-medium: 500;
