@@ -15,7 +15,7 @@ import { IBM_PLEX_MONO, OPEN_SANS } from '@/lib/next.fonts';
 // TODO: Use dynamic routing configuration uniformly
 import { siteConfig } from '@/config/next.json.mjs';
 
-import '@/styles/globals.css';
+import '#site/styles/globals.css';
 
 type RootProps = {
   children: React.ReactNode;

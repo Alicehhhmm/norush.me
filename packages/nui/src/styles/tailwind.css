@@ -1,16 +1,13 @@
 @charset "utf-8";
 
-/* @see https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Syntax/At-rules */
-
 @import 'tailwindcss';
-@import 'tw-animate-css';
 @import './globals.css';
 @import './shadcnui.css';
-@import './animations.css' layer(utilities);
-@import './scrollbar.css' layer(utilities);
-@import './markdown.css' layer(utilities);
 @import './theme.css';
 @import './theme-config.css';
 @import './nw-theme.css' layer(nw-theme);
+@import './animations.css' layer(utilities);
+@import './scrollbar.css' layer(utilities);
+@import './markdown.css' layer(utilities);
 
 @custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));

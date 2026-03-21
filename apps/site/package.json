@@ -80,5 +80,19 @@
     "postcss": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
+  },
+  "imports": {
+    "#site/*": [
+      "./*",
+      "./*.tsx",
+      "./*/index.tsx",
+      "./*.ts",
+      "./*/index.ts",
+      "./*.mjs",
+      "./*/index.mjs"
+    ]
+  },
+  "engines": {
+    "node": "24.x"
   }
 }

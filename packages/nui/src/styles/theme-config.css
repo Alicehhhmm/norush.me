@@ -2,11 +2,11 @@
  * Tailwind CSS V4 Theme Configuration
  */
 @theme {
-  /* ========== Colors (对应 theme.extend.colors) ========== */
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
+  /* ========== Colors ========== */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 
-  /* Fluo (fluo.500, fluo, fluo-primary, fluo-deep, ...) */
+  /* Fluo */
   --color-fluo-500: #9dff3a;
   --color-fluo: var(--fluo);
   --color-fluo-primary: var(--fluo-primary);
@@ -20,44 +20,44 @@
   --color-fluo-background: var(--fluo-background);
 
   /* Card (card, card-foreground) */
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
 
   /* Popover */
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
 
   /* Primary */
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
 
   /* Secondary */
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
 
   /* Muted */
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
 
   /* Accent */
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
 
   /* Destructive */
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
 
   /* Border, Input, Ring */
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 
   /* Chart colors */
-  --color-chart-1: hsl(var(--chart-1));
-  --color-chart-2: hsl(var(--chart-2));
-  --color-chart-3: hsl(var(--chart-3));
-  --color-chart-4: hsl(var(--chart-4));
-  --color-chart-5: hsl(var(--chart-5));
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
 
   /* Pulse */
   --color-pulse-100: #0000330f;
@@ -143,22 +143,22 @@
   --color-accent2-800: #8b1245;
   --color-accent2-900: #411526;
 
-  /* Sidebar (sidebar, sidebar-foreground, sidebar-primary, ...) */
-  --color-sidebar: hsl(var(--sidebar-background));
-  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
-  --color-sidebar-primary: hsl(var(--sidebar-primary));
-  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
-  --color-sidebar-accent: hsl(var(--sidebar-accent));
-  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
-  --color-sidebar-border: hsl(var(--sidebar-border));
-  --color-sidebar-ring: hsl(var(--sidebar-ring));
+  /* Sidebar */
+  --color-sidebar: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 
-  /* ========== Border Radius (对应 theme.extend.borderRadius) ========== */
+  /* ========== Border Radius  ========== */
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
-  /* ========== Spacing (对应 theme.extend.spacing) ========== */
+  /* ========== Spacing  ========== */
   --spacing-navh: var(--nr-header-h);
   --spacing-navf: var(--nr-footer-h);
   --spacing-sdbw: var(--nr-sidebar);
@@ -169,7 +169,7 @@
     0 2px 2px rgb(0 0 0 / 0.1), 0 7px 13px -3px rgb(0 0 0 / 0.2),
     inset 0 -3px 0px rgb(0 0 0 / 0.12);
 
-  /* ========== Font Size (对应 theme.extend.fontSize) ========== */
+  /* ========== Font Size  ========== */
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
@@ -197,11 +197,11 @@
   --font-7xl: 4.5rem;
   --font-7xl-line-height: 4.5rem;
 
-  /* ========== Font Family (对应 theme.extend.fontFamily) ========== */
+  /* ========== Font Family ========== */
   --font-open-sans: var(--font-open-sans);
   --font-ibm-plex-mono: var(--font-ibm-plex-mono);
 
-  /* ========== Background Images (对应 theme.extend.backgroundImage) ========== */
+  /* ========== Background Images  ========== */
   --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
   --background-image-gradient-subtle: linear-gradient(
     180deg,
@@ -259,7 +259,6 @@
   );
 }
 
-/* 定义 keyframes */
 @keyframes surf {
   0% {
     transform: translate(0, 0);
@@ -292,7 +291,7 @@
   }
 }
 
-/* ========== Custom Utilities (对应 theme.extend.backgroundImage，供 @apply 使用) ========== */
+/* ========== Custom Utilities ========== */
 @utility bg-gradient-radial {
   background-image: var(--background-image-gradient-radial);
 }
