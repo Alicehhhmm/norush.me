@@ -68,7 +68,7 @@ export const Colors: StoryObj = {
           Design Token - Colors
         </h1>
         <p className="text-muted-foreground text-sm">
-          颜色系统基于 HSL 语义化变量，支持多主题切换 (fluo/claude/warm/cool +
+          颜色系统基于 hsl() 语义化变量，支持多主题切换 (fluo/claude/warm/cool +
           light/dark)
         </p>
       </div>
@@ -86,14 +86,14 @@ export const Colors: StoryObj = {
               {
                 className: 'bg-primary',
                 label: 'Primary',
-                hex: 'HSL(var(--primary))',
+                hex: 'hsl(var(--primary))',
                 token: '--primary',
                 usage: 'Button.primary',
               },
               {
                 className: 'bg-primary-foreground',
                 label: 'Foreground',
-                hex: 'HSL(var(--primary-fg))',
+                hex: 'hsl(var(--primary-foreground))',
                 token: '--primary-foreground',
               },
             ]}
@@ -105,14 +105,14 @@ export const Colors: StoryObj = {
               {
                 className: 'bg-destructive',
                 label: 'Destructive',
-                hex: 'HSL(var(--destructive))',
+                hex: 'hsl(var(--destructive))',
                 token: '--destructive',
                 usage: 'Button.danger',
               },
               {
                 className: 'bg-destructive-foreground',
                 label: 'Foreground',
-                hex: 'HSL(var(--destructive-fg))',
+                hex: 'hsl(var(--destructive-foreground))',
                 token: '--destructive-foreground',
               },
             ]}
@@ -124,14 +124,14 @@ export const Colors: StoryObj = {
               {
                 className: 'bg-accent',
                 label: 'Accent',
-                hex: 'HSL(var(--accent))',
+                hex: 'hsl(var(--accent))',
                 token: '--accent',
                 usage: 'hover 状态',
               },
               {
                 className: 'bg-accent-foreground',
                 label: 'Foreground',
-                hex: 'HSL(var(--accent-fg))',
+                hex: 'hsl(var(--accent-foreground))',
                 token: '--accent-foreground',
               },
             ]}
@@ -143,21 +143,21 @@ export const Colors: StoryObj = {
               {
                 className: 'bg-border',
                 label: 'Border',
-                hex: 'HSL(var(--border))',
+                hex: 'hsl(var(--border))',
                 token: '--border',
                 usage: 'border',
               },
               {
                 className: 'bg-input',
                 label: 'Input',
-                hex: 'HSL(var(--input))',
+                hex: 'hsl(var(--input))',
                 token: '--input',
                 usage: 'input border',
               },
               {
                 className: 'bg-ring',
                 label: 'Ring',
-                hex: 'HSL(var(--ring))',
+                hex: 'hsl(var(--ring))',
                 token: '--ring',
                 usage: 'focus ring',
               },
@@ -649,42 +649,42 @@ export const Colors: StoryObj = {
               <div className="bg-fluo-primary h-12 w-full rounded ring-1 ring-black/10" />
               <div className="text-center text-xs font-medium">Primary</div>
               <div className="text-muted-foreground text-center text-[10px]">
-                #1db854
+                var(--fluo-primary)
               </div>
             </div>
             <div className="space-y-1">
               <div className="bg-fluo-deep h-12 w-full rounded ring-1 ring-black/10" />
               <div className="text-center text-xs font-medium">Deep</div>
               <div className="text-muted-foreground text-center text-[10px]">
-                #1d9041
+                var(--fluo-deep)
               </div>
             </div>
             <div className="space-y-1">
               <div className="bg-fluo-light h-12 w-full rounded ring-1 ring-black/10" />
               <div className="text-center text-xs font-medium">Light</div>
               <div className="text-muted-foreground text-center text-[10px]">
-                #82f9ac
+                var(--fluo-light)
               </div>
             </div>
             <div className="space-y-1">
               <div className="bg-fluo-soft h-12 w-full rounded ring-1 ring-black/10" />
               <div className="text-center text-xs font-medium">Soft</div>
               <div className="text-muted-foreground text-center text-[10px]">
-                #b0fbbc
+                var(--fluo-soft)
               </div>
             </div>
             <div className="space-y-1">
               <div className="bg-fluo-pale h-12 w-full rounded ring-1 ring-black/10" />
               <div className="text-center text-xs font-medium">Pale</div>
               <div className="text-muted-foreground text-center text-[10px]">
-                #e6fff7
+                var(--fluo-pale)
               </div>
             </div>
             <div className="space-y-1">
               <div className="bg-fluo-logo h-12 w-full rounded ring-1 ring-black/10" />
               <div className="text-center text-xs font-medium">Logo</div>
               <div className="text-muted-foreground text-center text-[10px]">
-                #9dff3a
+                var(--nr-logo-primary)
               </div>
             </div>
           </div>

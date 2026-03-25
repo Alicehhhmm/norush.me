@@ -28,15 +28,19 @@ export const Shadows: StoryObj = {
           ].map(item => (
             <div key={item.name} className="flex items-center gap-4">
               <div className="flex w-20 flex-col">
-                <span className="text-sm font-medium text-neutral-900 dark:text-white">
+                <span className="text-foreground text-sm font-medium">
                   {item.name}
                 </span>
-                <span className="text-xs text-neutral-500">{item.desc}</span>
+                <span className="text-muted-foreground text-xs">
+                  {item.desc}
+                </span>
               </div>
               <div
-                className={`flex h-20 w-48 items-center justify-center rounded-lg bg-white ${item.value}`}
+                className={`bg-background border-border flex h-20 w-48 items-center justify-center rounded-lg border ${item.value}`}
               >
-                <span className="text-sm text-neutral-600">{item.value}</span>
+                <span className="text-muted-foreground text-sm">
+                  {item.value}
+                </span>
               </div>
             </div>
           ))}
@@ -46,52 +50,42 @@ export const Shadows: StoryObj = {
       {/* Usage Examples */}
       <Section title="使用场景">
         <div className="grid grid-cols-2 gap-6">
-          <div className="bg-background rounded-lg p-4 shadow">
-            <p className="text-sm font-medium text-neutral-900 dark:text-white">
-              标准卡片
-            </p>
-            <p className="text-xs text-neutral-500">shadow</p>
+          <div className="bg-background border-border rounded-lg border p-4 shadow">
+            <p className="text-foreground text-sm font-medium">标准卡片</p>
+            <p className="text-muted-foreground text-xs">shadow</p>
           </div>
-          <div className="bg-background rounded-md p-4 shadow-md">
-            <p className="text-sm font-medium text-neutral-900 dark:text-white">
-              下拉菜单
-            </p>
-            <p className="text-xs text-neutral-500">shadow-md</p>
+          <div className="bg-background border-border rounded-md border p-4 shadow-md">
+            <p className="text-foreground text-sm font-medium">下拉菜单</p>
+            <p className="text-muted-foreground text-xs">shadow-md</p>
           </div>
-          <div className="bg-background rounded-lg p-4 shadow-lg">
-            <p className="text-sm font-medium text-neutral-900 dark:text-white">
-              悬浮卡片
-            </p>
-            <p className="text-xs text-neutral-500">shadow-lg</p>
+          <div className="bg-background border-border rounded-lg border p-4 shadow-lg">
+            <p className="text-foreground text-sm font-medium">悬浮卡片</p>
+            <p className="text-muted-foreground text-xs">shadow-lg</p>
           </div>
-          <div className="bg-background rounded-lg p-4 shadow-xl">
-            <p className="text-sm font-medium text-neutral-900 dark:text-white">
-              模态框
-            </p>
-            <p className="text-xs text-neutral-500">shadow-xl</p>
+          <div className="bg-background border-border rounded-lg border p-4 shadow-xl">
+            <p className="text-foreground text-sm font-medium">模态框</p>
+            <p className="text-muted-foreground text-xs">shadow-xl</p>
           </div>
-          <div className="bg-background shadow-3dcard rounded-lg p-4">
-            <p className="text-sm font-medium text-neutral-900 dark:text-white">
-              3D Card
-            </p>
-            <p className="text-xs text-neutral-500">shadow-3dcard</p>
+          <div className="bg-background shadow-3dcard border-border rounded-lg border p-4">
+            <p className="text-foreground text-sm font-medium">3D Card</p>
+            <p className="text-muted-foreground text-xs">shadow-3dcard</p>
           </div>
         </div>
       </Section>
 
       {/* Shadow Tokens */}
       <Section title="阴影令牌">
-        <div className="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+        <div className="border-border bg-background overflow-hidden rounded-lg border">
           <table className="w-full text-sm">
-            <thead className="bg-neutral-50 dark:bg-neutral-900">
+            <thead className="bg-muted">
               <tr>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   Token
                 </th>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   CSS 类名
                 </th>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   使用场景
                 </th>
               </tr>
@@ -137,15 +131,15 @@ export const Shadows: StoryObj = {
               ].map(item => (
                 <tr
                   key={item.token}
-                  className="border-b border-neutral-100 last:border-0 dark:border-neutral-800/50"
+                  className="border-border/50 border-b last:border-0"
                 >
-                  <td className="px-4 py-3 font-mono text-neutral-700 dark:text-neutral-300">
+                  <td className="text-foreground/70 px-4 py-3 font-mono">
                     {item.token}
                   </td>
                   <td className="px-4 py-3">
                     <Code>{item.class}</Code>
                   </td>
-                  <td className="px-4 py-3 text-neutral-600 dark:text-neutral-400">
+                  <td className="text-muted-foreground px-4 py-3">
                     {item.usage}
                   </td>
                 </tr>

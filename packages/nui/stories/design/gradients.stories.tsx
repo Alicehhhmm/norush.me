@@ -94,17 +94,17 @@ export const Gradients: StoryObj = {
 
       {/* Gradient Tokens */}
       <Section title="渐变令牌">
-        <div className="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+        <div className="border-border bg-background overflow-hidden rounded-lg border">
           <table className="w-full text-sm">
-            <thead className="bg-neutral-50 dark:bg-neutral-900">
+            <thead className="bg-muted">
               <tr>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   Token
                 </th>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   CSS 类名
                 </th>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   描述
                 </th>
               </tr>
@@ -154,15 +154,15 @@ export const Gradients: StoryObj = {
               ].map(item => (
                 <tr
                   key={item.class}
-                  className="border-b border-neutral-100 last:border-0 dark:border-neutral-800/50"
+                  className="border-border/50 border-b last:border-0"
                 >
-                  <td className="px-4 py-2 font-mono text-xs text-neutral-600 dark:text-neutral-400">
+                  <td className="text-muted-foreground px-4 py-2 font-mono text-xs">
                     {item.token}
                   </td>
                   <td className="px-4 py-3">
                     <Code>{item.class}</Code>
                   </td>
-                  <td className="px-4 py-3 text-neutral-600 dark:text-neutral-400">
+                  <td className="text-muted-foreground px-4 py-3">
                     {item.desc}
                   </td>
                 </tr>
