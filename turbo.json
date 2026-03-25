@@ -4,14 +4,6 @@
   "globalDependencies": ["tsconfig.json", "turbo.json", "pnpm-workspace.yaml"],
   "globalEnv": ["NODE_ENV", "CI"],
   "tasks": {
-    "//#prettier": {
-      "inputs": ["**/*.{js,mjs,ts,tsx,md,mdx,json,yml,css}"],
-      "outputs": [".prettiercache"]
-    },
-    "//#prettier:fix": {
-      "inputs": ["**/*.{js,mjs,ts,tsx,md,mdx,json,yml,css}"],
-      "outputs": [".prettiercache"]
-    },
     "topo": {
       "dependsOn": ["^topo"],
       "cache": true
