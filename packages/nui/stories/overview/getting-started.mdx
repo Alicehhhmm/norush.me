@@ -25,13 +25,13 @@ pnpm add @nw/ui
 
 ```tsx
 // Global Styles
-import 'tailwindcss';
-import '@nw/ui/styles';
+@import 'tailwindcss';
+@import '@nw/ui/tailwind';
 ```
 
 ```tsx
 // page
-import { Button } from '@nw/ui';
+import { Button } from '@nw/ui/index';
 export default function Page() {
   return (
     <div>
