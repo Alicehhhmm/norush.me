@@ -110,7 +110,7 @@ const DEFAULT_AIR_RESISTANCE = 0.98; // 默认空气阻力
  *   particleCount={30}
  * />
  */
-const ClickConfetti = ({
+export const ClickConfetti = ({
   active = true,
   effectType = 'confetti',
   particleCount = 30,

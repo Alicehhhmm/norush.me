@@ -1,6 +1,6 @@
 import type { RIconType } from '@/types';
 
-import { GitHub, JueJin, LinkedIn, Twitter } from '@/components/icons/social';
+import { GitHub, JueJin, LinkedIn, Twitter } from '@nw/ui/icons/social';
 import {
   HomeIcon,
   BookOpen,

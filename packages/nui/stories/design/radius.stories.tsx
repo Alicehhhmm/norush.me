@@ -32,15 +32,19 @@ export const Radius: StoryObj = {
           ].map(item => (
             <div key={item.name} className="flex items-center gap-4">
               <div className="flex w-20 flex-col">
-                <span className="text-sm font-medium text-neutral-900 dark:text-white">
+                <span className="text-foreground text-sm font-medium">
                   {item.name}
                 </span>
-                <span className="text-xs text-neutral-500">{item.css}</span>
+                <span className="text-muted-foreground text-xs">
+                  {item.css}
+                </span>
               </div>
               <div
-                className={`flex h-20 w-32 items-center justify-center bg-white shadow ${item.value}`}
+                className={`bg-background flex h-20 w-32 items-center justify-center shadow ${item.value} border-border border`}
               >
-                <span className="text-xs text-neutral-600">{item.value}</span>
+                <span className="text-muted-foreground text-xs">
+                  {item.value}
+                </span>
               </div>
             </div>
           ))}
@@ -49,20 +53,20 @@ export const Radius: StoryObj = {
 
       {/* Radius Tokens */}
       <Section title="圆角令牌">
-        <div className="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+        <div className="border-border bg-background overflow-hidden rounded-lg border">
           <table className="w-full text-sm">
-            <thead className="bg-neutral-50 dark:bg-neutral-900">
+            <thead className="bg-muted">
               <tr>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   Token
                 </th>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   CSS 类名
                 </th>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   计算值
                 </th>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   使用场景
                 </th>
               </tr>
@@ -96,18 +100,18 @@ export const Radius: StoryObj = {
               ].map(item => (
                 <tr
                   key={item.class}
-                  className="border-b border-neutral-100 last:border-0 dark:border-neutral-800/50"
+                  className="border-border/50 border-b last:border-0"
                 >
-                  <td className="px-4 py-3 font-mono text-neutral-700 dark:text-neutral-300">
+                  <td className="text-foreground/70 px-4 py-3 font-mono">
                     {item.token}
                   </td>
                   <td className="px-4 py-3">
                     <Code>{item.class}</Code>
                   </td>
-                  <td className="px-4 py-3 font-mono text-xs text-neutral-500">
+                  <td className="text-muted-foreground px-4 py-3 font-mono text-xs">
                     {item.value}
                   </td>
-                  <td className="px-4 py-3 text-neutral-600 dark:text-neutral-400">
+                  <td className="text-muted-foreground px-4 py-3">
                     {item.usage}
                   </td>
                 </tr>
@@ -120,63 +124,57 @@ export const Radius: StoryObj = {
       {/* Theme Configuration */}
       <Section title="主题配置">
         <Description>不同主题的默认圆角配置</Description>
-        <div className="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+        <div className="border-border bg-background overflow-hidden rounded-lg border">
           <table className="w-full text-sm">
-            <thead className="bg-neutral-50 dark:bg-neutral-900">
+            <thead className="bg-muted">
               <tr>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   主题
                 </th>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   --radius 值
                 </th>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   风格特点
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-neutral-100 last:border-0 dark:border-neutral-800/50">
-                <td className="px-4 py-3 font-medium text-neutral-900 dark:text-white">
+              <tr className="border-border/50 border-b last:border-0">
+                <td className="text-foreground px-4 py-3 font-medium">
                   Claude
                 </td>
-                <td className="px-4 py-3 font-mono text-neutral-600 dark:text-neutral-400">
+                <td className="text-muted-foreground px-4 py-3 font-mono">
                   0.5rem
                 </td>
-                <td className="px-4 py-3 text-neutral-600 dark:text-neutral-400">
+                <td className="text-muted-foreground px-4 py-3">
                   标准圆角，平衡美观
                 </td>
               </tr>
-              <tr className="border-b border-neutral-100 last:border-0 dark:border-neutral-800/50">
-                <td className="px-4 py-3 font-medium text-neutral-900 dark:text-white">
-                  Fluo
-                </td>
-                <td className="px-4 py-3 font-mono text-neutral-600 dark:text-neutral-400">
+              <tr className="border-border/50 border-b last:border-0">
+                <td className="text-foreground px-4 py-3 font-medium">Fluo</td>
+                <td className="text-muted-foreground px-4 py-3 font-mono">
                   0.5rem
                 </td>
-                <td className="px-4 py-3 text-neutral-600 dark:text-neutral-400">
+                <td className="text-muted-foreground px-4 py-3">
                   标准圆角，自然风格
                 </td>
               </tr>
-              <tr className="border-b border-neutral-100 last:border-0 dark:border-neutral-800/50">
-                <td className="px-4 py-3 font-medium text-neutral-900 dark:text-white">
-                  Warm
-                </td>
-                <td className="px-4 py-3 font-mono text-neutral-600 dark:text-neutral-400">
+              <tr className="border-border/50 border-b last:border-0">
+                <td className="text-foreground px-4 py-3 font-medium">Warm</td>
+                <td className="text-muted-foreground px-4 py-3 font-mono">
                   0.375rem
                 </td>
-                <td className="px-4 py-3 text-neutral-600 dark:text-neutral-400">
+                <td className="text-muted-foreground px-4 py-3">
                   较小圆角，精致感
                 </td>
               </tr>
               <tr>
-                <td className="px-4 py-3 font-medium text-neutral-900 dark:text-white">
-                  Cool
-                </td>
-                <td className="px-4 py-3 font-mono text-neutral-600 dark:text-neutral-400">
+                <td className="text-foreground px-4 py-3 font-medium">Cool</td>
+                <td className="text-muted-foreground px-4 py-3 font-mono">
                   0.5rem
                 </td>
-                <td className="px-4 py-3 text-neutral-600 dark:text-neutral-400">
+                <td className="text-muted-foreground px-4 py-3">
                   标准圆角，专业感
                 </td>
               </tr>

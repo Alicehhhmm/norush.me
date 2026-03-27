@@ -30,17 +30,17 @@ export const Themes: StoryObj = {
               data-theme={theme.value}
               className="overflow-hidden rounded-xl border shadow-sm"
               style={{
-                borderColor: 'hsl(var(--border))',
-                backgroundColor: 'hsl(var(--background))',
+                borderColor: 'var(--border)',
+                backgroundColor: 'var(--background)',
               }}
             >
               <div
                 className="border-b px-4 py-3"
-                style={{ borderColor: 'hsl(var(--border))' }}
+                style={{ borderColor: 'var(--border)' }}
               >
                 <span
                   className="text-sm font-medium"
-                  style={{ color: 'hsl(var(--foreground))' }}
+                  style={{ color: 'var(--foreground)' }}
                 >
                   {theme.name}
                 </span>
@@ -57,8 +57,8 @@ export const Themes: StoryObj = {
                   ].map(color => (
                     <div
                       key={color}
-                      className="h-10 w-10 rounded border border-[hsl(var(--border))]"
-                      style={{ backgroundColor: `hsl(var(--${color}))` }}
+                      className="h-10 w-10 rounded border border-(--border)"
+                      style={{ backgroundColor: `var(--${color})` }}
                       title={color}
                     />
                   ))}

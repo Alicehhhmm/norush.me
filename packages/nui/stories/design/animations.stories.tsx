@@ -15,7 +15,7 @@ export const Animations: StoryObj = {
       <Section title="Surf 浮动动画">
         <Description>柔和的上下浮动效果，适用于图标、装饰元素</Description>
         <div className="flex items-center gap-6">
-          <div className="animate-surf flex h-16 w-16 items-center justify-center rounded-lg bg-green-500 text-white">
+          <div className="animate-surf bg-primary text-primary-foreground flex h-16 w-16 items-center justify-center rounded-lg">
             <svg
               className="h-8 w-8"
               fill="none"
@@ -32,7 +32,7 @@ export const Animations: StoryObj = {
           </div>
           <div>
             <Code>animate-surf</Code>
-            <p className="mt-1 text-xs text-neutral-500">
+            <p className="text-muted-foreground mt-1 text-xs">
               1s infinite ease-in-out
             </p>
           </div>
@@ -43,10 +43,10 @@ export const Animations: StoryObj = {
       <Section title="Pulse 脉冲动画">
         <Description>脉冲呼吸效果，适用于加载状态、活动指示器</Description>
         <div className="flex items-center gap-6">
-          <div className="h-16 w-16 animate-pulse rounded-full bg-green-500" />
+          <div className="bg-primary h-16 w-16 animate-pulse rounded-full" />
           <div>
             <Code>animate-pulse</Code>
-            <p className="mt-1 text-xs text-neutral-500">
+            <p className="text-muted-foreground mt-1 text-xs">
               500ms infinite alternate
             </p>
           </div>
@@ -58,19 +58,19 @@ export const Animations: StoryObj = {
         <Description>三点波浪加载动画，适用于页面加载、数据请求</Description>
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-1">
-            <div className="animate-surf h-3 w-3 rounded-full bg-neutral-400" />
+            <div className="animate-surf bg-muted-foreground h-3 w-3 rounded-full" />
             <div
-              className="animate-surf h-3 w-3 rounded-full bg-neutral-400"
+              className="animate-surf bg-muted-foreground h-3 w-3 rounded-full"
               style={{ animationDelay: '200ms' }}
             />
             <div
-              className="animate-surf h-3 w-3 rounded-full bg-neutral-400"
+              className="animate-surf bg-muted-foreground h-3 w-3 rounded-full"
               style={{ animationDelay: '400ms' }}
             />
           </div>
           <div>
             <Code>animation-delay: 0/200/400ms</Code>
-            <p className="mt-1 text-xs text-neutral-500">
+            <p className="text-muted-foreground mt-1 text-xs">
               1.2s infinite ease-in-out
             </p>
           </div>
@@ -81,10 +81,10 @@ export const Animations: StoryObj = {
       <Section title="Slide 滑动动画">
         <Description>滑入滑出效果，适用于面板展开、内容切换</Description>
         <div className="flex gap-4">
-          <div className="animate-slide-to-left flex h-16 w-32 items-center justify-center rounded-lg bg-blue-500 text-white">
+          <div className="animate-slide-to-left bg-info-600 flex h-16 w-32 items-center justify-center rounded-lg text-white">
             Slide Left
           </div>
-          <div className="animate-slide-to-right flex h-16 w-32 items-center justify-center rounded-lg bg-purple-500 text-white">
+          <div className="animate-slide-to-right bg-accent1-600 flex h-16 w-32 items-center justify-center rounded-lg text-white">
             Slide Right
           </div>
         </div>
@@ -96,20 +96,20 @@ export const Animations: StoryObj = {
 
       {/* Animation Properties */}
       <Section title="动画属性">
-        <div className="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+        <div className="border-border bg-background overflow-hidden rounded-lg border">
           <table className="w-full text-sm">
-            <thead className="bg-neutral-50 dark:bg-neutral-900">
+            <thead className="bg-muted">
               <tr>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   动画名称
                 </th>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   持续时间
                 </th>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   迭代方式
                 </th>
-                <th className="border-b border-neutral-200 px-4 py-3 text-left font-medium text-neutral-900 dark:border-neutral-800 dark:text-white">
+                <th className="border-border text-foreground border-b px-4 py-3 text-left font-medium">
                   使用场景
                 </th>
               </tr>
@@ -149,18 +149,18 @@ export const Animations: StoryObj = {
               ].map(item => (
                 <tr
                   key={item.name}
-                  className="border-b border-neutral-100 last:border-0 dark:border-neutral-800/50"
+                  className="border-border/50 border-b last:border-0"
                 >
-                  <td className="px-4 py-3 font-mono text-neutral-700 dark:text-neutral-300">
+                  <td className="text-foreground/70 px-4 py-3 font-mono">
                     {item.name}
                   </td>
-                  <td className="px-4 py-3 text-neutral-600 dark:text-neutral-400">
+                  <td className="text-muted-foreground px-4 py-3">
                     {item.duration}
                   </td>
-                  <td className="px-4 py-3 text-neutral-600 dark:text-neutral-400">
+                  <td className="text-muted-foreground px-4 py-3">
                     {item.timing}
                   </td>
-                  <td className="px-4 py-3 text-neutral-600 dark:text-neutral-400">
+                  <td className="text-muted-foreground px-4 py-3">
                     {item.usage}
                   </td>
                 </tr>

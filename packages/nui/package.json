@@ -13,47 +13,52 @@
   "sideEffects": [
     "**/*.css"
   ],
-  "types": "./dist/esm/index.d.ts",
-  "main": "./dist/cjs/index.cjs",
-  "module": "./dist/esm/index.js",
   "exports": {
     ".": {
       "types": "./dist/esm/index.d.ts",
       "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.cjs"
+      "require": "./dist/cjs/index.cjs",
+      "default": "./src/index.js"
     },
     "./*": {
-      "types": "./dist/esm/*/index.d.ts",
-      "import": "./dist/esm/*/index.js",
-      "require": "./dist/cjs/*/index.cjs"
-    },
-    "./styles": {
-      "style": "./dist/esm/styles/index.css",
-      "import": "./dist/esm/styles/index.css",
-      "require": "./dist/cjs/styles/index.css"
-    },
-    "./styles/*": {
-      "style": "./dist/esm/styles/*.css",
-      "import": "./dist/esm/styles/*.css",
-      "require": "./dist/cjs/styles/*.css"
+      "default": [
+        "./src/*",
+        "./src/*.tsx",
+        "./src/*/index.tsx",
+        "./src/*.ts",
+        "./src/*/index.ts"
+      ],
+      "rolldown": [
+        "./dist/*",
+        "./dist/*.js",
+        "./dist/*/index.js"
+      ]
     },
     "./tailwind": {
-      "style": "./dist/esm/styles/tailwind.css",
-      "import": "./dist/esm/styles/tailwind.css",
-      "require": "./dist/cjs/styles/tailwind.css"
+      "import": "./dist/esm/index.css",
+      "require": "./dist/cjs/index.css",
+      "default": "./src/styles/tailwind.css"
     }
   },
   "imports": {
-    "#ui/*": [
-      "./src/*",
-      "./src/*.tsx",
-      "./src/*/index.tsx",
-      "./src/*.ts",
-      "./src/*/index.ts"
-    ]
+    "#ui/*": {
+      "default": [
+        "./src/*",
+        "./src/*.tsx",
+        "./src/*/index.tsx",
+        "./src/*.ts",
+        "./src/*/index.ts"
+      ],
+      "rolldown": [
+        "./dist/*",
+        "./dist/*.js",
+        "./dist/*/index.js"
+      ]
+    }
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "dev": "rslib build --watch",
@@ -85,6 +90,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@react-three/drei": "10.0.0-rc.1",
+    "@react-three/fiber": "9.5.0",
     "@rsbuild/core": "~1.7.0",
     "@rsbuild/plugin-react": "^1.4.2",
     "@rslib/core": "^0.19.1",
@@ -97,6 +104,7 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@types/three": "^0.183.1",
     "@vitest/coverage-v8": "catalog:",
     "classnames": "^2.5.1",
     "eslint": "^9.39.1",
@@ -115,6 +123,7 @@
     "stylelint-order": "7.0.1",
     "stylelint-selector-bem-pattern": "4.0.1",
     "tailwindcss": "catalog:",
+    "three": "^0.183.2",
     "typescript": "catalog:",
     "typescript-eslint": "^8.48.0",
     "vitest": "catalog:"

@@ -1,16 +1,33 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import js from '@eslint/js';
 import globals from 'globals';
 import ts from 'typescript-eslint';
 import storybook from 'eslint-plugin-storybook';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 export default [
   {
     languageOptions: {
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.nodeBuiltin,
+      },
     },
   },
   js.configs.recommended,
   ...ts.configs.recommended,
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parser: ts.parser,
+      parserOptions: {
+        project: './tsconfig.json',
+        tsconfigRootDir: __dirname,
+      },
+    },
+  },
   {
     ignores: [
       'dist/',

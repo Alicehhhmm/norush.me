@@ -44,16 +44,10 @@ export const Typography: StoryObj = {
             { name: 'Bold', value: 'font-bold', weight: '700' },
           ].map(item => (
             <div key={item.name} className="flex items-center gap-4">
-              <span
-                className="w-20 text-sm"
-                style={{ color: 'hsl(var(--muted-foreground))' }}
-              >
+              <span className="text-muted-foreground w-20 text-sm">
                 {item.name}
               </span>
-              <p
-                className={item.value}
-                style={{ color: 'hsl(var(--foreground))' }}
-              >
+              <p className={`${item.value} text-foreground`}>
                 This is a piece of text
               </p>
               <Code>{item.weight}</Code>
@@ -66,58 +60,34 @@ export const Typography: StoryObj = {
       <Section title="标题样式">
         <div className="space-y-6">
           <div>
-            <h1
-              className="text-3xl font-bold"
-              style={{ color: 'hsl(var(--foreground))' }}
-            >
+            <h1 className="text-foreground text-3xl font-bold">
               Heading 1 - Page Title
             </h1>
-            <p
-              className="mt-1 text-xs"
-              style={{ color: 'hsl(var(--muted-foreground))' }}
-            >
+            <p className="text-muted-foreground mt-1 text-xs">
               text-3xl, font-bold
             </p>
           </div>
           <div>
-            <h2
-              className="text-2xl font-semibold"
-              style={{ color: 'hsl(var(--foreground))' }}
-            >
+            <h2 className="text-foreground text-2xl font-semibold">
               Heading 2 - Section Title
             </h2>
-            <p
-              className="mt-1 text-xs"
-              style={{ color: 'hsl(var(--muted-foreground))' }}
-            >
+            <p className="text-muted-foreground mt-1 text-xs">
               text-2xl, font-semibold
             </p>
           </div>
           <div>
-            <h3
-              className="text-xl font-medium"
-              style={{ color: 'hsl(var(--foreground))' }}
-            >
+            <h3 className="text-foreground text-xl font-medium">
               Heading 3 - Subsection Title
             </h3>
-            <p
-              className="mt-1 text-xs"
-              style={{ color: 'hsl(var(--muted-foreground))' }}
-            >
+            <p className="text-muted-foreground mt-1 text-xs">
               text-xl, font-medium
             </p>
           </div>
           <div>
-            <h4
-              className="text-lg font-medium"
-              style={{ color: 'hsl(var(--foreground))' }}
-            >
+            <h4 className="text-foreground text-lg font-medium">
               Heading 4 - Group Title
             </h4>
-            <p
-              className="mt-1 text-xs"
-              style={{ color: 'hsl(var(--muted-foreground))' }}
-            >
+            <p className="text-muted-foreground mt-1 text-xs">
               text-lg, font-medium
             </p>
           </div>
@@ -128,36 +98,22 @@ export const Typography: StoryObj = {
       <Section title="正文样式">
         <div className="space-y-6">
           <div>
-            <p
-              className="text-base leading-7"
-              style={{ color: 'hsl(var(--foreground))' }}
-            >
+            <p className="text-foreground text-base leading-7">
               <strong>Regular Body:</strong> This is the standard body text
               style used for main content. It provides optimal readability for
               paragraphs and long-form content.
             </p>
-            <p
-              className="mt-1 text-xs"
-              style={{ color: 'hsl(var(--muted-foreground))' }}
-            >
+            <p className="text-muted-foreground mt-1 text-xs">
               text-base, leading-7
             </p>
           </div>
           <div>
-            <p
-              className="text-sm leading-6"
-              style={{ color: 'hsl(var(--muted-foreground))' }}
-            >
-              <strong style={{ color: 'hsl(var(--foreground))' }}>
-                Secondary Body:
-              </strong>{' '}
-              This style is used for secondary content, descriptions, and
-              supporting text that complements the main content.
+            <p className="text-muted-foreground text-sm leading-6">
+              <strong className="text-foreground">Secondary Body:</strong> This
+              style is used for secondary content, descriptions, and supporting
+              text that complements the main content.
             </p>
-            <p
-              className="mt-1 text-xs"
-              style={{ color: 'hsl(var(--muted-foreground))' }}
-            >
+            <p className="text-muted-foreground mt-1 text-xs">
               text-sm, leading-6
             </p>
           </div>
@@ -167,43 +123,19 @@ export const Typography: StoryObj = {
       {/* Font Families */}
       <Section title="字体家族">
         <div className="space-y-4">
-          <div
-            className="rounded-lg border p-4"
-            style={{
-              borderColor: 'hsl(var(--border))',
-              backgroundColor: 'hsl(var(--background))',
-            }}
-          >
-            <p
-              className="font-open-sans"
-              style={{ color: 'hsl(var(--foreground))' }}
-            >
+          <div className="border-border bg-background rounded-lg border p-4">
+            <p className="font-open-sans text-foreground">
               Open Sans: This is a piece of text. 0123456789
             </p>
-            <p
-              className="mt-2 text-xs"
-              style={{ color: 'hsl(var(--muted-foreground))' }}
-            >
+            <p className="text-muted-foreground mt-2 text-xs">
               <Code>font-open-sans</Code> - 主要用于正文内容
             </p>
           </div>
-          <div
-            className="rounded-lg border p-4"
-            style={{
-              borderColor: 'hsl(var(--border))',
-              backgroundColor: 'hsl(var(--background))',
-            }}
-          >
-            <p
-              className="font-ibm-plex-mono"
-              style={{ color: 'hsl(var(--foreground))' }}
-            >
+          <div className="border-border bg-background rounded-lg border p-4">
+            <p className="font-ibm-plex-mono text-foreground">
               IBM Plex Mono: This is a piece of text. 0123456789
             </p>
-            <p
-              className="mt-2 text-xs"
-              style={{ color: 'hsl(var(--muted-foreground))' }}
-            >
+            <p className="text-muted-foreground mt-2 text-xs">
               <Code>font-ibm-plex-mono</Code> - 主要用于代码和技术内容
             </p>
           </div>

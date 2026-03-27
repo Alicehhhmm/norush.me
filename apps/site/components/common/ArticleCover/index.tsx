@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 
-import { Kail } from '@/components/icons';
-import { HexagonGrid } from '@/components/special-effects';
+import { HexagonGrid, Kail } from '@nw/ui/icons';
 import type { BlogCategory } from '@/types/blog';
 
 import { cn } from '@/lib/utils';

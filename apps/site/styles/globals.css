@@ -1,6 +1,5 @@
 @charset "utf-8";
 
-/* 引入 @nw/tailwind 完整配置 */
 @import '@nw/ui/tailwind';
 
 /* Other local styles */
