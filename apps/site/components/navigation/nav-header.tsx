@@ -6,7 +6,7 @@ import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 
 import { ThemeToggleBtn, ActionLink, LangToggle } from '@/components/common';
 import { NavItem, MobileNav, NavLogo } from '@/components/navigation';
-import { GitHub } from '@/components/icons/social';
+import { GitHub } from '@nw/ui/icons/social';
 
 import { useSiteNavigation } from '@/hooks/server';
 import { useIsMobile } from '@/hooks/use-mobile';
