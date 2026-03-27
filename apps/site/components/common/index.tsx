@@ -3,7 +3,6 @@ export { ActionTooltip } from './action-tooltip';
 export { ArticlePagination } from './ArticlePagination';
 export { FooterSimple } from './footer-simple';
 export { GlowingBackdrop } from './GlowingBackdrop';
-export { GridBackdrop } from './GridBackdrop';
 export { LangToggle } from './lang-toggle';
 export { default as Link } from './Link';
 export * from './theme-toggle';

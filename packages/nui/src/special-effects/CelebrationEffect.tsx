@@ -52,7 +52,7 @@ const DEFAULT_EXPLOSION_FORCE = 15;
 const DEFAULT_GRAVITY = 0.35;
 const DEFAULT_AIR_RESISTANCE = 0.96;
 
-const CelebrationEffect = ({
+export const CelebrationEffect = ({
   active = true,
   particleCount = 60,
   maxParticles = 800,
