@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { HexagonGrid } from '@/components/special-effects';
+import { HexagonGrid } from '@nw/ui/icons';
 import styles from './index.module.css';
 
 export const GlowingBackdrop: FC = () => {
