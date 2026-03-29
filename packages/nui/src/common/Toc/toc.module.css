@@ -25,15 +25,21 @@
 
   &:hover,
   &:active {
-    @apply dark:bg-fluo-background
-      bg-gray-200/60
-      text-lime-500;
+    @apply bg-accent
+      text-primary;
   }
 
   &.active {
-    @apply dark:bg-fluo-background
-      bg-gray-950/90
-      text-lime-500;
+    @apply text-primary
+      bg-gray-950/90;
+
+    [data-theme='dark'] & {
+      @apply text-lime-500;
+    }
+
+    [data-theme='link'] & {
+      @apply text-lime-500;
+    }
   }
 }
 
