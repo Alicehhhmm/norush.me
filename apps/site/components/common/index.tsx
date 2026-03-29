@@ -8,7 +8,6 @@ export { default as Link } from './Link';
 export * from './theme-toggle';
 export { TopLoader } from './top-loader';
 export * from './universal-dropdown-menu';
-export * from './Rose3DCard';
 export { default as RightsReserved } from './rights-reserved';
 export { default as ToggleLayout } from './toggle-layout';
 export * from './MasonryGrid';

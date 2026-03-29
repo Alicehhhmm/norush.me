@@ -1,0 +1,77 @@
+@reference '#ui/styles/index.css';
+
+.root {
+  @apply w-full
+    rounded-xl
+    border
+    border-neutral-900
+    bg-neutral-950;
+
+  .content {
+    @apply m-0 p-4;
+
+    & > code {
+      @apply font-ibm-plex-mono
+        grid
+        overflow-x-auto
+        bg-transparent
+        p-0
+        text-sm
+        leading-snug
+        font-normal
+        text-neutral-400
+        [counter-reset:line];
+
+      & > [class='line'] {
+        @apply relative
+          min-w-0
+          pl-8;
+
+        &:not(:empty:last-child)::before {
+          @apply inline-block content-[''];
+        }
+
+        /* 代码块左侧行号样式 */
+        &:not(:empty:last-child)::after {
+          @apply font-ibm-plex-mono
+            absolute
+            top-0
+            left-0
+            mr-4
+            w-5
+            text-right
+            text-neutral-600
+            [content:counter(line)]
+            [counter-increment:line];
+        }
+      }
+    }
+  }
+
+  & > .footer {
+    @apply flex
+      items-center
+      justify-between
+      border-t
+      border-t-neutral-900
+      px-3
+      py-2
+      text-sm
+      font-medium;
+
+    & > .language {
+      @apply text-muted-foreground;
+    }
+
+    & > .action {
+      @apply px-2.5
+        py-1
+        text-xs
+        font-medium;
+
+      > svg {
+        @apply size-4;
+      }
+    }
+  }
+}

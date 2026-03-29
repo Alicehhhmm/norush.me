@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Link } from '@/components/common';
-import MDXCodeBox from '@/components/MDX/CodeBox';
+import MDXCodeBox from '#site/components/MDX/MdxCodeBox';
 
 /**
  * 所有MDX中需要的客户端组件列表
