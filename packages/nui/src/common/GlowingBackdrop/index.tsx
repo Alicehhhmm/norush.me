@@ -1,12 +1,12 @@
 import type { FC } from 'react';
 
-import { HexagonGrid } from '@nw/ui/icons';
+import { HexagonGrid } from '#ui/icons';
 import styles from './index.module.css';
 
 export const GlowingBackdrop: FC = () => {
   return (
     <div className={styles.glowingBackdrop}>
-      <HexagonGrid className="h-full w-full" />
+      <HexagonGrid className="size-full" />
     </div>
   );
 };

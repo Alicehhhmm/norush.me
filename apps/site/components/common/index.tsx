@@ -2,7 +2,6 @@ export { ActionLink } from './action-link';
 export { ActionTooltip } from './action-tooltip';
 export { ArticlePagination } from './ArticlePagination';
 export { FooterSimple } from './footer-simple';
-export { GlowingBackdrop } from './GlowingBackdrop';
 export { LangToggle } from './lang-toggle';
 export { default as Link } from './Link';
 export * from './theme-toggle';

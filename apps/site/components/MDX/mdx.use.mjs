@@ -9,7 +9,7 @@ import {
   ProjectsSection,
   ContactSection,
 } from '@/components/home';
-import { GlowingBackdrop } from '@/components/common';
+import { GlowingBackdrop } from '@nw/ui/common';
 
 /**
  * 所有需要传递给MDX的React（HOC）组件的完整列表
