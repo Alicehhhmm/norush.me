@@ -1,29 +1,12 @@
 'use client';
 
-import { createContext } from 'react';
-import type { FC, ReactNode, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
+import { TOCSharedContext, TOCProvider } from '@nw/ui/common';
 
-export interface ArticleSharedContext {
-  href: string;
-  label: string;
-  title: string;
-  tocOptions: {
-    activeKey?: string;
-    onClick?: (id: string) => void;
-  };
-}
+export interface ArticleSharedContext extends TOCSharedContext {}
 
 type ArticleContextType = PropsWithChildren<Partial<ArticleSharedContext>>;
 
-export const ArticleContext = createContext<ArticleContextType>({});
-
-export const ArticleProvider: FC<ArticleContextType> = ({
-  children,
-  ...props
-}) => {
-  return (
-    <ArticleContext.Provider value={{ ...props }}>
-      {children}
-    </ArticleContext.Provider>
-  );
+export const ArticleProvider: FC<ArticleContextType> = props => {
+  return <TOCProvider {...props} />;
 };
