@@ -7,12 +7,12 @@
     }
   ],
   "commit": false,
-  "fixed": [["@nw/*"]],
+  "fixed": [],
   "linked": [],
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": [],
+  "ignore": ["@nw/i18n", "@nw/rehype-shiki", "@nw/remark-lint", "@nw/site"],
   "privatePackages": {
     "version": true,
     "tag": true
@@ -20,5 +20,9 @@
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
     "onlyUpdatePeerDependentsWhenOutOfRange": true,
     "updateInternalDependents": "always"
+  },
+  "snapshot": {
+    "useCalculatedVersion": true,
+    "prereleaseTemplate": "{tag}"
   }
 }
