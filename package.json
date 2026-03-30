@@ -31,6 +31,7 @@
     "changeset:add": "changeset add",
     "changeset:version": "changeset version",
     "changeset:beta": "changeset version --snapshot beta",
+    "changeset:canary": "changeset version --snapshot canary",
     "changeset:publish": "changeset publish",
     "changeset:status": "changeset status",
     "changeset:tag": "changeset tag",
