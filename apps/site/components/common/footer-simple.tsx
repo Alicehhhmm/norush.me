@@ -39,7 +39,7 @@ export const FooterSimple: FC<{
   return (
     <footer
       className={cn(
-        'border-border/80 mt-auto border-t',
+        'border-border/40 mt-auto border-t',
         'bg-background/95 supports-backdrop-filter:bg-background/80 backdrop-blur-sm'
       )}
     >
