@@ -1,4 +1,4 @@
-import Switch from '#ui/Switch';
+import Switch from '#ui/general/switch';
 
 import type { Meta as MetaObj, StoryObj } from 'storybook-react-rsbuild';
 

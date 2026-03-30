@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import { fn } from 'storybook/test';
 
-import { Button } from '#ui/button';
+import { Button } from '#ui/general/button';
 
 const meta = {
   title: 'General/Button',

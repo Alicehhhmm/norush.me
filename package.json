@@ -30,14 +30,13 @@
     "changeset": "changeset",
     "changeset:add": "changeset add",
     "changeset:version": "changeset version",
+    "changeset:beta": "changeset version --snapshot beta",
     "changeset:publish": "changeset publish",
     "changeset:status": "changeset status",
     "changeset:tag": "changeset tag",
     "release": "pnpm build && changeset publish",
     "release:canary": "changeset publish --tag canary",
     "version": "changeset version",
-    "changelog": "node scripts/generate-changelog.js",
-    "changelog:check": "changeset status",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {

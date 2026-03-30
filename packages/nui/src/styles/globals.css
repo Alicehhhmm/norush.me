@@ -3,13 +3,17 @@
     --header-height: calc(var(--spacing, 0.25rem) * 16);
   }
 
+  body {
+    @apply bg-background text-foreground;
+  }
+
   /* @See https://tailwindcss.com/docs/upgrade-guide#default-border-color */
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    @apply border-border outline-ring/50;
   }
 
   /* @See https://tailwindcss.com/docs/upgrade-guide#buttons-use-the-default-cursor */

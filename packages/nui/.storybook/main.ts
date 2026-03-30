@@ -35,7 +35,7 @@ const config: StorybookConfig = {
       },
     });
   },
-  typescript: { reactDocgen: 'react-docgen-typescript' },
+  typescript: { reactDocgen: false, check: false },
 };
 
 export default config;

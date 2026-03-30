@@ -13,7 +13,7 @@ const copyToClipboard = (value: string | undefined) => {
     .catch(() => false);
 };
 
-const useCopyToClipboard = () => {
+export default function useCopy() {
   const [copied, setCopied] = useState(false);
 
   const copyText = (text: string | undefined) =>
@@ -30,6 +30,4 @@ const useCopyToClipboard = () => {
   }, [copied]);
 
   return [copied, copyText] as const;
-};
-
-export default useCopyToClipboard;
+}

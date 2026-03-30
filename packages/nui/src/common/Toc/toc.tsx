@@ -1,8 +1,8 @@
-import { ReactElement, useMemo, FC, useState, useEffect } from 'react';
+import { memo, ReactElement, useMemo, FC, useState, useEffect } from 'react';
 
-import { cn } from '@/lib/utils';
-import styles from './index.module.css';
-import { useArticleContext } from '@/hooks';
+import { cn } from '#ui/utils';
+import { useTOCContext } from './toc-provider';
+import styles from './toc.module.css';
 
 export interface TOCItem {
   id: string;
@@ -12,7 +12,7 @@ export interface TOCItem {
   children?: TOCItem[];
 }
 
-interface NestedDirectoryProps {
+export interface TocProps {
   // 默认最大层级：4
   maxLayer?: number | string;
   // 默认缩进：16
@@ -21,12 +21,12 @@ interface NestedDirectoryProps {
   directories: TOCItem[];
 }
 
-export const NestedDirectory: FC<NestedDirectoryProps> = ({
+const TocComponent: FC<TocProps> = ({
   maxLayer = 4,
   indent = 16,
   directories,
 }) => {
-  const { tocOptions } = useArticleContext();
+  const { tocOptions } = useTOCContext();
   const activeKey = tocOptions?.activeKey;
   const [active, setActive] = useState(activeKey);
 
@@ -86,4 +86,7 @@ export const NestedDirectory: FC<NestedDirectoryProps> = ({
   );
 };
 
-export default NestedDirectory;
+TocComponent.displayName = 'Toc';
+
+export const Toc = memo(TocComponent);
+export default Toc;

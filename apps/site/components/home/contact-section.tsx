@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 import { Button } from '@/components/ui/button';
 import { FadeInWhenVisible } from '@/components/motions/scroll-animation';
-import { R3DCard } from '@/components/common';
+import { R3DCard } from '@nw/ui/common';
 
 export function ContactSection() {
   return (

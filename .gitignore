@@ -66,6 +66,7 @@ dist
 
 # AI
 .cursor
+.qwen
 
 # IDE
 .vscode/*

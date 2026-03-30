@@ -1,6 +1,10 @@
 // Supported themes for the Storybook
 // These match the data-theme attributes defined in src/styles/theme.css
 export const STORYBOOK_THEMES = {
+  link: 'link',
+  dark: 'dark',
+  'default-link': 'default-link',
+  'default-dark': 'default-dark',
   'Fluo Light': 'fluo-light',
   'Fluo Dark': 'fluo-dark',
   'Claude Light': 'claude-light',
