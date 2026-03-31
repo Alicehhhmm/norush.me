@@ -12,7 +12,10 @@ export const ThemeToggle = ({ className }: { className?: string }) => {
 
   // 解决 SSR 主题不匹配问题
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   if (!mounted) {
@@ -70,7 +73,10 @@ export const ThemeToggleBtn = ({
   const themeOrder = ['light', 'dark'];
 
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   if (!mounted) {

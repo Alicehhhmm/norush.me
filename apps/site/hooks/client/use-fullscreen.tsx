@@ -57,11 +57,10 @@ const useFullscreen = (target: BasicTarget, options?: Options) => {
     }
   };
 
-  const onScreenfullChange = () => {
+  const onScreenfullChange = useMemoizedFn(() => {
     const fullscreen = getIsFullscreen();
-
     updateFullscreenState(fullscreen);
-  };
+  });
 
   const togglePageFullscreen = (fullscreen: boolean) => {
     const el = getTargetElement(target);
@@ -148,7 +147,7 @@ const useFullscreen = (target: BasicTarget, options?: Options) => {
     return () => {
       screenfull.off('change', onScreenfullChange);
     };
-  }, []);
+  }, [onScreenfullChange, pageFullscreen]);
 
   return [
     state,

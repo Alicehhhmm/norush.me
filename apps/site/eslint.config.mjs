@@ -9,6 +9,7 @@ export default baseConfig.concat([
   {
     ignores: [
       'pages/en/blog/**/*.{md,mdx}/**',
+      'pages/zh/demo/**/*.{md,mdx}/**',
       './components/ui/**/*',
       'public',
       'next-env.d.ts',
@@ -22,7 +23,7 @@ export default baseConfig.concat([
 
   // Type-checking
   {
-    ignores: ['**/*.{md,mdx}', '**/*.{md,mdx}/**'],
+    ignores: ['**/*.{md,mdx}', '**/*.{md,mdx}/**', '.stylelintrc.mjs'],
     languageOptions: {
       parserOptions: {
         project: './tsconfig.json',
