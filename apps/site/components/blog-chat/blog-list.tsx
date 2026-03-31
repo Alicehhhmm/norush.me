@@ -1,7 +1,8 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { BlogHeader } from '@/components/blog-chat';
 import { BlogGridCard } from '@/components/blog-chat/blog-grid-card';
@@ -22,21 +23,37 @@ type BlogListProps = {
 export const BlogList: FC<BlogListProps> = ({ data, categories }) => {
   const { posts, category } = data;
   const t = useTranslations();
+  const router = useRouter();
 
   const { frontmatter, pathname } = useGlobClientContext();
 
   const isMobile = useIsMobile();
 
-  const categoryOptions: Array<SelectOption> = categories.map(category => ({
-    value: category.key,
-    label: category.label,
-    link: category.link,
-  }));
+  // 分类选项
+  const categoryOptions: Array<SelectOption> = useMemo(
+    () =>
+      categories.map(cat => ({
+        value: cat.key,
+        label: cat.label,
+        link: cat.link,
+      })),
+    [categories]
+  );
 
-  const [selectedKey, setSelectedKey] = useState<string>(category || 'default');
+  // 当前选中的分类
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    category || 'default'
+  );
 
-  const handleTabChange = (key: string) => {
-    setSelectedKey(key);
+  // 处理分类切换
+  const handleCategoryChange = (value: string) => {
+    setSelectedCategory(value);
+    const selectedOption = categoryOptions.find(
+      option => option.value === value
+    );
+    if (selectedOption?.link) {
+      router.push(selectedOption.link);
+    }
   };
 
   const { postLayout, togglePostLayout } = useSidebarStore();
@@ -53,9 +70,9 @@ export const BlogList: FC<BlogListProps> = ({ data, categories }) => {
         <div className="hidden max-sm:block">
           <MobileSelect
             options={categoryOptions}
-            value={selectedKey}
-            onValueChange={handleTabChange}
-            placeholder="选择分类"
+            value={selectedCategory}
+            onValueChange={handleCategoryChange}
+            placeholder={t('components.blog.categorySelect.placeholder')}
             triggerClassName="h-10 px-3 py-2"
           />
         </div>

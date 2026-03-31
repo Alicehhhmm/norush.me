@@ -1,7 +1,6 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 import {
   Select,
@@ -24,9 +23,8 @@ export type SelectOption = {
 
 type MobileSelectProps = {
   options: Array<SelectOption>;
-  defaultValue?: string;
-  value?: string;
-  onValueChange?: (value: string) => void;
+  value: string;
+  onValueChange: (value: string) => void;
   label?: string;
   placeholder?: string;
   className?: string;
@@ -37,7 +35,6 @@ type MobileSelectProps = {
 
 export const MobileSelect: FC<MobileSelectProps> = ({
   options,
-  defaultValue,
   value,
   onValueChange,
   label,
@@ -48,21 +45,9 @@ export const MobileSelect: FC<MobileSelectProps> = ({
   disabled = false,
 }) => {
   const router = useRouter();
-  const [selectedValue, setSelectedValue] = useState<string>(
-    value || defaultValue || ''
-  );
-
-  useEffect(() => {
-    if (value !== undefined && value !== selectedValue) {
-      setSelectedValue(value);
-    }
-  }, [value, selectedValue]);
 
   const handleValueChange = (newValue: string) => {
-    setSelectedValue(newValue);
-    if (onValueChange) {
-      onValueChange(newValue);
-    }
+    onValueChange(newValue);
 
     const selectedOption = options.find(option => option.value === newValue);
     if (selectedOption) {
@@ -71,11 +56,7 @@ export const MobileSelect: FC<MobileSelectProps> = ({
   };
 
   return (
-    <Select
-      value={selectedValue}
-      onValueChange={handleValueChange}
-      disabled={disabled}
-    >
+    <Select value={value} onValueChange={handleValueChange} disabled={disabled}>
       <SelectTrigger
         className={cn(
           'w-full border-none bg-white shadow-xs dark:bg-neutral-900/50',

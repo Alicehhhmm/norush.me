@@ -40,7 +40,7 @@ export const ChatSidebar: FC<ChatSidebarProps> = ({ data, sidebarProps }) => {
         clearBreadcrumbs();
       }
     },
-    [data.messages?.channels]
+    [data.messages?.channels, clearBreadcrumbs]
   );
 
   const handleChannelClick = React.useCallback(
@@ -54,7 +54,7 @@ export const ChatSidebar: FC<ChatSidebarProps> = ({ data, sidebarProps }) => {
         router.push(channel.link);
       }
     },
-    [router]
+    [router, setSelectChannel, setBreadcrumbLinks]
   );
 
   return (

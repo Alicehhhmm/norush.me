@@ -26,18 +26,20 @@ export const TopLoader = ({
   const easeOutQuad = (t: number) => t * (2 - t);
 
   useEffect(() => {
-    let currentProgress = initialPosition * 100;
-    let startTime: number;
+    let startTime: number | undefined;
     let timer: NodeJS.Timeout;
 
+    // 启动新动画前先取消旧动画
+    cancelAnimationFrame(animationRef.current!);
+
     const animate = (timestamp: number) => {
-      if (!startTime) {
+      if (startTime === undefined) {
         startTime = timestamp;
+        // 设置初始进度（异步）
+        setProgress(initialPosition * 100);
       }
       const elapsed = timestamp - startTime;
-
-      // 动画时长控制
-      currentProgress = Math.min(elapsed / crawlSpeed, 1);
+      const currentProgress = Math.min(elapsed / crawlSpeed, 1);
       // 最高到95%，等待完成时再到100%
       setProgress(easeOutQuad(currentProgress) * 100);
 
@@ -46,10 +48,6 @@ export const TopLoader = ({
       }
     };
 
-    // 设置初始进度
-    setProgress(currentProgress);
-    // 启动新动画前先取消旧动画
-    cancelAnimationFrame(animationRef.current!);
     animationRef.current = requestAnimationFrame(animate);
 
     // 清理函数

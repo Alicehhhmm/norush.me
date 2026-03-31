@@ -1,7 +1,7 @@
 'use client';
 
 import { Loader2 } from 'lucide-react';
-import { memo, useRef, useEffect } from 'react';
+import { memo, useRef, useEffect, useState } from 'react';
 
 import { EmptyState } from '@/components/projects/empty-state';
 import { ProjectCard } from '@/components/projects/project-card';
@@ -32,11 +32,14 @@ export const ProjectGrid = memo(function ProjectGrid({
 }: ProjectGridProps) {
   const gridRef = useRef<HTMLDivElement>(null);
   const prevHeightRef = useRef<number>(0);
+  const [prevHeight, setPrevHeight] = useState<number>(0);
 
   // Store the grid height before loading to prevent layout shifts
   useEffect(() => {
     if (!loading && gridRef.current) {
-      prevHeightRef.current = gridRef.current.getBoundingClientRect().height;
+      const height = gridRef.current.getBoundingClientRect().height;
+      prevHeightRef.current = height;
+      setPrevHeight(height);
     }
   }, [loading]);
 
@@ -52,10 +55,7 @@ export const ProjectGrid = memo(function ProjectGrid({
         ref={gridRef}
         className="grid auto-rows-min gap-6 md:grid-cols-2 lg:grid-cols-3"
         style={{
-          minHeight:
-            prevHeightRef.current > 0
-              ? `${prevHeightRef.current}px`
-              : undefined,
+          minHeight: prevHeight > 0 ? `${prevHeight}px` : undefined,
         }}
       >
         <div className="col-span-full flex items-center justify-center py-20">
@@ -73,10 +73,7 @@ export const ProjectGrid = memo(function ProjectGrid({
       <div
         ref={gridRef}
         style={{
-          minHeight:
-            prevHeightRef.current > 0
-              ? `${prevHeightRef.current}px`
-              : undefined,
+          minHeight: prevHeight > 0 ? `${prevHeight}px` : undefined,
         }}
       >
         <EmptyState searchTerm={searchTerm} category={category} />

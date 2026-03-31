@@ -3,7 +3,7 @@
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 import { LangToggle } from '@/components/common/lang-toggle';
 import { ThemeToggle } from '@/components/common/theme-toggle';
@@ -20,7 +20,12 @@ type MobileNavProps = {
 export const MobileNav: FC<MobileNavProps> = ({ navigationList }) => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [active, setActive] = useState<string | null>('/');
+
+  // Derive active from pathname to avoid setState in effect
+  const active = useMemo(
+    () => (pathname ? stripLangPrefixPath(pathname) : '/'),
+    [pathname]
+  );
 
   const changeHidden = (hid: boolean) => {
     if (hid) {
@@ -30,11 +35,8 @@ export const MobileNav: FC<MobileNavProps> = ({ navigationList }) => {
     }
   };
 
+  // 只在 isOpen 变化时处理 body overflow
   useEffect(() => {
-    if (pathname) {
-      setActive(stripLangPrefixPath(pathname));
-    }
-
     changeHidden(isOpen);
     return () => changeHidden(false);
   }, [isOpen]);
@@ -87,10 +89,7 @@ export const MobileNav: FC<MobileNavProps> = ({ navigationList }) => {
                       'bg-accent-foreground/10 text-lime-500'
                   )}
                 >
-                  <Link
-                    href={item.link ?? '/'}
-                    onClick={() => setActive(item.link ?? '/')}
-                  >
+                  <Link href={item.link ?? '/'}>
                     <span className="tracking-tight">{item.label}</span>
                   </Link>
                 </div>

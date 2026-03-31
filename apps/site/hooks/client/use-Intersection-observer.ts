@@ -69,7 +69,9 @@ export function useIntersectionObserver<T extends Element = Element>(
 
   // Preserve latest callback without re-subscribing observer each render.
   const savedCallback = useRef(onIntersect);
-  savedCallback.current = onIntersect;
+  useEffect(() => {
+    savedCallback.current = onIntersect;
+  }, [onIntersect]);
 
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
   const [isIntersecting, setIsIntersecting] = useState(false);
@@ -104,7 +106,7 @@ export function useIntersectionObserver<T extends Element = Element>(
 
     observer.observe(target);
     return () => observer.disconnect();
-  }, [ref, root, rootMargin, JSON.stringify(threshold), once, enabled]);
+  }, [ref, root, rootMargin, threshold, once, enabled]);
 
   return [isIntersecting, entry];
 }
