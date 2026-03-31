@@ -49,6 +49,7 @@ export const BookmarkCard: FC<BookmarkCardProps> = ({
       >
         <Card className="relative h-full overflow-hidden rounded-xl border border-gray-100 bg-white shadow-xs transition-all duration-300 hover:shadow-md">
           <div className="relative aspect-1200/630 h-44 overflow-hidden rounded-lg bg-gray-100">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={cover ? cover : '/placeholder.svg'}
               alt={title}

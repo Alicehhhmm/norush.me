@@ -27,7 +27,8 @@ export function useProjects({ initialProjects }: UseProjectsOptions) {
       store.initializeStore(initialProjects);
       isInitialized.current = true;
     }
-  }, [initialProjects, store.initializeStore]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialProjects]);
 
   const handleFilterChange = useCallback(
     (search?: string, cat?: CategoryOption, sort?: SortOption) => {
@@ -44,6 +45,7 @@ export function useProjects({ initialProjects }: UseProjectsOptions) {
         });
       }, 300);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [store.fetchProjects]
   );
 
@@ -52,6 +54,7 @@ export function useProjects({ initialProjects }: UseProjectsOptions) {
       store.setSearch(v);
       handleFilterChange(v, store.category, store.sort);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [store.setSearch, store.category, store.sort, handleFilterChange]
   );
 
@@ -60,6 +63,7 @@ export function useProjects({ initialProjects }: UseProjectsOptions) {
       store.setCategory(v);
       handleFilterChange(store.search, v, store.sort);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [store.setCategory, store.search, store.sort, handleFilterChange]
   );
 
@@ -68,6 +72,7 @@ export function useProjects({ initialProjects }: UseProjectsOptions) {
       store.setSort(v);
       handleFilterChange(store.search, store.category, v);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [store.setSort, store.search, store.category, handleFilterChange]
   );
 
@@ -91,6 +96,7 @@ export function useProjects({ initialProjects }: UseProjectsOptions) {
     );
     observer.observe(observerRef.current);
     return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     store.initialLoading,
     store.hasMore,

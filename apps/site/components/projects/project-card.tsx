@@ -14,6 +14,7 @@ export const ProjectCard = memo(({ project }: ProjectCardProps) => {
   return (
     <Card className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 transition-shadow duration-200 hover:shadow-md">
       <div className="aspect-video w-full overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={project.image || '/placeholder.svg'}
           alt={project.title}

@@ -9,7 +9,7 @@ export default baseConfig.concat([
   {
     ignores: [
       'pages/en/blog/**/*.{md,mdx}/**',
-      'pages/zh/demo/**/*.{md,mdx}/**',
+      'pages/zh/demo/**/*.{md,mdx}',
       './components/ui/**/*',
       'public',
       'next-env.d.ts',
