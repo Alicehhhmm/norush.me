@@ -1,10 +1,10 @@
 'use client';
 
-import { SidebarTrigger } from '@/components/ui/sidebar';
-import { NavLogo } from '@/components/navigation';
 import { ToggleLayout, ThemeToggleBtn } from '@/components/common';
+import { NavLogo } from '@/components/navigation';
+import { SidebarTrigger } from '@/components/ui/sidebar';
 
-export function ContentHeader() {
+export const ContentHeader = () => {
   return (
     <header className="bg-background sticky top-0 z-50 flex h-[60px] items-center justify-between gap-1 p-4">
       <div className="flex items-center gap-2 px-4 max-sm:hidden">
@@ -21,4 +21,4 @@ export function ContentHeader() {
       </div>
     </header>
   );
-}
+};

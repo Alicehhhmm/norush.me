@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+
 import {
   useThemeManager,
   type ColorTheme,
@@ -69,7 +70,7 @@ const colorThemes: ReadonlyArray<{
   },
 ];
 
-export function ThemeSelector() {
+export const ThemeSelector = () => {
   const { colorTheme, updateColorTheme } = useThemeManager();
   const t = useTranslations();
 
@@ -138,4 +139,4 @@ export function ThemeSelector() {
       </div>
     </section>
   );
-}
+};

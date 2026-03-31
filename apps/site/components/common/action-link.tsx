@@ -1,14 +1,14 @@
-import { cn } from '@/lib/utils';
 import { Link } from '@/i18n/routing';
+import { cn } from '@/lib/utils';
 
-interface ActionLinkProps {
+type ActionLinkProps = {
   href: string;
   label: string;
   icon?: React.ReactNode;
   className?: string;
   target?: '_blank' | '_self';
   rel?: string;
-}
+};
 
 export const ActionLink = ({
   href,

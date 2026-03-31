@@ -1,11 +1,11 @@
 'use client';
 
-import type { ReactNode, FC } from 'react';
 import { useRef } from 'react';
 
-import type { RichTranslationValues } from 'next-intl';
-import { Logon, ChatSidebarIconMap, ChannelsIconMap } from '@/components/icons';
 import { ChatLayout } from '@/components/chat/chat-layout';
+import { Logon, ChatSidebarIconMap, ChannelsIconMap } from '@/components/icons';
+import { useFullscreen } from '@/hooks/client';
+import { useSiteNavigation } from '@/hooks/server';
 
 import type {
   ChatSidebarType,
@@ -13,18 +13,17 @@ import type {
   MessagesType,
   NavigationKeys,
 } from '@/types';
+import type { RichTranslationValues } from 'next-intl';
+import type { ReactNode, FC } from 'react';
 
-import { useFullscreen } from '@/hooks/client';
-import { useSiteNavigation } from '@/hooks/server';
-
-interface WithChatLayoutProps {
+type WithChatLayoutProps = {
   modelKey: Array<ChatModleType>;
   messages: MessagesType;
   context?: Record<string, RichTranslationValues>;
   children: ReactNode;
-}
+};
 
-const buildNavMain = (chatNavigationItems: any[]) => {
+const buildNavMain = (chatNavigationItems: Array<any>) => {
   return chatNavigationItems.map(([key, item]) => ({
     ...item,
     icon: ChatSidebarIconMap[key] ?? '',
@@ -33,9 +32,9 @@ const buildNavMain = (chatNavigationItems: any[]) => {
 };
 
 const buildChannelItems = (
-  navKeys: NavigationKeys[],
+  navKeys: Array<NavigationKeys>,
   messages: MessagesType,
-  mappedSidebarItems: any[]
+  mappedSidebarItems: Array<any>
 ) => {
   if (navKeys.includes('blog')) {
     return (messages.channels ?? []).map(item => ({
@@ -74,7 +73,7 @@ export const WithChatLayout: FC<WithChatLayoutProps> = ({
   const [isFullscreen, { toggleFullscreen }] = useFullscreen(sidebarInsetRef);
 
   // Get site navigation
-  const navKeys = modelKey as NavigationKeys[];
+  const navKeys = modelKey as Array<NavigationKeys>;
   const mappedSidebarItems = getSideNavigation(navKeys, context).map(
     ([_, { label, items }]) => ({
       groupName: label,

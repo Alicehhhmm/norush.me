@@ -1,11 +1,13 @@
 'use client';
 
-import type { ComponentProps } from 'react';
-
-import { Sidebar } from '@/components/ui/sidebar';
 import { WithPageSidebar } from '@/components/WithPageSidebar';
 
-export function BookletSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
+import type { Sidebar } from '@/components/ui/sidebar';
+import type { ComponentProps } from 'react';
+
+export const BookletSidebar = ({
+  ...props
+}: ComponentProps<typeof Sidebar>) => {
   return (
     <WithPageSidebar
       modelKey={['booklet']}
@@ -15,4 +17,4 @@ export function BookletSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
       }}
     />
   );
-}
+};

@@ -1,7 +1,7 @@
 'use client';
 
-import type { FC } from 'react';
 import { Fragment, useMemo } from 'react';
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,7 +10,9 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
+
 import type { FormattedMessage, LinkLike } from '@/types';
+import type { FC } from 'react';
 
 import BreadcrumbHomeItem from './BreadcrumbHomeItem';
 
@@ -20,7 +22,7 @@ export type BreadcrumbLinks = {
 };
 
 type BreadcrumbsProps = {
-  links: BreadcrumbLinks[];
+  links: Array<BreadcrumbLinks>;
   maxLength?: number;
   hideHome?: boolean;
   homeLinkAriaLabel?: string;

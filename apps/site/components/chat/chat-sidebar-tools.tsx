@@ -1,8 +1,7 @@
-import * as React from 'react';
-import Link from 'next/link';
 import { SettingsIcon } from 'lucide-react';
-import { ThemeToggleBtn } from '@/components/common/theme-toggle';
+import Link from 'next/link';
 
+import { ThemeToggleBtn } from '@/components/common/theme-toggle';
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -11,9 +10,11 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 
-export function ChatSidebarTools({
+import type * as React from 'react';
+
+export const ChatSidebarTools = ({
   ...props
-}: {} & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
+}: {} & React.ComponentPropsWithoutRef<typeof SidebarGroup>) => {
   return (
     <SidebarGroup {...props}>
       <SidebarGroupContent>
@@ -37,4 +38,4 @@ export function ChatSidebarTools({
       </SidebarGroupContent>
     </SidebarGroup>
   );
-}
+};

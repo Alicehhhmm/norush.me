@@ -1,25 +1,25 @@
 'use client';
 
-import type React from 'react';
 import { Loader2 } from 'lucide-react';
 import { memo, useRef, useEffect } from 'react';
 
-import { ProjectCard } from '@/components/projects/project-card';
 import { EmptyState } from '@/components/projects/empty-state';
-import type { Project } from '@/types/project';
-
+import { ProjectCard } from '@/components/projects/project-card';
 import { ProjectCardSkeleton } from '@/components/projects/project-card';
 import { DEFAULT_PAGE_SIZE } from '@/lib/constants';
 
-interface ProjectGridProps {
-  projects: Project[];
+import type { Project } from '@/types/project';
+import type React from 'react';
+
+type ProjectGridProps = {
+  projects: Array<Project>;
   loading: boolean;
   loadingMore: boolean;
   initialLoading?: boolean;
   searchTerm?: string;
   category?: string;
   observerRef?: React.RefObject<HTMLDivElement | null>;
-}
+};
 
 export const ProjectGrid = memo(function ProjectGrid({
   projects,
@@ -110,9 +110,9 @@ export const ProjectGrid = memo(function ProjectGrid({
   );
 });
 
-interface ProjectGridSkeletonProps {
+type ProjectGridSkeletonProps = {
   count?: number;
-}
+};
 
 export const ProjectGridSkeleton = memo(
   ({ count = DEFAULT_PAGE_SIZE }: ProjectGridSkeletonProps) => {

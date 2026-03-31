@@ -1,24 +1,23 @@
 'use client';
 
-import type { FC } from 'react';
-import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 
 import { BlogHeader } from '@/components/blog-chat';
-
-import { BlogPostCard } from '@/components/blog-chat/blog-post-card';
 import { BlogGridCard } from '@/components/blog-chat/blog-grid-card';
-import { MobileSelect, SelectOption } from '@/components/common/mobile-select';
-
-import { BlogPostsRSC, LinkTab } from '@/types/blog';
-
+import { BlogPostCard } from '@/components/blog-chat/blog-post-card';
+import { MobileSelect } from '@/components/common/mobile-select';
 import { useSidebarStore, useGlobClientContext } from '@/hooks';
 import { useIsMobile } from '@/hooks/use-mobile';
 
-interface BlogListProps {
+import type { SelectOption } from '@/components/common/mobile-select';
+import type { BlogPostsRSC, LinkTab } from '@/types/blog';
+import type { FC } from 'react';
+
+type BlogListProps = {
   data: BlogPostsRSC;
   categories: Array<LinkTab>;
-}
+};
 
 export const BlogList: FC<BlogListProps> = ({ data, categories }) => {
   const { posts, category } = data;
@@ -28,7 +27,7 @@ export const BlogList: FC<BlogListProps> = ({ data, categories }) => {
 
   const isMobile = useIsMobile();
 
-  const categoryOptions: SelectOption[] = categories.map(category => ({
+  const categoryOptions: Array<SelectOption> = categories.map(category => ({
     value: category.key,
     label: category.label,
     link: category.link,

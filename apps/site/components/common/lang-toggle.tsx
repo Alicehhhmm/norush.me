@@ -1,29 +1,29 @@
 'use client';
 
-import type { FC } from 'react';
-import { useTransition } from 'react';
 import { LanguagesIcon } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
-import { type Locale, useRouter, usePathname } from '@/i18n/routing';
+import { useTransition } from 'react';
 
-import { cn } from '@/lib/utils';
+import { UniversalDropdownMenu } from '@/components/common';
 import { availableLocales } from '@/core/next.locales.mjs';
+import { type Locale, useRouter, usePathname } from '@/i18n/routing';
+import { cn } from '@/lib/utils';
 
 import type { UniversalDropdownMenuProps } from '@/components/common';
-import { UniversalDropdownMenu } from '@/components/common';
+import type { FC } from 'react';
 
 type LanguageOption = {
   value: Locale;
   label: string;
 };
 
-interface LanguageSwitcherProps {
+type LanguageSwitcherProps = {
   className?: string;
   currentLanguage?: Locale;
-  options?: LanguageOption[];
+  options?: Array<LanguageOption>;
   showLabel?: boolean;
   onChange?: (lang: Locale) => void;
-}
+};
 
 export const LangToggle: FC<LanguageSwitcherProps> = ({
   className,
@@ -49,7 +49,9 @@ export const LangToggle: FC<LanguageSwitcherProps> = ({
   }
 
   const handleLocaleChange = (newLocale: Locale) => {
-    if (!pathname || newLocale === currentLanguage) return;
+    if (!pathname || newLocale === currentLanguage) {
+      return;
+    }
 
     startTransition(() => {
       replace(pathname!, { locale: newLocale });

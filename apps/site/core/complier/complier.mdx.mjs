@@ -4,9 +4,10 @@ import { compile as mdxCompile } from '@mdx-js/mdx';
 import { Fragment, jsx, jsxs } from 'react/jsx-runtime';
 import { matter } from 'vfile-matter';
 
+import { createGitHubSlugger } from '@/utils/gitHubUtils';
+
 import { createSval } from './complier.jsx.mjs';
 import { REHYPE_PLUGINS, REMARK_PLUGINS } from '../plugins/mdx.plugins.mjs';
-import { createGitHubSlugger } from '@/utils/gitHubUtils';
 
 // 定义 MDX 编译器使用的 JSX Fragment 和 JSX 运行时
 export const reactRuntime = { Fragment, jsx, jsxs };

@@ -1,21 +1,21 @@
 export type BookmarksCategory = IntlMessageKeys<'layouts.bookmarks.categories'>;
 
-export interface BookmarkItemType {
+export type BookmarkItemType = {
   title: string;
   link: string;
   domain?: string;
   desc?: string;
   cover?: string;
   icon?: string;
-  tags?: string[];
+  tags?: Array<string>;
   category?: BookmarksCategory;
-}
-
-export type SiteConfigBookmarks = {
-  [key in BookmarksCategory]?: BookmarkItemType[];
 };
 
-export interface RaindropCollection {
+export type SiteConfigBookmarks = Partial<
+  Record<BookmarksCategory, Array<BookmarkItemType>>
+>;
+
+export type RaindropCollection = {
   _id: number;
   title: string;
   count?: number;
@@ -25,19 +25,19 @@ export interface RaindropCollection {
     $id: number;
     $ref: string;
   };
-}
+};
 
-export interface RaindropItem {
+export type RaindropItem = {
   _id: number;
   title: string;
   excerpt?: string;
   link: string;
-  tags?: string[];
+  tags?: Array<string>;
   cover?: string;
   created: string;
-}
+};
 
-export interface RaindropResponse {
-  items: RaindropItem[];
+export type RaindropResponse = {
+  items: Array<RaindropItem>;
   result: boolean;
-}
+};

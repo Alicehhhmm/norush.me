@@ -1,16 +1,18 @@
 'use client';
 
-import React, { useCallback, memo, useMemo } from 'react';
-import type { ComponentType } from 'react';
-import { usePathname } from 'next/navigation';
-import { v4 as uuidv4 } from 'uuid';
 import { ChevronDown } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { useCallback, memo, useMemo } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-import { cn } from '@/lib/utils';
 import Link from '@/components/common/Link';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { useSidebarStore } from '@/hooks/use-sidebar-store';
 import { WithIcon } from '@/components/withIcon';
+import { useSidebarStore } from '@/hooks/use-sidebar-store';
+import { cn } from '@/lib/utils';
+
+import type React from 'react';
+import type { ComponentType } from 'react';
 
 // 用于判断当前路径是否激活
 const useIsActive = (href: string) => {
@@ -22,30 +24,30 @@ const useIsActive = (href: string) => {
   return isActive;
 };
 
-export interface SidebarDataType {
+export type SidebarDataType = {
   title: string;
   type?: 'link' | 'group';
   url?: string;
   icon?: string;
   items?: Array<SubMenuType>;
-}
+};
 
-interface SubMenuType {
+type SubMenuType = {
   label: string;
   href: string;
   active?: boolean;
-}
+};
 
-interface SidebarLinkProps extends SubMenuType {
+type SidebarLinkProps = {
   icon?: ComponentType;
-}
+} & SubMenuType;
 
-interface SidebarItmeProps extends SubMenuType {}
+type SidebarItmeProps = {} & SubMenuType;
 
-interface SidebarProps {
+type SidebarProps = {
   iconMap?: Record<string, React.ComponentType>;
-  sections: SidebarDataType[];
-}
+  sections: Array<SidebarDataType>;
+};
 
 export const Sidebar: React.FC<SidebarProps> = ({ sections, iconMap }) => {
   const { expandedSections, toggleSection } = useSidebarStore();

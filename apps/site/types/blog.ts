@@ -18,7 +18,7 @@ export type BlogPreviewType =
  */
 export type BlogCategory = IntlMessageKeys<'layouts.blog.categories'>;
 
-export interface BlogPost {
+export type BlogPost = {
   title: string;
   author: string;
   username?: string;
@@ -26,25 +26,25 @@ export interface BlogPost {
   categories: Array<BlogCategory>;
   date: Date;
   slug: string;
-}
+};
 
-export interface BlogData {
+export type BlogData = {
   posts: Array<BlogPost>;
   categories: Array<BlogCategory>;
-}
+};
 
-export interface BlogPagination {
+export type BlogPagination = {
   next: number | null;
   prev: number | null;
   pages: number;
   total: number;
-}
+};
 
-export interface BlogPostsRSC {
+export type BlogPostsRSC = {
   posts: Array<BlogPost>;
   pagination: BlogPagination;
   category?: string;
-}
+};
 
 export type LinkTab = {
   key: string;
@@ -52,14 +52,14 @@ export type LinkTab = {
   link: string;
 };
 
-export interface ExtendedType extends BlogPost {
+export type ExtendedType = {
   category: string;
   coverImage?: string;
   excerpt?: string;
   description?: string;
-}
+} & BlogPost;
 
-export interface ArticleColumn {
+export type ArticleColumn = {
   title: string;
   author: string;
   username?: string;
@@ -70,4 +70,4 @@ export interface ArticleColumn {
   viewCount?: number;
   commentCount?: number;
   description?: string;
-}
+};

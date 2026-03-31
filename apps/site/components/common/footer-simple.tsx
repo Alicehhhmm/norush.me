@@ -1,12 +1,11 @@
 'use client';
 
-import type { FC } from 'react';
-
+import { ThemeToggle, RightsReserved } from '@/components/common';
+import { SocialIconMap } from '@/components/icons/EnumIcons';
 import { cn } from '@/lib/utils';
 
 import type { LinkLike } from '@/types/links';
-import { SocialIconMap } from '@/components/icons/EnumIcons';
-import { ThemeToggle, RightsReserved } from '@/components/common';
+import type { FC } from 'react';
 
 type Navigation = {
   socialLinks: Array<{

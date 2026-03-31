@@ -1,11 +1,10 @@
 'use client';
 
-import type { FC } from 'react';
-import qs from 'query-string';
-import { ArrowBigDownDash } from 'lucide-react';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { ArrowBigDownDash } from 'lucide-react';
+import qs from 'query-string';
 
-import type { BookmarkItemType } from '@/types';
+import { BookmarkSkeleton, BookmarkCard } from '@/components/bookmarks';
 import {
   MasonryGrid,
   NoMore,
@@ -13,19 +12,21 @@ import {
   EmptyState,
 } from '@/components/common';
 import { ScaleInWhenVisible } from '@/components/motions/scroll-animation';
-import { BookmarkSkeleton, BookmarkCard } from '@/components/bookmarks';
 import { getDefaultLocale } from '@/i18n/lib';
 
+import type { BookmarkItemType } from '@/types';
+import type { FC } from 'react';
+
 type BookmarksPage = {
-  list: BookmarkItemType[];
+  list: Array<BookmarkItemType>;
   hasMore: boolean;
   nextPage: number;
 };
 
-interface FetchBookmarksProps {
+type FetchBookmarksProps = {
   pageParam?: number;
   pathname: string;
-}
+};
 
 async function fetchBookmarks({
   pageParam = 1,
@@ -44,7 +45,9 @@ async function fetchBookmarks({
   const res = await fetch(fetchURL);
   const ruslt = await res.json();
 
-  if (!res.ok) throw new Error('Network error');
+  if (!res.ok) {
+    throw new Error('Network error');
+  }
   return ruslt;
 }
 

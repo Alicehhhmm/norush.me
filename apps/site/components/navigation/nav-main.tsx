@@ -1,11 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useCallback } from 'react';
-import type { FC, ComponentProps } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import { useCallback } from 'react';
 
-import { type NavItemsType } from '@/types/navigation';
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -13,9 +11,12 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import { type NavItemsType } from '@/types/navigation';
+
+import type { FC, ComponentProps } from 'react';
 
 type NavMainProps = {
-  items: NavItemsType[];
+  items: Array<NavItemsType>;
   onMenuClick?: (item: NavItemsType) => void;
   SidebarGroupProps?: ComponentProps<typeof SidebarGroup>;
   SidebarMenuButtonProps?: ComponentProps<typeof SidebarMenuButton>;
@@ -32,7 +33,9 @@ export const NavMain: FC<NavMainProps> = ({
 
   const activeItem = useCallback(
     (link: string) => {
-      if (!link) return false;
+      if (!link) {
+        return false;
+      }
       return pathname === link;
     },
     [pathname]
@@ -41,7 +44,9 @@ export const NavMain: FC<NavMainProps> = ({
   const handleClick = useCallback(
     (item: NavItemsType) => {
       const url = item.link;
-      if (!url) return;
+      if (!url) {
+        return;
+      }
 
       if (item.target === '_blank') {
         window.open(url, '_blank');

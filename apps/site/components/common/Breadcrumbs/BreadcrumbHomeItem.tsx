@@ -1,6 +1,8 @@
-import type { FC, ComponentProps } from 'react';
 import { Home } from 'lucide-react';
+
 import { BreadcrumbItem, BreadcrumbLink } from '@/components/ui/breadcrumb';
+
+import type { FC, ComponentProps } from 'react';
 
 type BreadcrumbHomeLinkProps = Omit<
   ComponentProps<typeof BreadcrumbLink>,

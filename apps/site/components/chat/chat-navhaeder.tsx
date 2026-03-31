@@ -1,16 +1,16 @@
 'use client';
 
-import type { FC } from 'react';
 import { FullscreenIcon } from 'lucide-react';
+
+import { ToggleLayout, ThemeToggleBtn } from '@/components/common';
+import { NavLogo } from '@/components/navigation';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger } from '@/components/ui/sidebar';
-
-import { NavLogo } from '@/components/navigation';
-import { ToggleLayout, ThemeToggleBtn } from '@/components/common';
 import WithBreadcrumbs from '@/components/WithBreadcrumbs';
-
 import { useSidebarStore } from '@/hooks';
+
+import type { FC } from 'react';
 
 type ChatNavHeaderProps = {
   fullScreen: () => void;

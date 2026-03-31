@@ -1,15 +1,15 @@
 'use strict';
 
-import { Badge as WithBadge } from '@/components/ui/badge';
+import { GlowingBackdrop } from '@nw/ui/common';
 
-import ResponsiveGrid from '@/components/MDX/ResponsiveGrid';
 import {
   HeroSection,
   ServicesSection,
   ProjectsSection,
   ContactSection,
 } from '@/components/home';
-import { GlowingBackdrop } from '@nw/ui/common';
+import ResponsiveGrid from '@/components/MDX/ResponsiveGrid';
+import { Badge as WithBadge } from '@/components/ui/badge';
 
 /**
  * 所有需要传递给MDX的React（HOC）组件的完整列表
@@ -18,11 +18,11 @@ import { GlowingBackdrop } from '@nw/ui/common';
  */
 export const mdxComponents = {
   // HOC for providing Badge Data
-  WithBadge: WithBadge,
-  ResponsiveGrid: ResponsiveGrid,
-  HeroSection: HeroSection,
-  ServicesSection: ServicesSection,
-  ProjectsSection: ProjectsSection,
-  ContactSection: ContactSection,
-  GlowingBackdrop: GlowingBackdrop,
+  WithBadge,
+  ResponsiveGrid,
+  HeroSection,
+  ServicesSection,
+  ProjectsSection,
+  ContactSection,
+  GlowingBackdrop,
 };

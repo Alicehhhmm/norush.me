@@ -17,27 +17,27 @@ export type ChatModleType =
   | 'design-chat'
   | 'bookmarks-chat';
 
-export interface ChatNavItemType extends NavItemsType {}
+export type ChatNavItemType = {} & NavItemsType;
 
-export type ChatNavItemsType = ChatNavItemType[];
+export type ChatNavItemsType = Array<ChatNavItemType>;
 
-export interface ChannelType extends LinkTab {
+export type ChannelType = {
   link: string;
   label: string;
   icon?: RIconType;
   desc?: string;
   count?: number;
   isActive?: boolean;
-}
+} & LinkTab;
 
-export interface MessagesType {
-  bookmarks?: BookmarkItemType[];
-  channels?: ChannelType[];
-}
+export type MessagesType = {
+  bookmarks?: Array<BookmarkItemType>;
+  channels?: Array<ChannelType>;
+};
 
 export type ChatSidebarType = {
   user: UserType;
-  teams: TeamType[];
+  teams: Array<TeamType>;
   navMain: ChatNavItemsType;
   messages: MessagesType;
 };

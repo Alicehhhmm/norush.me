@@ -1,23 +1,27 @@
-import { FC } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { Link } from '@/components/common';
 
-export interface PaginationItem {
+import { Link } from '@/components/common';
+import { cn } from '@/lib/utils';
+
+import type { FC } from 'react';
+
+export type PaginationItem = {
   href: string;
   title: string;
-}
+};
 
-interface ArticlePaginationProps {
+type ArticlePaginationProps = {
   previous?: PaginationItem;
   next?: PaginationItem;
-}
+};
 
 export const ArticlePagination: FC<ArticlePaginationProps> = ({
   previous,
   next,
 }) => {
-  if (!previous && !next) return null;
+  if (!previous && !next) {
+    return null;
+  }
 
   const baseClass = `
         flex h-full items-center gap-2

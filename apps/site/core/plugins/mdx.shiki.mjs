@@ -1,9 +1,9 @@
 'use strict';
 
-import { cn as classNames } from '@/lib/utils';
 import { toString } from 'hast-util-to-string';
 import { SKIP, visit } from 'unist-util-visit';
 
+import { cn as classNames } from '@/lib/utils';
 import { highlightToHast } from '@/utils/getHighlighter';
 
 // <pre> 元素的类名前缀,用于标识当前语言

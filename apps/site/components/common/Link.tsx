@@ -1,6 +1,6 @@
-import type { FC, ComponentProps } from 'react';
-
 import { Link as LocalizedLink } from '@/i18n/routing';
+
+import type { FC, ComponentProps } from 'react';
 
 type LinkProps = Omit<ComponentProps<typeof LocalizedLink>, 'href'> & {
   href?: string;

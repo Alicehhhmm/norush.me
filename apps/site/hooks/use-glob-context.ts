@@ -3,6 +3,7 @@
 import { useContext } from 'react';
 
 import { MatterContext } from '@/components/providers/matter-provider';
+
 import type { ClientSharedServerContext } from '@/types/server';
 
 export const useGlobClientContext = (): ClientSharedServerContext => {

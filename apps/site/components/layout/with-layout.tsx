@@ -1,6 +1,3 @@
-import type { FC, PropsWithChildren } from 'react';
-import type { Layouts } from '@/types/layouts';
-
 import {
   DefaultLayout,
   HomeLayout,
@@ -9,9 +6,11 @@ import {
   ProjectLayout,
   BookletLayout,
 } from '@/components/layout';
-
 import BlogLayout from '@/components/layout/blog-layout';
 import BookmarkLayout from '@/components/layout/bookmark-layout';
+
+import type { Layouts } from '@/types/layouts';
+import type { FC, PropsWithChildren } from 'react';
 
 const layouts = {
   home: HomeLayout,

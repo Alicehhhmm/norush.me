@@ -1,19 +1,18 @@
 import { getTranslations } from 'next-intl/server';
 
-import { Toaster } from '@/components/ui/sonner';
 import { TopLoader } from '@/components/common';
-import { TailwindIndicator } from '@/components/tailwind-indicator';
 import {
   RThemeProvider,
   LocaleProvider,
   QueryProvider,
 } from '@/components/providers';
-
-import { cn } from '@/lib/utils';
+import { TailwindIndicator } from '@/components/tailwind-indicator';
+import { Toaster } from '@/components/ui/sonner';
+import { siteConfig } from '@/config/next.json.mjs';
 import { IBM_PLEX_MONO, OPEN_SANS } from '@/lib/next.fonts';
 
 // TODO: Use dynamic routing configuration uniformly
-import { siteConfig } from '@/config/next.json.mjs';
+import { cn } from '@/lib/utils';
 
 import '#site/styles/globals.css';
 

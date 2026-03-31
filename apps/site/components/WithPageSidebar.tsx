@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-import type { FC, ComponentProps } from 'react';
-
-import type { RichTranslationValues } from 'next-intl';
-import { useLocale } from 'next-intl';
 import { usePathname } from 'next/navigation';
+import { useLocale } from 'next-intl';
+import { useState } from 'react';
 
+import { ChatSidebarTools } from '@/components/chat/chat-sidebar-tools';
+import { ChatSidebarIconMap } from '@/components/icons';
+import { NavTeam, NavMain, NavUser } from '@/components/navigation';
 import {
   Sidebar,
   SidebarContent,
@@ -14,20 +14,18 @@ import {
   SidebarHeader,
   SidebarRail,
 } from '@/components/ui/sidebar';
-import { NavTeam, NavMain, NavUser } from '@/components/navigation';
-import { ChatSidebarIconMap } from '@/components/icons';
-import { ChatSidebarTools } from '@/components/chat/chat-sidebar-tools';
-
-import type { TeamType, NavigationKeys, PageSidebarType } from '@/types';
-
 import { useSiteNavigation } from '@/hooks/server';
 import { getCurrentPathname } from '@/lib/next-router';
 
-interface WithPageSidebarProps {
+import type { TeamType, NavigationKeys, PageSidebarType } from '@/types';
+import type { RichTranslationValues } from 'next-intl';
+import type { FC, ComponentProps } from 'react';
+
+type WithPageSidebarProps = {
   modelKey: Array<NavigationKeys>;
   sidebarProps?: ComponentProps<typeof Sidebar>;
   context?: Record<string, RichTranslationValues>;
-}
+};
 
 export const WithPageSidebar: FC<WithPageSidebarProps> = ({
   modelKey,
@@ -39,8 +37,8 @@ export const WithPageSidebar: FC<WithPageSidebarProps> = ({
 
   const { getSideNavigation, chatNavigationItems } = useSiteNavigation();
 
-  let navKeys = (modelKey as Array<NavigationKeys>) || [];
-  let currentPathname = getCurrentPathname(locale, pathname);
+  const navKeys = (modelKey as Array<NavigationKeys>) || [];
+  const currentPathname = getCurrentPathname(locale, pathname);
 
   // get side navigation items based on model keys
   // const mappedSidebarItems = getSideNavigation(navKeys, context).map(([_, { label, items }]) => ({

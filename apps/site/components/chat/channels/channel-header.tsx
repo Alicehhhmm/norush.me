@@ -1,15 +1,16 @@
-import type { FC } from 'react';
 import { EllipsisVertical } from 'lucide-react';
 
 import { SidebarHeader } from '@/components/ui/sidebar';
 
 import type { ChatSidebarType } from '@/types/chat';
+import type { FC } from 'react';
+
 import { ChatSidebarSearch } from '../chat-sidebar-search';
 
-interface ChannelsHeaderProps {
+type ChannelsHeaderProps = {
   activeItem: ChatSidebarType['navMain'][0];
   showSearch?: boolean;
-}
+};
 
 export const ChannelsHeader: FC<ChannelsHeaderProps> = ({
   activeItem,

@@ -1,5 +1,3 @@
-import type { FC } from 'react';
-
 import {
   SidebarContent,
   SidebarGroup,
@@ -7,12 +5,14 @@ import {
 } from '@/components/ui/sidebar';
 
 import type { ChannelType } from '@/types/chat';
+import type { FC } from 'react';
+
 import { SidebarChannelCard } from './channel-card';
 
-interface ChannelsContentProps {
-  channels: ChannelType[];
+type ChannelsContentProps = {
+  channels: Array<ChannelType>;
   onChannelClick?: (channel: ChannelType) => void;
-}
+};
 
 export const ChannelsContent: FC<ChannelsContentProps> = ({
   channels,

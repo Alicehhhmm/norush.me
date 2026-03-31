@@ -45,14 +45,14 @@ import { useEffect, useRef, useState } from 'react';
  * ```
  */
 
-interface OptionsType extends IntersectionObserverInit {
+type OptionsType = {
   /** Stop observing after first intersection */
   once: boolean;
   /** Disable observer without detaching hook logic */
   enabled: boolean;
   /** Fired after internal state is updated */
   onIntersect?: (entry: IntersectionObserverEntry) => void;
-}
+} & IntersectionObserverInit;
 
 export function useIntersectionObserver<T extends Element = Element>(
   ref: React.RefObject<T>,
@@ -75,11 +75,17 @@ export function useIntersectionObserver<T extends Element = Element>(
   const [isIntersecting, setIsIntersecting] = useState(false);
 
   useEffect(() => {
-    if (!enabled) return;
-    if (typeof IntersectionObserver === 'undefined') return;
+    if (!enabled) {
+      return;
+    }
+    if (typeof IntersectionObserver === 'undefined') {
+      return;
+    }
 
     const target = ref.current;
-    if (!target) return;
+    if (!target) {
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([e]) => {

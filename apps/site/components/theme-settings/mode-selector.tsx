@@ -1,11 +1,12 @@
 'use client';
 
-import { useThemeManager, type Mode } from '@/hooks/client/use-theme-manager';
 import { Sun, Moon, Monitor } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+
+import { useThemeManager, type Mode } from '@/hooks/client/use-theme-manager';
 import { cn } from '@/lib/utils';
 
-const modes: { id: Mode; name: Mode; icon: typeof Sun }[] = [
+const modes: Array<{ id: Mode; name: Mode; icon: typeof Sun }> = [
   {
     id: 'light',
     name: 'light',
@@ -23,7 +24,7 @@ const modes: { id: Mode; name: Mode; icon: typeof Sun }[] = [
   },
 ];
 
-export function ModeSelector() {
+export const ModeSelector = () => {
   const { mode, updateMode } = useThemeManager();
 
   const t = useTranslations();
@@ -80,4 +81,4 @@ export function ModeSelector() {
       </div>
     </div>
   );
-}
+};

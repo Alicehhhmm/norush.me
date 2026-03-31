@@ -1,19 +1,21 @@
 'use client';
 
-import { createStore } from 'zustand/vanilla';
 import { immer } from 'zustand/middleware/immer';
+import { createStore } from 'zustand/vanilla';
+
+import { getDefaultLocale } from '@/i18n/lib';
+import { DEFAULT_PAGE_SIZE, DEMO_LOADING_DELAY } from '@/lib/constants';
+
 import type {
   Project,
   ProjectsResponse,
   CategoryOption,
   SortOption,
 } from '@/types/project';
-import { DEFAULT_PAGE_SIZE, DEMO_LOADING_DELAY } from '@/lib/constants';
-import { getDefaultLocale } from '@/i18n/lib';
 
-export interface ProjectsState {
+export type ProjectsState = {
   // Data
-  projects: Project[];
+  projects: Array<Project>;
   hasMore: boolean;
   total: number;
 
@@ -32,8 +34,8 @@ export interface ProjectsState {
   error: string | null;
 
   // Actions
-  setProjects: (projects: Project[]) => void;
-  appendProjects: (projects: Project[]) => void;
+  setProjects: (projects: Array<Project>) => void;
+  appendProjects: (projects: Array<Project>) => void;
   setHasMore: (hasMore: boolean) => void;
   setTotal: (total: number) => void;
   setLoading: (loading: boolean) => void;
@@ -48,7 +50,7 @@ export interface ProjectsState {
   // Fetch actions
   fetchProjects: (reset?: boolean) => Promise<void>;
   initializeStore: (initialProjects: ProjectsResponse) => void;
-}
+};
 
 export const createProjectsStore = () =>
   createStore<ProjectsState>()(
@@ -165,13 +167,15 @@ export const createProjectsStore = () =>
 
           const response = await fetch(fetchURL);
 
-          if (!response.ok)
+          if (!response.ok) {
             throw new Error(`Error fetching projects: ${response.status}`);
+          }
 
           const data: ProjectsResponse = await response.json();
           set(s => {
-            if (reset) s.projects = data.projects;
-            else {
+            if (reset) {
+              s.projects = data.projects;
+            } else {
               const existingIds = new Set(s.projects.map(p => p.id));
               const newProjects = data.projects.filter(
                 p => !existingIds.has(p.id)

@@ -1,10 +1,11 @@
 'use client';
 
-import type { FC, PropsWithChildren } from 'react';
+import { BaseCodeBox } from '@nw/ui/mdx';
 import { useTranslations } from 'next-intl';
 
 import { cn } from '@/lib/utils';
-import { BaseCodeBox } from '@nw/ui/mdx';
+
+import type { FC, PropsWithChildren } from 'react';
 
 type CodeBoxProps = {
   language: string;

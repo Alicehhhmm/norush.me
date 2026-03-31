@@ -1,9 +1,10 @@
-import type { FC } from 'react';
-
 import { HexagonGrid, Kail } from '@nw/ui/icons';
-import type { BlogCategory } from '@/types/blog';
 
 import { cn } from '@/lib/utils';
+
+import type { BlogCategory } from '@/types/blog';
+import type { FC } from 'react';
+
 import styles from './index.module.css';
 
 type ArticleCoverProps = {

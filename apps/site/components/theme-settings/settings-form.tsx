@@ -1,12 +1,14 @@
 'use client';
 
-import { useAppStore } from '@/stores/theme-store';
-import { ThemeSelector } from './theme-selector';
-import { ModeSelector } from './mode-selector';
-import { LangToggle } from '@/components/common';
 import { useTranslations } from 'next-intl';
 
-export function SettingsForm() {
+import { LangToggle } from '@/components/common';
+import { useAppStore } from '@/stores/theme-store';
+
+import { ModeSelector } from './mode-selector';
+import { ThemeSelector } from './theme-selector';
+
+export const SettingsForm = () => {
   const {
     language,
     setLanguage,
@@ -43,4 +45,4 @@ export function SettingsForm() {
       {/* TODO: Font Size */}
     </div>
   );
-}
+};

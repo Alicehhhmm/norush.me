@@ -1,7 +1,8 @@
 import 'server-only';
 
-import { z } from 'zod';
 import qs from 'query-string';
+import { z } from 'zod';
+
 import type {
   RaindropItem,
   RaindropCollection,
@@ -60,8 +61,10 @@ async function fetchFromRaindrop<T = unknown>(url: string): Promise<T | null> {
     }
 
     return await res.json();
-  } catch (error: any) {
-    console.error(`[RAINDROP_ERROR]: Raindrop fetch failed: ${error.message}`);
+  } catch (error: unknown) {
+    console.error(
+      `[RAINDROP_ERROR]: Raindrop fetch failed: ${(error as Error).message}`
+    );
     return null;
   }
 }
@@ -71,11 +74,11 @@ async function fetchFromRaindrop<T = unknown>(url: string): Promise<T | null> {
  * @returns Promise<Array<RaindropCollection> | null>
  * @see https://developer.raindrop.io/v1/collections/methods#get-root-collections
  */
-export async function getBookmarkCollections(): Promise<
-  RaindropCollection[] | null
-> {
+export async function getBookmarkCollections(): Promise<Array<RaindropCollection> | null> {
   const url = qs.stringifyUrl({ url: `${RAINDROP_API_URL}/collections` });
-  const data = await fetchFromRaindrop<{ items: RaindropCollection[] }>(url);
+  const data = await fetchFromRaindrop<{ items: Array<RaindropCollection> }>(
+    url
+  );
   return data?.items ?? null;
 }
 
@@ -84,13 +87,13 @@ export async function getBookmarkCollections(): Promise<
  * @returns Promise<Array<RaindropCollection> | null>
  * @see https://developer.raindrop.io/v1/collections/methods#get-child-collections
  */
-export async function getSubCollections(): Promise<
-  RaindropCollection[] | null
-> {
+export async function getSubCollections(): Promise<Array<RaindropCollection> | null> {
   const url = qs.stringifyUrl({
     url: `${RAINDROP_API_URL}/collections/childrens`,
   });
-  const data = await fetchFromRaindrop<{ items: RaindropCollection[] }>(url);
+  const data = await fetchFromRaindrop<{ items: Array<RaindropCollection> }>(
+    url
+  );
   return data?.items ?? null;
 }
 
@@ -116,7 +119,7 @@ export async function getCollectionById(
  */
 export async function getBookmarksByCollection(
   query: unknown
-): Promise<RaindropItem[] | null> {
+): Promise<Array<RaindropItem> | null> {
   const parsed = RaindropQuerySchema.parse(query);
 
   const url = qs.stringifyUrl({

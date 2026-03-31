@@ -6,17 +6,17 @@ import { useEffect, useRef, useState } from 'react';
 import { Progress } from '@/components/ui/progress';
 import { cn } from '@/lib/utils';
 
-interface TopLoaderProps {
+type TopLoaderProps = {
   color?: string;
   crawlSpeed?: number;
   initialPosition?: number;
-}
+};
 
-export function TopLoader({
+export const TopLoader = ({
   color = '#000',
   crawlSpeed = 800,
   initialPosition = 0.08,
-}: TopLoaderProps) {
+}: TopLoaderProps) => {
   const [progress, setProgress] = useState(0);
   const animationRef = useRef<number>(null);
   const pathname = usePathname();
@@ -31,7 +31,9 @@ export function TopLoader({
     let timer: NodeJS.Timeout;
 
     const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
+      if (!startTime) {
+        startTime = timestamp;
+      }
       const elapsed = timestamp - startTime;
 
       // 动画时长控制
@@ -59,7 +61,9 @@ export function TopLoader({
     };
   }, [pathname, searchParams, crawlSpeed, initialPosition]);
 
-  if (progress === 0) return null;
+  if (progress === 0) {
+    return null;
+  }
 
   return (
     <div className="fixed top-0 left-0 z-9999 w-full">
@@ -78,4 +82,4 @@ export function TopLoader({
       />
     </div>
   );
-}
+};

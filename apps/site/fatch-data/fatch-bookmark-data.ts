@@ -1,12 +1,10 @@
 import { getTranslations } from 'next-intl/server';
-import type { BookmarksCategory, BookmarkItemType, ChannelType } from '@/types';
 
 import {
   getBookmarksData,
   provideBookmarksCategories,
   getBookmarksByCategory,
 } from '@/core/providers/bookmarks.data';
-
 import { DEFAULT_RAINDROP_COLLECTIONS_ID } from '@/lib/constants';
 import {
   getBookmarkCollections,
@@ -14,10 +12,12 @@ import {
   getBookmarksByCollection,
 } from '@/lib/raindrop.io';
 
+import type { BookmarksCategory, BookmarkItemType, ChannelType } from '@/types';
+
 /** 获取指定分类下的书签（本地） */
 export const fetchSiteBookmarks = async (
   slug: string
-): Promise<BookmarkItemType[]> => {
+): Promise<Array<BookmarkItemType>> => {
   const [, , category = 'all', , page = 1] = slug.split('/');
 
   const { list } = await getBookmarksData(category as BookmarksCategory, page);
@@ -34,9 +34,9 @@ export const fetchSiteBookmarks = async (
 };
 
 /** 获取所有本地书签分类频道列表 */
-export const fetchAllSiteChannels = async (): Promise<ChannelType[]> => {
+export const fetchAllSiteChannels = async (): Promise<Array<ChannelType>> => {
   const t = await getTranslations();
-  const categories: BookmarksCategory[] = provideBookmarksCategories();
+  const categories: Array<BookmarksCategory> = provideBookmarksCategories();
 
   return Promise.all(
     categories.map(async category => {
@@ -56,8 +56,8 @@ export const fetchAllSiteChannels = async (): Promise<ChannelType[]> => {
 
 /** 获取符合本地分类的 Raindrop 子集合 */
 const fetchMatchedCollections = async (
-  siteChannels: ChannelType[]
-): Promise<ChannelType[]> => {
+  siteChannels: Array<ChannelType>
+): Promise<Array<ChannelType>> => {
   const allCollections = await getBookmarkCollections();
   const subCollections = await getSubCollections();
 
@@ -81,7 +81,7 @@ const fetchMatchedCollections = async (
 /** 获取某个 Raindrop 频道下的书签 */
 const fetchRaindropBookmarks = async (
   collectionId: string
-): Promise<BookmarkItemType[]> => {
+): Promise<Array<BookmarkItemType>> => {
   const raw = await getBookmarksByCollection({ collectionId });
   return (raw ?? []).map(item => ({
     _id: `${item._id}`,
@@ -94,9 +94,9 @@ const fetchRaindropBookmarks = async (
 
 /** 合并本地 + 远程频道列表 */
 const mergeChannels = (
-  local: ChannelType[],
-  remote: ChannelType[]
-): ChannelType[] => {
+  local: Array<ChannelType>,
+  remote: Array<ChannelType>
+): Array<ChannelType> => {
   const mapChannel = new Map<string, ChannelType>();
 
   for (const ch of local) {
@@ -131,7 +131,7 @@ export const loadBookmarks = async (slug: string) => {
     combinedBookmarks = [...combinedBookmarks, ...remoteBookmarks];
   }
 
-  let channels = mergeChannels(siteChannels, remoteChannels);
+  const channels = mergeChannels(siteChannels, remoteChannels);
 
   return {
     bookmarks: combinedBookmarks,

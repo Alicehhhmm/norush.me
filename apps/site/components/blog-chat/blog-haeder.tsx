@@ -3,11 +3,11 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-interface BlogHeaderProps {
+type BlogHeaderProps = {
   cover?: string;
   title?: string;
   description?: string;
-}
+};
 
 // 动画配置常量
 const ANIMATION = {

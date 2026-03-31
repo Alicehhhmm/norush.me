@@ -1,21 +1,21 @@
 'use client';
 
-import Link from 'next/link';
-import type { FC } from 'react';
-import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
-import { cn } from '@/lib/utils';
-import { stripLangPrefixPath } from '@/utils/paths';
 import { LangToggle } from '@/components/common/lang-toggle';
 import { ThemeToggle } from '@/components/common/theme-toggle';
+import { cn } from '@/lib/utils';
+import { stripLangPrefixPath } from '@/utils/paths';
 
 import type { MappedNavigationEntry } from '@/types/navigation';
+import type { FC } from 'react';
 
-interface MobileNavProps {
+type MobileNavProps = {
   navigationList: Array<MappedNavigationEntry & { key: string }>;
-}
+};
 
 export const MobileNav: FC<MobileNavProps> = ({ navigationList }) => {
   const pathname = usePathname();

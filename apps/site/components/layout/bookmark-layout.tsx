@@ -1,9 +1,9 @@
-import type { FC, PropsWithChildren } from 'react';
-import { WithChatLayout } from '@/components/WithChatLayout';
 import { BookmarkList } from '@/components/bookmarks';
-
+import { WithChatLayout } from '@/components/WithChatLayout';
 import { getGlobClientContext } from '@/core/server';
 import { loadBookmarks } from '@/fatch-data/fatch-bookmark-data';
+
+import type { FC, PropsWithChildren } from 'react';
 
 const BookmarkLayout: FC<PropsWithChildren> = async ({ children }) => {
   const { pathname } = getGlobClientContext();

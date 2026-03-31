@@ -1,16 +1,18 @@
 'use client';
 
 import { memo } from 'react';
-import type { ReactNode } from 'react';
-import { ProjectGrid } from '@/components/projects/project-grid';
-import { ProjectFilters } from '@/components/projects/project-filters';
-import { useProjects } from '@/hooks/use-projects';
-import type { ProjectsResponse } from '@/types/project';
 
-interface ContentMainProps {
+import { ProjectFilters } from '@/components/projects/project-filters';
+import { ProjectGrid } from '@/components/projects/project-grid';
+import { useProjects } from '@/hooks/use-projects';
+
+import type { ProjectsResponse } from '@/types/project';
+import type { ReactNode } from 'react';
+
+type ContentMainProps = {
   children: ReactNode;
   initialProjects: ProjectsResponse;
-}
+};
 
 export const ContentMain = memo(
   ({ children, initialProjects }: ContentMainProps) => {

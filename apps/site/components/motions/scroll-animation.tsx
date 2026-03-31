@@ -9,11 +9,11 @@ type FadeInWhenVisibleProps = {
   className?: string;
 };
 
-export function FadeInWhenVisible({
+export const FadeInWhenVisible = ({
   children,
   delay = 0,
   className = '',
-}: FadeInWhenVisibleProps) {
+}: FadeInWhenVisibleProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -25,13 +25,13 @@ export function FadeInWhenVisible({
       {children}
     </motion.div>
   );
-}
+};
 
-export function ScaleInWhenVisible({
+export const ScaleInWhenVisible = ({
   children,
   delay = 0,
   className = '',
-}: FadeInWhenVisibleProps) {
+}: FadeInWhenVisibleProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
@@ -43,15 +43,15 @@ export function ScaleInWhenVisible({
       {children}
     </motion.div>
   );
-}
+};
 
-export function ParallaxSection({
+export const ParallaxSection = ({
   children,
   className = '',
 }: {
   children: ReactNode;
   className?: string;
-}) {
+}) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -65,4 +65,4 @@ export function ParallaxSection({
       {children}
     </motion.div>
   );
-}
+};

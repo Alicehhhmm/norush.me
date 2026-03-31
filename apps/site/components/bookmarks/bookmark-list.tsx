@@ -1,16 +1,17 @@
 'use client';
 
-import type { FC } from 'react';
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
-import type { BookmarkItemType } from '@/types';
 import { BookmarkSkeleton, BookmarkItems } from '@/components/bookmarks';
 
-interface BookmarkListProps {
-  initialData: BookmarkItemType[];
+import type { BookmarkItemType } from '@/types';
+import type { FC } from 'react';
+
+type BookmarkListProps = {
+  initialData: Array<BookmarkItemType>;
   pathname: string;
-}
+};
 
 export const BookmarkList: FC<BookmarkListProps> = ({
   pathname,

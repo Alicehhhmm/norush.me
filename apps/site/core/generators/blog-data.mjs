@@ -1,8 +1,8 @@
 'use strict';
 
 import { createReadStream } from 'node:fs';
-import { createInterface } from 'node:readline';
 import { basename, extname, join } from 'node:path';
+import { createInterface } from 'node:readline';
 
 import graymatter from 'gray-matter';
 

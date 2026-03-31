@@ -1,11 +1,12 @@
-import React from 'react';
+import { SiteHeader } from '@/components/theme-settings/site-header';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { WithPageSidebar } from '@/components/WithPageSidebar';
-import { SiteHeader } from '@/components/theme-settings/site-header';
 
-interface MainLayoutProps {
+import type React from 'react';
+
+type MainLayoutProps = {
   children: React.ReactNode;
-}
+};
 
 const SettingRootLayout = async ({ children }: MainLayoutProps) => {
   return (

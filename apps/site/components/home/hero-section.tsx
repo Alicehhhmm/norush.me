@@ -1,19 +1,19 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
 import { Download, Github, Linkedin, Instagram, Twitter } from 'lucide-react';
+import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import {
   TextAnimation,
   AnimatedWord,
   TypedText,
 } from '@/components/motions/text-animation';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 
-export function HeroSection() {
+export const HeroSection = () => {
   const t = useTranslations();
 
   const skills = [
@@ -152,4 +152,4 @@ export function HeroSection() {
       </div>
     </section>
   );
-}
+};

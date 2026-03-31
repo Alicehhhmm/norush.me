@@ -1,6 +1,6 @@
 import 'next-intl';
-import enMessages from './messages/en.json';
-import zhMessages from './messages/zh.json';
+import type enMessages from './messages/en.json';
+import type zhMessages from './messages/zh.json';
 
 // 自动生成基础类型
 type baseMessages = typeof zhMessages;
@@ -9,14 +9,14 @@ type Namespace = keyof DeepMessages;
 
 // 扩展模块类型
 declare module 'next-intl' {
-  interface IntlMessages {
+  type IntlMessages = {
     common: DeepMessages['common'];
     system: DeepMessages['system'];
     HomePage: DeepMessages['HomePage'];
 
     // 动态模块支持（新增模块自动合并）
     [K in Namespace]: DeepMessages[K];
-  }
+  };
 }
 
 export type LocaleType = 'en' | 'zh';

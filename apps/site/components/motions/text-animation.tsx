@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+
 import type { ReactNode } from 'react';
 
 type TextAnimationProps = {
@@ -9,24 +10,24 @@ type TextAnimationProps = {
   className?: string;
 };
 
-export function TextAnimation({
+export const TextAnimation = ({
   children,
   delay = 0,
   className = '',
-}: TextAnimationProps) {
+}: TextAnimationProps) => {
   return (
     <motion.div
       className={className}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: delay }}
+      transition={{ duration: 0.5, delay }}
     >
       {children}
     </motion.div>
   );
-}
+};
 
-export function AnimatedWord({ children, delay = 0 }: TextAnimationProps) {
+export const AnimatedWord = ({ children, delay = 0 }: TextAnimationProps) => {
   const words = Array.isArray(children) ? children : [children];
 
   return (
@@ -49,9 +50,9 @@ export function AnimatedWord({ children, delay = 0 }: TextAnimationProps) {
       ))}
     </motion.span>
   );
-}
+};
 
-export function TypedText({
+export const TypedText = ({
   text,
   delay = 0,
   className = '',
@@ -59,7 +60,7 @@ export function TypedText({
   text: string;
   delay?: number;
   className?: string;
-}) {
+}) => {
   const textArray = text.split('');
 
   return (
@@ -81,4 +82,4 @@ export function TypedText({
       ))}
     </motion.span>
   );
-}
+};

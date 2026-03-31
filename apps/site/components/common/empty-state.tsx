@@ -1,5 +1,6 @@
-import type { FC, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
+
+import type { FC, ReactNode } from 'react';
 
 /* ------------------------------------------------------------------ */
 /* 预置场景                                                         */
@@ -50,14 +51,14 @@ const VARIANT_MAP: Record<
 /* ------------------------------------------------------------------ */
 /* Props 声明                                                       */
 /* ------------------------------------------------------------------ */
-interface EmptyStateProps {
+type EmptyStateProps = {
   variant?: Variant;
   icon?: ReactNode;
   title?: string;
   description?: string;
   action?: ReactNode;
   className?: string;
-}
+};
 
 /**
  * <EmptyState />

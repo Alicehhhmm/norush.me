@@ -1,16 +1,17 @@
 'use client';
 
 import { memo } from 'react';
-import { Badge } from '@/components/ui/badge';
 
+import { Badge } from '@/components/ui/badge';
 import { CATEGORIES } from '@/lib/constants';
+
 import type { CategoryOption } from '@/types/project';
 
-interface CategoryFilterProps {
+type CategoryFilterProps = {
   activeCategory: CategoryOption;
   onChange: (category: CategoryOption) => void;
   className?: string;
-}
+};
 
 export const CategoryFilter = memo(
   ({ activeCategory, onChange, className = '' }: CategoryFilterProps) => {

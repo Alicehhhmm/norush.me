@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useTheme } from 'next-themes';
 import { Monitor, Moon, Sun, Laptop } from 'lucide-react';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+
 import { cn } from '@/lib/utils';
 
 export const ThemeToggle = ({ className }: { className?: string }) => {
@@ -55,10 +56,10 @@ export const ThemeToggle = ({ className }: { className?: string }) => {
   );
 };
 
-interface ThemeToggleBtnProps {
+type ThemeToggleBtnProps = {
   className?: string;
   IconClassname?: string;
-}
+};
 
 export const ThemeToggleBtn = ({
   className,

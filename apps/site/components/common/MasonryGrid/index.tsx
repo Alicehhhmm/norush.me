@@ -1,7 +1,9 @@
-import type { FC, PropsWithChildren } from 'react';
-import { memo, Children } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { memo, Children } from 'react';
+
 import { cn } from '@/lib/utils';
+
+import type { FC, PropsWithChildren } from 'react';
 
 const masonryGridVariants = cva('w-full', {
   variants: {
@@ -31,10 +33,10 @@ const masonryGridVariants = cva('w-full', {
   },
 });
 
-export interface MasonryGridProps
-  extends PropsWithChildren, VariantProps<typeof masonryGridVariants> {
+export type MasonryGridProps = {
   className?: string;
-}
+} & PropsWithChildren &
+  VariantProps<typeof masonryGridVariants>;
 
 const MasonryGrid: FC<MasonryGridProps> = memo(
   ({ children, className, columns, gap, padding }) => {

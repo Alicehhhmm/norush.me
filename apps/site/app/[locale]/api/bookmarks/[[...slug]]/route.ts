@@ -1,16 +1,19 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
+
 import { loadBookmarks } from '@/fatch-data/fatch-bookmark-data';
 import { DEFAULT_PAGE_SIZE } from '@/lib/constants';
 
+import type { NextRequest } from 'next/server';
+
 export async function GET(
   req: NextRequest,
-  contextPromise: { params: Promise<{ slug?: string[] }> }
+  contextPromise: { params: Promise<{ slug?: Array<string> }> }
 ) {
   try {
     const { slug } = await contextPromise.params;
 
     // 将 string | string[] | undefined 转换为 string[]
-    const slugParts = [slug].flat().filter(Boolean) as string[];
+    const slugParts = [slug].flat().filter(Boolean) as Array<string>;
 
     const pathname =
       slugParts.length > 0 ? `/bookmarks/${slugParts.join('/')}` : '/bookmarks';

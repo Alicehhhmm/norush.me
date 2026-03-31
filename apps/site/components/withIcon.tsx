@@ -1,13 +1,15 @@
-import React, { FC, ComponentType } from 'react';
+import React from 'react';
+
+import type { FC, ComponentType } from 'react';
 
 type IconType = ComponentType<{ className?: string }>;
 
-interface WithIconProps {
+type WithIconProps = {
   icon: IconType;
   className?: string;
   // 其他扩展属性
   [key: string]: any;
-}
+};
 
 export const WithIcon: FC<WithIconProps> = React.memo(props => {
   const { icon: IconComponent, className = '', ...rest } = props;

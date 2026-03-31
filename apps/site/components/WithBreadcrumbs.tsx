@@ -1,19 +1,18 @@
 'use client';
 
-import type { FC } from 'react';
 import { useTranslations } from 'next-intl';
 
 import Breadcrumbs, {
   type BreadcrumbLinks,
 } from '@/components/common/Breadcrumbs';
-
 import { useSidebarStore } from '@/hooks';
 
 import type { NavigationKeys } from '@/types';
+import type { FC } from 'react';
 
-interface WithBreadcrumbsProps {
+type WithBreadcrumbsProps = {
   navKeys?: Array<NavigationKeys>;
-}
+};
 
 export const WithBreadcrumbs: FC<WithBreadcrumbsProps> = ({ navKeys = [] }) => {
   const t = useTranslations();

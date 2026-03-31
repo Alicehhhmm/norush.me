@@ -1,9 +1,10 @@
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { Toc as ArticleToc, type TOCItem } from '@nw/ui/common/Toc';
 
-interface ArticleAsideProps {
-  toc: TOCItem[];
-}
+import { ScrollArea } from '@/components/ui/scroll-area';
+
+type ArticleAsideProps = {
+  toc: Array<TOCItem>;
+};
 
 export const ArticleAside = ({ toc }: ArticleAsideProps) => {
   return (

@@ -1,8 +1,8 @@
 import { cache } from 'react';
 
-import type { BookmarksCategory, BookmarkItemType } from '@/types';
-
 import { generateBookmarks } from '@/core/generators/bookmarks.data.mjs';
+
+import type { BookmarksCategory, BookmarkItemType } from '@/types';
 
 const { categories, bookmarksMap } = await generateBookmarks();
 
@@ -11,8 +11,10 @@ export const provideBookmarksCategories = cache(
 );
 
 export const getBookmarksByCategory = cache(
-  async (category: string): Promise<BookmarkItemType[]> => {
-    if (!category) return [];
+  async (category: string): Promise<Array<BookmarkItemType>> => {
+    if (!category) {
+      return [];
+    }
 
     const result = ['all', ''].includes(category)
       ? Array.from(bookmarksMap.values()).flat()

@@ -1,21 +1,22 @@
 'use client';
 
-import * as React from 'react';
-import type { FC } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import * as React from 'react';
 
 import { Sidebar } from '@/components/ui/sidebar';
-import type { ChatSidebarType, ChannelType } from '@/types';
-import { ChatSidebarMenu } from './chat-sidebar-menu';
-import { ChatSidebarChannels } from './chat-sidebar-channels';
-
 import { useSidebarStore } from '@/hooks';
 import { stripLangPrefixPath } from '@/utils/paths';
 
-interface ChatSidebarProps {
+import type { ChatSidebarType, ChannelType } from '@/types';
+import type { FC } from 'react';
+
+import { ChatSidebarChannels } from './chat-sidebar-channels';
+import { ChatSidebarMenu } from './chat-sidebar-menu';
+
+type ChatSidebarProps = {
   data: ChatSidebarType;
   sidebarProps?: React.ComponentProps<typeof Sidebar>;
-}
+};
 
 export const ChatSidebar: FC<ChatSidebarProps> = ({ data, sidebarProps }) => {
   const pathname = usePathname();

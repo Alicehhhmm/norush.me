@@ -1,7 +1,8 @@
-import { setGlobClientContext } from '@/core/server';
-import { setRequestLocale } from 'next-intl/server';
 import { notFound, redirect } from 'next/navigation';
+import { setRequestLocale } from 'next-intl/server';
 
+import { WithLayout } from '@/components/layout';
+import { MatterProvider } from '@/components/providers/matter-provider';
 import {
   ENABLE_STATIC_EXPORT,
   ENABLE_STATIC_EXPORT_LOCALE,
@@ -13,14 +14,12 @@ import {
   availableLocaleCodes,
   defaultLocale,
 } from '@/core/next.locales.mjs';
-
-import { WithLayout } from '@/components/layout';
-import { MatterProvider } from '@/components/providers/matter-provider';
+import { setGlobClientContext } from '@/core/server';
 
 type DynamicPageParamsProps = {
   params: {
     locale: string;
-    path?: string[];
+    path?: Array<string>;
   };
 };
 

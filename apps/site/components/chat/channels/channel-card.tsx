@@ -1,14 +1,15 @@
 'use client';
 
-import type { FC } from 'react';
 import { Star } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
-import type { RIconType } from '@/types';
 import { cn } from '@/lib/utils';
 import { isActivePath } from '@/utils/paths';
 
-interface SidebarChannelCardProps {
+import type { RIconType } from '@/types';
+import type { FC } from 'react';
+
+type SidebarChannelCardProps = {
   group: {
     link: string;
     label: string;
@@ -18,7 +19,7 @@ interface SidebarChannelCardProps {
   };
   className?: string;
   onClick?: () => void;
-}
+};
 
 export const SidebarChannelCard: FC<SidebarChannelCardProps> = ({
   group,

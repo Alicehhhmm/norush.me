@@ -1,7 +1,8 @@
 import { useMemo, useRef } from 'react';
+
 import { isFunction, isDev } from '../utils';
 
-type noop = (this: any, ...args: any[]) => any;
+type noop = (this: any, ...args: Array<any>) => any;
 
 type PickFunction<T extends noop> = (
   this: ThisParameterType<T>,

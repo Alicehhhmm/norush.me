@@ -1,7 +1,5 @@
 'use client';
 
-import type { FC } from 'react';
-
 import { NavUser } from '@/components/navigation/nav-user';
 import {
   Sidebar,
@@ -11,14 +9,16 @@ import {
 } from '@/components/ui/sidebar';
 
 import type { ChatSidebarType } from '@/types';
+import type { FC } from 'react';
+
+import { ChatNavMain } from './chat-nav-main';
 import { ChatSidebarTools } from './chat-sidebar-tools';
 import { ChatTeamSwitcher } from './chat-team-switcher';
-import { ChatNavMain } from './chat-nav-main';
 
-interface ChatSidebarMenuProps {
+type ChatSidebarMenuProps = {
   data: Pick<ChatSidebarType, 'navMain' | 'user' | 'teams'>;
   onMenuClick?: (item: ChatSidebarType['navMain'][0]) => void;
-}
+};
 
 export const ChatSidebarMenu: FC<ChatSidebarMenuProps> = ({
   data,

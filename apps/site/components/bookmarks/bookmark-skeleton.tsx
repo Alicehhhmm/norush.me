@@ -1,8 +1,9 @@
 'use client';
 
-import { FC } from 'react';
-import { Skeleton } from '@/components/ui/skeleton';
 import { MasonryGrid } from '@/components/common';
+import { Skeleton } from '@/components/ui/skeleton';
+
+import type { FC } from 'react';
 
 export const BookmarkSkeleton: FC = () => {
   return (

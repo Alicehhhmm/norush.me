@@ -1,9 +1,11 @@
 'use client';
 
-import type { FC, PropsWithChildren } from 'react';
-import { TOCSharedContext, TOCProvider } from '@nw/ui/common';
+import { TOCProvider } from '@nw/ui/common';
 
-export interface ArticleSharedContext extends TOCSharedContext {}
+import type { TOCSharedContext } from '@nw/ui/common';
+import type { FC, PropsWithChildren } from 'react';
+
+export type ArticleSharedContext = {} & TOCSharedContext;
 
 type ArticleContextType = PropsWithChildren<Partial<ArticleSharedContext>>;
 

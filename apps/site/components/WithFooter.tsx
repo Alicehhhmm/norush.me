@@ -1,12 +1,13 @@
 'use client';
 
-import { FooterSimple } from '@/components/common';
-import { useTranslations } from 'next-intl';
-import type { FC } from 'react';
-
-import { Link } from '@/components/common';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+
+import { FooterSimple } from '@/components/common';
+import { Link } from '@/components/common';
 import { siteNavigation } from '@/config/next.json.mjs';
+
+import type { FC } from 'react';
 
 const WithFooter: FC = () => {
   const t = useTranslations();

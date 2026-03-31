@@ -1,15 +1,15 @@
-import type { FC } from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+import Image from 'next/image';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
 import type { DemoProjectType } from '@/types/project';
+import type { FC } from 'react';
 
-interface DemoProjectCardProps extends DemoProjectType {}
+type DemoProjectCardProps = {} & DemoProjectType;
 
 export const DemoProjectCard: FC<DemoProjectCardProps> = ({
   title,

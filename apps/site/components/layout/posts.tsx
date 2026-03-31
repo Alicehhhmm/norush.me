@@ -1,12 +1,12 @@
 'use client';
 import { useRef, useMemo } from 'react';
-import type { FC, PropsWithChildren } from 'react';
 
-import { ArticleProvider } from '@/components/providers';
 import { ArticleAside } from '@/components/common/ArticleAside';
-
-import { transformHeadingsToTOC } from '@/utils';
+import { ArticleProvider } from '@/components/providers';
 import { useGlobClientContext, useActiveHeading } from '@/hooks';
+import { transformHeadingsToTOC } from '@/utils';
+
+import type { FC, PropsWithChildren } from 'react';
 
 export const PostLayout: FC<PropsWithChildren> = ({ children }) => {
   const { headings } = useGlobClientContext();

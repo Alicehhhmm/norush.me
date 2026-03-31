@@ -2,10 +2,10 @@
  * website global metadata config type define
  */
 
-export interface SiteConfig {
+export type SiteConfig = {
   title: string;
   description: string;
   favicon: string;
   lightAccentColor: string;
   darkAccentColor: string;
-}
+};

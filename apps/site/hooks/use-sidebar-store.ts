@@ -1,11 +1,12 @@
 import { create } from 'zustand';
-import type { PostLayoutType, ChannelType } from '@/types';
+
 import type { BreadcrumbLinks } from '@/components/common/Breadcrumbs';
+import type { PostLayoutType, ChannelType } from '@/types';
 
-interface BreadcrumbType extends BreadcrumbLinks {}
+type BreadcrumbType = {} & BreadcrumbLinks;
 
-interface SidebarState {
-  expandedSections: string[];
+type SidebarState = {
+  expandedSections: Array<string>;
   toggleSection: (menuKey: string) => void;
 
   activeItem: string | null;
@@ -15,14 +16,14 @@ interface SidebarState {
   setSelectChannel: (val: ChannelType) => void;
 
   // 面包屑导航
-  breadcrumbLinks: BreadcrumbType[];
+  breadcrumbLinks: Array<BreadcrumbType>;
   setBreadcrumbLinks: (val: BreadcrumbType) => void;
   clearBreadcrumbs: () => void;
 
   // 文章列表布局
   postLayout: Array<PostLayoutType>;
   togglePostLayout: () => void;
-}
+};
 
 export const useSidebarStore = create<SidebarState>(set => ({
   activeItem: null,
@@ -47,12 +48,14 @@ export const useSidebarStore = create<SidebarState>(set => ({
   setBreadcrumbLinks: link =>
     set(state => {
       const { label, href } = link;
-      if (!href) return {};
+      if (!href) {
+        return {};
+      }
 
       const parts = href.split('/').filter(Boolean);
 
       // 构建当前层级路径
-      const levels: string[] = [];
+      const levels: Array<string> = [];
       for (let i = 0; i < parts.length; i++) {
         levels.push('/' + parts.slice(0, i + 1).join('/'));
       }

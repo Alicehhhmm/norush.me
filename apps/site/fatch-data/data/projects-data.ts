@@ -1,6 +1,6 @@
 import type { Project, DemoProjectType } from '@/types/project';
 
-export const projects: Project[] = [
+export const projects: Array<Project> = [
   {
     id: '1',
     title: 'Creative Agency Portfolio',
@@ -243,7 +243,7 @@ export const projects: Project[] = [
   },
 ];
 
-export const demo_projects: DemoProjectType[] = [
+export const demo_projects: Array<DemoProjectType> = [
   {
     title: 'E-commerce Platform',
     description:

@@ -1,9 +1,8 @@
 'use client';
 
-import { FC, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
-import { cn } from '@/lib/utils';
 import { Link } from '@/components/common';
 import {
   Select,
@@ -14,6 +13,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { cn } from '@/lib/utils';
+
+import type { FC } from 'react';
 
 export type SelectOption = {
   value: string;
@@ -22,7 +24,7 @@ export type SelectOption = {
 };
 
 type MobileSelectProps = {
-  options: SelectOption[];
+  options: Array<SelectOption>;
   defaultValue?: string;
   value?: string;
   onValueChange?: (value: string) => void;

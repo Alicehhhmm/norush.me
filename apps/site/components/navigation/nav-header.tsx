@@ -1,16 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { GitHub } from '@nw/ui/icons/social';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 
 import { ThemeToggleBtn, ActionLink, LangToggle } from '@/components/common';
 import { NavItem, MobileNav, NavLogo } from '@/components/navigation';
-import { GitHub } from '@nw/ui/icons/social';
-
+import { siteNavigation } from '@/config/next.json.mjs';
 import { useSiteNavigation } from '@/hooks/server';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { siteNavigation } from '@/config/next.json.mjs';
 import { cn } from '@/lib/utils';
 
 export const NavHeader = () => {
@@ -18,7 +17,7 @@ export const NavHeader = () => {
   const { sourceRepositoryNav } = siteNavigation;
 
   // Transform the navigation items to the required format
-  const transformNavData = (sourceData: any[]) =>
+  const transformNavData = (sourceData: Array<any>) =>
     sourceData.map(([key, items]) => ({
       key,
       ...items,

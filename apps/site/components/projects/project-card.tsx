@@ -1,13 +1,14 @@
 import { memo } from 'react';
+
+import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Badge } from '@/components/ui/badge';
 
 import type { Project } from '@/types/project';
 
-interface ProjectCardProps {
+type ProjectCardProps = {
   project: Project;
-}
+};
 
 export const ProjectCard = memo(({ project }: ProjectCardProps) => {
   return (

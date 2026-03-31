@@ -3,23 +3,23 @@
 import { useRef, useState, useEffect } from 'react';
 import screenfull from 'screenfull';
 
-import useMemoizedFn from './use-memoizedFn';
-import useLatest from './use-latest';
-
-import { isBoolean } from '../utils';
 import type { BasicTarget } from '../utils/domTarget';
+
+import useLatest from './use-latest';
+import useMemoizedFn from './use-memoizedFn';
+import { isBoolean } from '../utils';
 import { getTargetElement } from '../utils/domTarget';
 
-export interface PageFullscreenOptions {
+export type PageFullscreenOptions = {
   className?: string;
   zIndex?: number;
-}
+};
 
-export interface Options {
+export type Options = {
   onExit?: () => void;
   onEnter?: () => void;
   pageFullscreen?: boolean | PageFullscreenOptions;
-}
+};
 
 const useFullscreen = (target: BasicTarget, options?: Options) => {
   const { onExit, onEnter, pageFullscreen = false } = options || {};

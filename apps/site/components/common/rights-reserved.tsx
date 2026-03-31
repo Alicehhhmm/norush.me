@@ -1,11 +1,11 @@
 import type { FC } from 'react';
 
-interface RightsReservedProps {
+type RightsReservedProps = {
   className?: string;
   textClassName?: string;
   companyName?: string;
   startYear?: number;
-}
+};
 
 const RightsReserved: FC<RightsReservedProps> = ({
   className = '',

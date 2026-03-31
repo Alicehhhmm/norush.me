@@ -1,8 +1,9 @@
-import type { FC, ReactNode } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-interface LoadMoreButtonProps {
+import type { FC, ReactNode } from 'react';
+
+type LoadMoreButtonProps = {
   /**
    * 点击按钮时触发的回调函数，通常用于加载下一页数据。
    */
@@ -43,7 +44,7 @@ interface LoadMoreButtonProps {
    * 强制禁用按钮，即使不是 loading 状态（默认 false）。
    */
   disabled?: boolean;
-}
+};
 
 /**
  * <LoadMoreButton />

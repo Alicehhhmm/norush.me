@@ -1,11 +1,12 @@
-import Image from 'next/image';
 import { Calendar } from 'lucide-react';
-import { Link } from '@/components/common';
+import Image from 'next/image';
 
-import type { ExtendedType } from '@/types/blog';
+import { Link } from '@/components/common';
 import { formatDate } from '@/lib/date';
 
-export function BlogGridCard({ post }: { post: ExtendedType }) {
+import type { ExtendedType } from '@/types/blog';
+
+export const BlogGridCard = ({ post }: { post: ExtendedType }) => {
   return (
     <div className="flex flex-col overflow-hidden rounded-lg bg-white shadow-xs transition-shadow duration-200 hover:shadow-md dark:bg-neutral-900/40">
       <div className="relative h-48 sm:h-56 md:h-64">
@@ -47,4 +48,4 @@ export function BlogGridCard({ post }: { post: ExtendedType }) {
       </div>
     </div>
   );
-}
+};

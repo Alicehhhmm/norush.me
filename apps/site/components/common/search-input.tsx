@@ -1,18 +1,20 @@
 'use client';
 
-import type React from 'react';
-import { memo, useState, useEffect, useCallback } from 'react';
 import { Search, X } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { memo, useState, useEffect, useCallback } from 'react';
 
-interface SearchInputProps {
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+
+import type React from 'react';
+
+type SearchInputProps = {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
   className?: string;
   debounceMs?: number;
-}
+};
 
 export const SearchInput = memo(
   ({

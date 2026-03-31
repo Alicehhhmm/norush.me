@@ -2,16 +2,18 @@
 
 import { useEffect, useRef, useMemo, useCallback } from 'react';
 import { useStore } from 'zustand';
+
+import { projectsStore } from '@/stores/projects-store';
+
 import type {
   ProjectsResponse,
   CategoryOption,
   SortOption,
 } from '@/types/project';
-import { projectsStore } from '@/stores/projects-store';
 
-interface UseProjectsOptions {
+type UseProjectsOptions = {
   initialProjects: ProjectsResponse;
-}
+};
 
 export function useProjects({ initialProjects }: UseProjectsOptions) {
   const isInitialized = useRef(false);
@@ -29,7 +31,9 @@ export function useProjects({ initialProjects }: UseProjectsOptions) {
 
   const handleFilterChange = useCallback(
     (search?: string, cat?: CategoryOption, sort?: SortOption) => {
-      if (debounceRef.current) clearTimeout(debounceRef.current);
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current);
+      }
 
       const scrollY = window.scrollY;
 
@@ -68,7 +72,9 @@ export function useProjects({ initialProjects }: UseProjectsOptions) {
   );
 
   useEffect(() => {
-    if (store.initialLoading || !observerRef.current) return;
+    if (store.initialLoading || !observerRef.current) {
+      return;
+    }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (
@@ -97,7 +103,9 @@ export function useProjects({ initialProjects }: UseProjectsOptions) {
 
   useEffect(() => {
     return () => {
-      if (debounceRef.current) clearTimeout(debounceRef.current);
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current);
+      }
     };
   }, []);
 

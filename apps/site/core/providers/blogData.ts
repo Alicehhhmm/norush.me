@@ -2,6 +2,7 @@ import { cache } from 'react';
 
 import generateBlogData from '@/core/generators/blog-data.mjs';
 import { BLOG_POSTS_PER_PAGE } from '@/core/next.constants.mjs';
+
 import type { BlogPreviewType, BlogCategory, BlogPostsRSC } from '@/types';
 
 const { categories, posts } = await generateBlogData();
@@ -21,7 +22,7 @@ export const provideBlogCategories = cache(() => [
 
 export const provideBlogPosts = cache(
   (category: BlogCategory): BlogPostsRSC => {
-    let categoryPosts = posts
+    const categoryPosts = posts
       .filter(post => post.categories.includes(category))
       .sort((a, b) => b.date.getTime() - a.date.getTime());
 

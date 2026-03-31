@@ -11,18 +11,17 @@ import { join } from 'node:path';
 import { notFound, redirect } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 
-import { PAGE_VIEWPORT } from './next.dynamic.constants.mjs';
-import { dynamicRouter } from './dynamic-route.mjs';
-
-import { setGlobClientContext } from '@/core/server';
+import { WithLayout } from '@/components/layout';
+import { MatterProvider } from '@/components/providers/matter-provider';
 import {
   allLocaleCodes,
   availableLocaleCodes,
   defaultLocale,
 } from '@/core/next.locales.mjs';
+import { setGlobClientContext } from '@/core/server';
 
-import { WithLayout } from '@/components/layout';
-import { MatterProvider } from '@/components/providers/matter-provider';
+import { dynamicRouter } from './dynamic-route.mjs';
+import { PAGE_VIEWPORT } from './next.dynamic.constants.mjs';
 
 /**
  * This is the default Viewport Metadata

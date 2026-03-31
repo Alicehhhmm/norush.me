@@ -1,12 +1,14 @@
 import { notFound } from 'next/navigation';
-import { setRequestLocale } from 'next-intl/server';
 import { useMessages, NextIntlClientProvider, useTimeZone } from 'next-intl';
-import type { FC, PropsWithChildren } from 'react';
+import { setRequestLocale } from 'next-intl/server';
+
 import { routing } from '@/i18n/routing';
 
-interface LocaleProviderProps extends PropsWithChildren {
+import type { FC, PropsWithChildren } from 'react';
+
+type LocaleProviderProps = {
   locale: string;
-}
+} & PropsWithChildren;
 
 export function generateStaticParams() {
   return routing.locales.map(locale => ({ locale }));

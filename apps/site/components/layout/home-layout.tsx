@@ -1,13 +1,13 @@
 'use client';
 
-import type { FC, PropsWithChildren } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 import { NavHeader } from '@/components/navigation';
 import WithFooter from '@/components/WithFooter';
-
-import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { cn } from '@/lib/utils';
+
+import type { FC, PropsWithChildren } from 'react';
 
 const FOOTER_HEIGHT = 80;
 const HIDE_START = 0.0; // 开始隐藏

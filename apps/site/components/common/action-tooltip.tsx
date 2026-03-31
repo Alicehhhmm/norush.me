@@ -1,21 +1,21 @@
 'user client';
 
-import { cn } from '@/lib/utils';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { cn } from '@/lib/utils';
 
-interface ActionTooltipProps {
+type ActionTooltipProps = {
   label: string;
   children: React.ReactNode;
   side?: 'top' | 'right' | 'bottom' | 'left';
   align?: 'start' | 'center' | 'end';
   className?: string;
   labelClass?: string;
-}
+};
 
 export const ActionTooltip = ({
   label,

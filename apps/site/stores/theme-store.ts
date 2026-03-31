@@ -1,15 +1,17 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+
 import {} from 'next-intl';
-import type { Locale } from '@/i18n/routing';
 import { getDefaultLocale } from '@/i18n/lib';
+
+import type { Locale } from '@/i18n/routing';
 
 export type ColorTheme = 'default' | 'warm' | 'cool' | 'fluo' | 'claude';
 export type ViewMode = 'list' | 'grid' | 'card' | 'masonry';
 export type FontSize = 'small' | 'medium' | 'large';
 export type Language = Locale;
 
-interface AppState {
+type AppState = {
   // Remove theme management from store - let next-themes handle it
 
   // View settings
@@ -37,7 +39,7 @@ interface AppState {
 
   enableAI: boolean;
   setEnableAI: (enable: boolean) => void;
-}
+};
 
 export const useAppStore = create<AppState>()(
   persist(

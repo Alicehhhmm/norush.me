@@ -1,16 +1,16 @@
 'use client';
 
-import { memo } from 'react';
 import { usePathname } from 'next/navigation';
+import { memo } from 'react';
 
+import { Link } from '@/components/common';
 import { cn } from '@/lib/utils';
 import { isActivePath } from '@/utils/paths';
-import { Link } from '@/components/common';
 
-interface NavItemProps {
+type NavItemProps = {
   label: string;
   link: string;
-}
+};
 
 export const NavItem = memo(({ label, link }: NavItemProps) => {
   const pathname = usePathname()!;

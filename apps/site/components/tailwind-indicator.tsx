@@ -6,8 +6,10 @@ import { useState } from 'react';
  * 屏幕尺寸指示器：用于在开发环境中显示当前的屏幕尺寸（如 xs、sm、md、lg、xl、2xl）。
  * 在生产环境中，该组件不会渲染任何内容。
  */
-export function TailwindIndicator() {
-  if (process.env.NODE_ENV === 'production') return null;
+export const TailwindIndicator = () => {
+  if (process.env.NODE_ENV === 'production') {
+    return null;
+  }
 
   const [isVisible, setIsVisible] = useState(true);
 
@@ -52,4 +54,4 @@ export function TailwindIndicator() {
       </button>
     </div>
   );
-}
+};

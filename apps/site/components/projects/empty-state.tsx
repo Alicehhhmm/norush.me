@@ -1,10 +1,10 @@
-import { memo } from 'react';
 import { Search } from 'lucide-react';
+import { memo } from 'react';
 
-interface EmptyStateProps {
+type EmptyStateProps = {
   searchTerm?: string;
   category?: string;
-}
+};
 
 export const EmptyState = memo(({ searchTerm, category }: EmptyStateProps) => {
   return (

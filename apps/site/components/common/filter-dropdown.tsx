@@ -1,8 +1,9 @@
 'use client';
 
-import { memo } from 'react';
-import { Button } from '@/components/ui/button';
 import { Check, ChevronDown } from 'lucide-react';
+import { memo } from 'react';
+
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,18 +11,18 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-export interface FilterOption {
+export type FilterOption = {
   id: string;
   label: string;
-}
+};
 
-interface FilterDropdownProps {
+type FilterDropdownProps = {
   label: string;
-  options: FilterOption[];
+  options: Array<FilterOption>;
   value: string;
   onChange: (value: string) => void;
   className?: string;
-}
+};
 
 export const FilterDropdown = memo(
   ({

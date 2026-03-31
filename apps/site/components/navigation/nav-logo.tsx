@@ -1,5 +1,5 @@
-import { Logon } from '@/components/icons';
 import { Link } from '@/components/common';
+import { Logon } from '@/components/icons';
 
 export const NavLogo = () => (
   <Link

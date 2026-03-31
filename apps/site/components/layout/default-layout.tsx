@@ -1,7 +1,7 @@
-import type { FC, PropsWithChildren } from 'react';
-
 import { NavHeader } from '@/components/navigation/nav-header';
 import WithFooter from '@/components/WithFooter';
+
+import type { FC, PropsWithChildren } from 'react';
 
 export const DefaultLayout: FC<PropsWithChildren> = ({ children }) => {
   return (

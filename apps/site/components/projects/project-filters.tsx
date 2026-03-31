@@ -1,13 +1,15 @@
 'use client';
 
 import { memo } from 'react';
+
 import { SearchInput } from '@/components/common/search-input';
 import { CategoryFilter } from '@/components/projects/category-filter';
 import { SortDropdown } from '@/components/projects/sort-dropdown';
 import { Skeleton } from '@/components/ui/skeleton';
+
 import type { CategoryOption, SortOption } from '@/types/project';
 
-interface ProjectFiltersProps {
+type ProjectFiltersProps = {
   search: string;
   onSearchChange: (value: string) => void;
   category: CategoryOption;
@@ -16,7 +18,7 @@ interface ProjectFiltersProps {
   onSortChange: (sort: SortOption) => void;
   totalProjects: number;
   shownProjects: number;
-}
+};
 
 export const ProjectFilters = memo(
   ({

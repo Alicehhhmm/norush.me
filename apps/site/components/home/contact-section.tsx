@@ -1,12 +1,12 @@
 'use client';
 
+import { R3DCard } from '@nw/ui/common';
 import { motion } from 'framer-motion';
 
-import { Button } from '@/components/ui/button';
 import { FadeInWhenVisible } from '@/components/motions/scroll-animation';
-import { R3DCard } from '@nw/ui/common';
+import { Button } from '@/components/ui/button';
 
-export function ContactSection() {
+export const ContactSection = () => {
   return (
     <section id="contact" className="bg-muted/30 px-20 py-20">
       <div className="container">
@@ -59,4 +59,4 @@ export function ContactSection() {
       </div>
     </section>
   );
-}
+};

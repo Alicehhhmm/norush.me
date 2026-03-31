@@ -1,19 +1,19 @@
 'use client';
 
-import type { FC } from 'react';
+import { LayoutGridIcon, LayoutListIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-import { LayoutGridIcon, LayoutListIcon } from 'lucide-react';
-
-import { Button } from '@/components/ui/button';
 import { ActionTooltip } from '@/components/common';
+import { Button } from '@/components/ui/button';
 
-export interface ToggleLayoutProps {
+import type { FC } from 'react';
+
+export type ToggleLayoutProps = {
   layout: 'grid' | 'list';
   onToggle: () => void;
   size?: number | string;
   className?: string;
-}
+};
 
 const ToggleLayout: FC<ToggleLayoutProps> = ({
   layout,
@@ -49,6 +49,3 @@ const ToggleLayout: FC<ToggleLayoutProps> = ({
 ToggleLayout.displayName = 'ToggleLayout';
 
 export default ToggleLayout;
-function t(arg0: string) {
-  throw new Error('Function not implemented.');
-}

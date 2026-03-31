@@ -1,17 +1,18 @@
 'use client';
 
-import type { FC } from 'react';
 import { motion } from 'framer-motion';
 import { Link2Icon } from 'lucide-react';
 
-import type { BookmarkItemType } from '@/types';
 import { Link } from '@/components/common';
 import { Card, CardContent } from '@/components/ui/card';
 
-interface BookmarkCardProps {
+import type { BookmarkItemType } from '@/types';
+import type { FC } from 'react';
+
+type BookmarkCardProps = {
   item: BookmarkItemType;
   className?: string;
-}
+};
 
 export const BookmarkCard: FC<BookmarkCardProps> = ({
   item,

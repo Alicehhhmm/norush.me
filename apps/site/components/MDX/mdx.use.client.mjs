@@ -1,8 +1,8 @@
 'use strict';
 
-import { Button } from '@/components/ui/button';
-import { Link } from '@/components/common';
 import MDXCodeBox from '#site/components/MDX/MdxCodeBox';
+import { Link } from '@/components/common';
+import { Button } from '@/components/ui/button';
 
 /**
  * 所有MDX中需要的客户端组件列表
@@ -10,7 +10,7 @@ import MDXCodeBox from '#site/components/MDX/MdxCodeBox';
  * @satisfies {import('mdx/types').MDXComponents}
  */
 export const clientMdxComponents = {
-  Button: Button,
+  Button,
 };
 
 /**

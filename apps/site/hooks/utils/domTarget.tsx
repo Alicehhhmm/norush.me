@@ -1,6 +1,6 @@
 import type { RefObject } from 'react';
 
-import { isBoolean, isFunction } from '.';
+import { isFunction } from '.';
 
 type TargetValue<T> = T | undefined | null;
 

@@ -1,6 +1,5 @@
-import type { HTMLAttributeAnchorTarget } from 'react';
-
 import type { RIconType, UserType, FormattedMessage } from '@/types';
+import type { HTMLAttributeAnchorTarget } from 'react';
 
 export type NavigationKeys =
   | 'blog'
@@ -9,53 +8,53 @@ export type NavigationKeys =
   | 'design'
   | 'bookmarks';
 
-export interface NavigationEntry {
+export type NavigationEntry = {
   label?: IntlMessageKeys;
   link?: string;
   icon?: RIconType;
   items?: Record<string, NavigationEntry>;
   target?: HTMLAttributeAnchorTarget | undefined;
-}
+};
 
-export interface MappedNavigationEntry {
+export type MappedNavigationEntry = {
   label: FormattedMessage;
   link: string;
   icon?: RIconType;
   target?: HTMLAttributeAnchorTarget | undefined;
   items: Array<[string, MappedNavigationEntry]>;
-}
+};
 
-export interface NavItemsType extends MappedNavigationEntry {
+export type NavItemsType = {
   isActive?: boolean;
-}
+} & MappedNavigationEntry;
 
-export interface TeamType {
+export type TeamType = {
   name: string;
   logo: RIconType;
   plan: string;
-}
+};
 
-export interface PageSidebarType {
+export type PageSidebarType = {
   user: UserType;
-  teams: TeamType[];
-  navMain: NavItemsType[];
-}
+  teams: Array<TeamType>;
+  navMain: Array<NavItemsType>;
+};
 
-export interface FooterConfig {
+export type FooterConfig = {
   text: IntlMessageKeys;
   link: string;
-}
+};
 
-export interface SocialConfig {
+export type SocialConfig = {
   icon: string;
   link: string;
   alt?: string;
-}
+};
 
-export interface SiteNavigation {
+export type SiteNavigation = {
   topNavigation: Record<NavigationKeys, NavigationEntry>;
   footerLinks: Array<FooterConfig>;
   socialLinks: Array<SocialConfig>;
   sideNavigation: Record<NavigationKeys, NavigationEntry>;
   sourceRepositoryNav: Record<string, NavigationEntry>;
-}
+};

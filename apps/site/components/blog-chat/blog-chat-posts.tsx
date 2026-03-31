@@ -1,9 +1,10 @@
 'use client';
 
-import type { FC, PropsWithChildren } from 'react';
 import { PostLayout } from '@/components/layout/posts';
 
-interface ChatPostLayoutProps extends PropsWithChildren {}
+import type { FC, PropsWithChildren } from 'react';
+
+type ChatPostLayoutProps = {} & PropsWithChildren;
 
 export const BlogChatPostLayout: FC<ChatPostLayoutProps> = ({ children }) => {
   // TODO: add bg-meash and update styles

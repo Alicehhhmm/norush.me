@@ -1,12 +1,14 @@
 'use client';
 
 import { memo } from 'react';
-import type { ReactNode } from 'react';
+
 import { cn } from '@/lib/utils';
 
-interface ContentMainProps {
+import type { ReactNode } from 'react';
+
+type ContentMainProps = {
   children: ReactNode;
-}
+};
 
 export const BookletContentMain = memo(({ children }: ContentMainProps) => {
   return (

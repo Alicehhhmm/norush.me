@@ -1,11 +1,12 @@
-import type { FC, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
-interface NoMoreProps {
+import type { FC, ReactNode } from 'react';
+
+type NoMoreProps = {
   icon?: ReactNode;
   text?: string;
   className?: string;
-}
+};
 
 /**
  * <NoMore />

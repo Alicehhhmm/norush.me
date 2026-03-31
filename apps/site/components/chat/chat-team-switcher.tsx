@@ -1,14 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import type { FC } from 'react';
 
-import type { TeamType } from '@/types';
 import { NavTeam } from '@/components/navigation';
 
-interface ChatTeamSwitcherProps {
-  data: TeamType[];
-}
+import type { TeamType } from '@/types';
+import type { FC } from 'react';
+
+type ChatTeamSwitcherProps = {
+  data: Array<TeamType>;
+};
 
 export const ChatTeamSwitcher: FC<ChatTeamSwitcherProps> = ({ data }) => {
   const [currentTeam] = useState<TeamType>(data[0]);

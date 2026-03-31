@@ -1,14 +1,14 @@
 import { useTranslations } from 'next-intl';
-import type { RichTranslationValues } from 'next-intl';
 
+import { siteNavigation } from '@/config/next.json.mjs';
+
+import type { FormattedMessage } from '@/types/formatted-message';
 import type {
   NavigationKeys,
   NavigationEntry,
   MappedNavigationEntry,
 } from '@/types/navigation';
-import type { FormattedMessage } from '@/types/formatted-message';
-
-import { siteNavigation } from '@/config/next.json.mjs';
+import type { RichTranslationValues } from 'next-intl';
 
 type ContextType = Record<string, RichTranslationValues>;
 type Navigation = Record<string, NavigationEntry>;

@@ -1,3 +1,5 @@
+import { type ReactNode } from 'react';
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,25 +13,24 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
-import { type ReactNode } from 'react';
 
-export interface MenuItem {
+export type MenuItem = {
   label: string;
   shortcut?: string;
   disabled?: boolean;
   onSelect?: () => void;
   selected?: boolean;
-  children?: MenuItem[];
-}
+  children?: Array<MenuItem>;
+};
 
-export interface UniversalDropdownMenuProps {
+export type UniversalDropdownMenuProps = {
   trigger: ReactNode;
   className?: string;
-  groups: {
+  groups: Array<{
     label?: string;
-    items: MenuItem[];
-  }[];
-}
+    items: Array<MenuItem>;
+  }>;
+};
 
 export const UniversalDropdownMenu = ({
   trigger,

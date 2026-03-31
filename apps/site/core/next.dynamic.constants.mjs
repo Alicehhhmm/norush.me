@@ -1,12 +1,13 @@
 'use strict';
 
 import { join } from 'node:path';
+
 import { siteConfig } from '@/config/next.json.mjs';
+
+import { BASE_PATH, BASE_URL } from './next.constants.mjs';
 import { defaultLocale } from './next.locales.mjs';
 import { provideBlogCategories } from './providers/blogData';
 import { provideBookmarksCategories } from './providers/bookmarks.data';
-
-import { BASE_PATH, BASE_URL } from './next.constants.mjs';
 
 /**
  * This is a list of all static routes or pages from the Website that we do not

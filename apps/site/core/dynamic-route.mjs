@@ -1,24 +1,25 @@
 'use strict';
 
-import { cache } from 'react';
-import { VFile } from 'vfile';
-import matter from 'gray-matter';
 import { readFile } from 'node:fs/promises';
 import { join, normalize, sep } from 'node:path';
 
+import matter from 'gray-matter';
+import { cache } from 'react';
+import { VFile } from 'vfile';
+
 import { siteConfig } from '@/config/next.json.mjs';
 import { IS_DEV_ENV, BASE_URL, BASE_PATH } from '@/core/next.constants.mjs';
+
+import { MDX_COMPONENTS } from './complier/complier.mdx.components.mjs';
+import { compile } from './complier/complier.mdx.mjs';
+import { getMarkdownFiles } from './complier/next.helpers.mjs';
+import { POSTS_FOLDER_NAME } from './dynamic-route-constants';
 import {
   DYNAMIC_ROUTES,
   IGNORED_ROUTES,
   PAGE_METADATA,
 } from './next.dynamic.constants.mjs';
-import { POSTS_FOLDER_NAME } from './dynamic-route-constants';
-
 import { availableLocaleCodes, defaultLocale } from './next.locales.mjs';
-import { getMarkdownFiles } from './complier/next.helpers.mjs';
-import { compile } from './complier/complier.mdx.mjs';
-import { MDX_COMPONENTS } from './complier/complier.mdx.components.mjs';
 
 const baseUrlAndPath = `${BASE_URL}${BASE_PATH}`;
 

@@ -1,18 +1,19 @@
-import type { CSSProperties, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 import { ChatSidebar } from '@/components/chat/chat-sidebar';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 
 import type { ChatSidebarType } from '@/types';
-import { ChatNavHeader } from './chat-navhaeder';
-import { ChatContentMain } from './chat-content-main';
+import type { CSSProperties, ReactNode } from 'react';
 
-interface ChatLayoutProps {
+import { ChatContentMain } from './chat-content-main';
+import { ChatNavHeader } from './chat-navhaeder';
+
+type ChatLayoutProps = {
   sidebarData: ChatSidebarType;
   toggleScreen: () => void;
   children: ReactNode;
-}
+};
 
 export const ChatLayout = forwardRef<HTMLDivElement, ChatLayoutProps>(
   ({ sidebarData, toggleScreen, children }, ref) => (

@@ -1,9 +1,10 @@
-import type { BlogCategory, BlogPostsRSC } from '@/types';
 import {
   IS_DEV_ENV,
   VERCEL_ENV,
   ENABLE_STATIC_EXPORT,
 } from '@/core/next.constants.mjs';
+
+import type { BlogCategory, BlogPostsRSC } from '@/types';
 
 export default function getBlogData(
   cat: BlogCategory,

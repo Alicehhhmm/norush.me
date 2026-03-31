@@ -1,8 +1,10 @@
 'use client';
 
-import type React from 'react';
+import { motion } from 'framer-motion';
+import { Code, Layout, Smartphone } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
+import { FadeInWhenVisible } from '@/components/motions/scroll-animation';
 import {
   Card,
   CardContent,
@@ -10,12 +12,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Code, Layout, Database, Smartphone } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { FadeInWhenVisible } from '@/components/motions/scroll-animation';
+
+import type React from 'react';
+
 import { Button } from '../ui/button';
 
-export function ServicesSection() {
+export const ServicesSection = () => {
   const t = useTranslations();
 
   const services = [
@@ -87,9 +89,9 @@ export function ServicesSection() {
       </div>
     </motion.section>
   );
-}
+};
 
-function ServiceCard({
+const ServiceCard = ({
   icon,
   title,
   description,
@@ -98,8 +100,8 @@ function ServiceCard({
   icon: React.ReactNode;
   title: string;
   description: string;
-  skills: string[];
-}) {
+  skills: Array<string>;
+}) => {
   return (
     <motion.div
       whileHover={{ y: -10 }}
@@ -145,4 +147,4 @@ function ServiceCard({
       </Card>
     </motion.div>
   );
-}
+};

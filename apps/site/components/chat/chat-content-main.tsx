@@ -1,5 +1,6 @@
-import type { FC, ReactNode } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
+
+import type { FC, ReactNode } from 'react';
 
 type ChatContentMainProps = {
   children: ReactNode;

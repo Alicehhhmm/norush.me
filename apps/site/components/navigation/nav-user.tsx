@@ -25,9 +25,10 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar';
-import { UserType } from '@/types/user';
 
-export function NavUser({ user }: { user: UserType }) {
+import type { UserType } from '@/types/user';
+
+export const NavUser = ({ user }: { user: UserType }) => {
   const { isMobile } = useSidebar();
 
   return (
@@ -100,4 +101,4 @@ export function NavUser({ user }: { user: UserType }) {
       </SidebarMenuItem>
     </SidebarMenu>
   );
-}
+};

@@ -1,6 +1,6 @@
 import type { FilterOption } from '@/types/project';
 
-export const CATEGORIES: FilterOption[] = [
+export const CATEGORIES: Array<FilterOption> = [
   { id: 'all', label: 'All' },
   { id: 'apps', label: 'Apps' },
   { id: 'games', label: 'Games' },
@@ -10,7 +10,7 @@ export const CATEGORIES: FilterOption[] = [
   { id: 'starters', label: 'Starters' },
 ];
 
-export const SORT_OPTIONS: FilterOption[] = [
+export const SORT_OPTIONS: Array<FilterOption> = [
   { id: 'trending', label: 'Trending' },
   { id: 'newest', label: 'Newest' },
   { id: 'popular', label: 'Most Popular' },

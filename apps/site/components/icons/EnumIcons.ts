@@ -1,5 +1,3 @@
-import type { RIconType } from '@/types';
-
 import { GitHub, JueJin, LinkedIn, Twitter } from '@nw/ui/icons/social';
 import {
   HomeIcon,
@@ -12,6 +10,8 @@ import {
   AlertOctagon,
   Mail,
 } from 'lucide-react';
+
+import type { RIconType } from '@/types';
 
 export const ChatSidebarIconMap: Record<string, RIconType> = {
   home: HomeIcon,

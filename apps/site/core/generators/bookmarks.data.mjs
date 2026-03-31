@@ -15,7 +15,9 @@ const cache = {
  */
 export function getBookmarksCategories(keys = []) {
   const cacheKey = keys.slice().sort().join('-') || 'empty';
-  if (cache.categories.has(cacheKey)) return cache.categories.get(cacheKey);
+  if (cache.categories.has(cacheKey)) {
+    return cache.categories.get(cacheKey);
+  }
 
   const categories = keys.flatMap(key => {
     const navItem = siteNavigation.sideNavigation[key];
@@ -32,7 +34,9 @@ export function getBookmarksCategories(keys = []) {
  */
 export async function generateBookmarks() {
   const cacheKey = 'global';
-  if (cache.bookmarks.has(cacheKey)) return cache.bookmarks.get(cacheKey);
+  if (cache.bookmarks.has(cacheKey)) {
+    return cache.bookmarks.get(cacheKey);
+  }
 
   const dynamicCategories = getBookmarksCategories(['bookmarks']);
 

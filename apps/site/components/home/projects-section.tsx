@@ -2,18 +2,19 @@
 
 import { useEffect, useState } from 'react';
 
-import { Button } from '@/components/ui/button';
 import {
   FadeInWhenVisible,
   ScaleInWhenVisible,
 } from '@/components/motions/scroll-animation';
 import { DemoProjectCard } from '@/components/projects/demo-project-card';
+import { Button } from '@/components/ui/button';
 import { demo_projects } from '@/fatch-data/data/projects-data';
+
 import type { DemoProjectType } from '@/types/project';
 
 const projects = [...demo_projects];
 
-export function ProjectsSection() {
+export const ProjectsSection = () => {
   const [columns, setColumns] = useState(3);
 
   useEffect(() => {
@@ -34,7 +35,7 @@ export function ProjectsSection() {
 
   const projectColumns = Array.from(
     { length: columns },
-    () => [] as DemoProjectType[]
+    () => [] as Array<DemoProjectType>
   );
   projects.forEach((project, index) => {
     const columnIndex = index % columns;
@@ -80,4 +81,4 @@ export function ProjectsSection() {
       </div>
     </section>
   );
-}
+};

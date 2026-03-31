@@ -1,11 +1,11 @@
-import type { FC, PropsWithChildren } from 'react';
 import { getTranslations } from 'next-intl/server';
 
-import { getGlobClientContext } from '@/core/server';
-
-import { BlogPreviewType, BlogCategory } from '@/types/blog';
-import { FetchBlogData } from '@/fatch-data';
 import { BlogChatLayout } from '@/components/blog-chat/blog-chat-layout';
+import { getGlobClientContext } from '@/core/server';
+import { FetchBlogData } from '@/fatch-data';
+
+import type { BlogPreviewType, BlogCategory } from '@/types/blog';
+import type { FC, PropsWithChildren } from 'react';
 
 const getBlogCategory = async (pathname: string) => {
   // pathname format can either be: /en/blog/{category}

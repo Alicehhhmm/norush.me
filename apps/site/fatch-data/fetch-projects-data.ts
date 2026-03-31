@@ -1,4 +1,5 @@
 import type { Project } from '@/types/project';
+
 import { projects } from './data/projects-data';
 
 export async function getProjects({

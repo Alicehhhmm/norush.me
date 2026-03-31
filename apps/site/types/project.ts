@@ -1,20 +1,20 @@
-export interface Project {
+export type Project = {
   id: string;
   title: string;
   description: string;
   category: string;
-  tags: string[];
-  technologies: string[];
+  tags: Array<string>;
+  technologies: Array<string>;
   forks: number;
   stars: number;
   image: string;
   avatar: string;
   author: string;
   createdAt: string;
-}
+};
 
 export type ProjectsResponse = {
-  projects: Project[];
+  projects: Array<Project>;
   total: number;
   hasMore: boolean;
 };
@@ -30,22 +30,22 @@ export type CategoryOption =
   | 'blocks'
   | 'starters';
 
-export interface ProjectFilters {
+export type ProjectFilters = {
   search: string;
   category: CategoryOption;
   sort: SortOption;
   page: number;
   limit: number;
-}
+};
 
-export interface FilterOption {
+export type FilterOption = {
   id: string;
   label: string;
-}
+};
 
-export interface DemoProjectType {
+export type DemoProjectType = {
   title: string;
   description: string;
   image: string;
-  technologies: string[];
-}
+  technologies: Array<string>;
+};

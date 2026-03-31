@@ -1,5 +1,5 @@
+import type { TOCItem } from '@nw/ui/common/';
 import type { Heading } from '@vcarl/remark-headings';
-import type { TOCItem } from '@/components/common/NestedDirectory';
 
 /**
  * 将 @vcarl/remark-headings' 的平面结构转换为嵌套目录树结构
@@ -22,11 +22,13 @@ import type { TOCItem } from '@/components/common/NestedDirectory';
  */
 export const transformHeadingsToTOC = (
   headings: Array<Heading>,
-  startLevel: number = 1
-): TOCItem[] => {
-  if (headings.length <= 0) return [];
-  const toc: TOCItem[] = [];
-  const stack: { item: TOCItem; level: number }[] = [];
+  startLevel = 1
+): Array<TOCItem> => {
+  if (headings.length <= 0) {
+    return [];
+  }
+  const toc: Array<TOCItem> = [];
+  const stack: Array<{ item: TOCItem; level: number }> = [];
 
   // 参数校验: 默认只支持1-6层级
   const validStartLevel = Math.min(Math.max(Math.floor(startLevel), 1), 6);
