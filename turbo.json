@@ -37,6 +37,12 @@
       "outputs": [],
       "cache": true
     },
+    "//#prettier": {
+      "outputs": [".prettiercache"]
+    },
+    "//#prettier:fix": {
+      "outputs": [".prettiercache"]
+    },
     "prettier": {
       "inputs": ["**/*.{js,mjs,ts,tsx,md,mdx,json,yml,css}"],
       "outputs": [".prettiercache"],

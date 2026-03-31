@@ -1,0 +1,35 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint:js": {
+      "inputs": [
+        "{app,components,hooks,i18n,layouts,middlewares,pages,providers,types,utils}/**/*.{ts,tsx,mjs}",
+        "{next-data,scripts,i18n}/**/*.{mjs,json}",
+        "public/**/*.{ts,js,json}",
+        "*.{json,ts,tsx}"
+      ]
+    },
+    "lint:md": {
+      "inputs": ["{app,pages}/**/*.{md,mdx}", "*.{md,mdx}"],
+      "outputs": [".eslintmdcache"]
+    },
+    "lint:css": {
+      "inputs": ["{app,components,layouts,pages,styles}/**/*.css"],
+      "outputs": [".stylelintcache"]
+    },
+    "lint:fix": {
+      "cache": false
+    },
+    "lint:types": {
+      "cache": false
+    },
+    "format": {
+      "cache": false
+    }
+  }
+}

@@ -25,10 +25,13 @@
     }
   },
   "include": [
-    "next-env.d.ts",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.mdx",
+    "**/*.mjs",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.mdx",
+    "next-env.d.ts",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],

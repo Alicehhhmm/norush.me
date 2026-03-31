@@ -26,7 +26,7 @@
     "type-check": "turbo type-check",
     "test": "turbo test",
     "clean": "turbo clean",
-    "format": "prettier --write .",
+    "format": "turbo //#prettier:fix prettier:fix lint:fix",
     "changeset": "changeset",
     "changeset:add": "changeset add",
     "changeset:version": "changeset version",
@@ -64,7 +64,7 @@
     "prettier": "3.7.4",
     "prettier-plugin-tailwindcss": "0.7.2",
     "typescript": "catalog:",
-    "typescript-eslint": "8.51.0"
+    "typescript-eslint": "8.58.0"
   },
   "lint-staged": {
     "*": [

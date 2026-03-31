@@ -1,16 +1,78 @@
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import { FlatCompat } from '@eslint/eslintrc';
+import next from '@next/eslint-plugin-next';
+import * as mdx from 'eslint-plugin-mdx';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import baseConfig from '../../eslint.config.js';
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+export default baseConfig.concat([
+  {
+    ignores: [
+      'pages/en/blog/**/*.{md,mdx}/**',
+      './components/ui/**/*',
+      'public',
+      'next-env.d.ts',
+    ],
+  },
 
-const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
-];
+  react.configs.flat['jsx-runtime'],
+  reactHooks.configs.flat['recommended-latest'],
+  next.configs['core-web-vitals'],
+  mdx.flatCodeBlocks,
 
-export default eslintConfig;
+  // Type-checking
+  {
+    ignores: ['**/*.{md,mdx}', '**/*.{md,mdx}/**'],
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.json',
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    rules: {
+      '@typescript-eslint/consistent-type-imports': 'error',
+    },
+  },
+
+  {
+    rules: {
+      'react/no-unescaped-entities': 'off',
+      'react/function-component-definition': [
+        'error',
+        {
+          namedComponents: 'arrow-function',
+          unnamedComponents: 'arrow-function',
+        },
+      ],
+    },
+    settings: { react: { version: 'detect' } },
+  },
+
+  {
+    files: ['**/*.{md,mdx}/**'],
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+    },
+  },
+
+  {
+    ...mdx.flat,
+    processor: mdx.createRemarkProcessor({ lintCodeBlocks: true }),
+    rules: {
+      ...mdx.flat.rules,
+      'no-irregular-whitespace': 'off',
+      '@next/next/no-img-element': 'off',
+      '@next/next/no-html-link-for-pages': ['error', 'apps/site/pages/'],
+    },
+  },
+
+  // 暂时保留本项目特有的规则
+  // TODO: 逐步修复这些警告，并将其升级为错误
+  {
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+      'no-restricted-syntax': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+    },
+  },
+]);
