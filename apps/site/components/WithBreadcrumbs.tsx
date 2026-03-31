@@ -16,13 +16,13 @@ type WithBreadcrumbsProps = {
 
 export const WithBreadcrumbs: FC<WithBreadcrumbsProps> = ({ navKeys = [] }) => {
   const t = useTranslations();
+  const { breadcrumbLinks } = useSidebarStore();
 
   let maxLength = 5;
   let links: Array<BreadcrumbLinks> = [];
 
   if (navKeys.includes('blog')) {
-    const { breadcrumbLinks } = useSidebarStore();
-    links = [...breadcrumbLinks];
+    links = breadcrumbLinks;
     maxLength = 4;
   }
 

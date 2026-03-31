@@ -1,6 +1,6 @@
 import { SettingsForm } from '@/components/theme-settings';
 
-export default function SettingsPage() {
+const SettingsPage = () => {
   return (
     <div className="bg-warm-bg flex">
       <main className="flex-1 overflow-auto">
@@ -8,4 +8,6 @@ export default function SettingsPage() {
       </main>
     </div>
   );
-}
+};
+
+export default SettingsPage;

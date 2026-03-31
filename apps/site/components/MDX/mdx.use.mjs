@@ -8,7 +8,7 @@ import {
   ProjectsSection,
   ContactSection,
 } from '@/components/home';
-import ResponsiveGrid from '@/components/MDX/ResponsiveGrid';
+import { ResponsiveGrid } from '@/components/MDX/ResponsiveGrid';
 import { Badge as WithBadge } from '@/components/ui/badge';
 
 /**

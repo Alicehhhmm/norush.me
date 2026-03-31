@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 /**
  * 屏幕尺寸指示器：用于在开发环境中显示当前的屏幕尺寸（如 xs、sm、md、lg、xl、2xl）。
  * 在生产环境中，该组件不会渲染任何内容。
@@ -11,15 +9,16 @@ export const TailwindIndicator = () => {
     return null;
   }
 
-  const [isVisible, setIsVisible] = useState(true);
+  const handleHide = () => {
+    const element = document.querySelector('.tailwind-indicator');
+    if (element) {
+      element.classList.add('hidden');
+    }
+  };
 
   return (
     <div
-      className={`fixed bottom-4 left-4 z-50 flex cursor-default items-center gap-2 rounded-full border border-gray-600 bg-gray-800 px-3 py-1.5 font-mono text-xs font-semibold text-white shadow-lg transition-all duration-300 dark:border-gray-500 dark:bg-gray-900 dark:text-gray-100 ${
-        !isVisible
-          ? 'pointer-events-none scale-95 opacity-0'
-          : 'hover:shadow-xl'
-      }`}
+      className={`tailwind-indicator fixed bottom-4 left-4 z-50 flex cursor-default items-center gap-2 rounded-full border border-gray-600 bg-gray-800 px-3 py-1.5 font-mono text-xs font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl dark:border-gray-500 dark:bg-gray-900 dark:text-gray-100`}
     >
       <div className="flex items-center">
         <span className="inline sm:hidden">xs</span>
@@ -33,7 +32,7 @@ export const TailwindIndicator = () => {
       <button
         onClick={e => {
           e.stopPropagation();
-          setIsVisible(false);
+          handleHide();
         }}
         className="-mr-1.5 ml-1 rounded-full p-1 transition-colors hover:bg-gray-700 dark:hover:bg-gray-700"
         aria-label="Close screen size indicator"

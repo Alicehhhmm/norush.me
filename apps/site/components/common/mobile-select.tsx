@@ -3,7 +3,6 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { Link } from '@/components/common';
 import {
   Select,
   SelectContent,

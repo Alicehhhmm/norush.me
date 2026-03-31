@@ -7,7 +7,7 @@
  * @param {string} [config.padding='1rem'] - 内边距
  * @param {string} [config.breakpoint='768px'] - 响应式断点
  */
-export default function ResponsiveGrid({
+export const ResponsiveGrid = ({
   children,
   minWidth = 300,
   gap = '1.5rem',
@@ -19,9 +19,12 @@ export default function ResponsiveGrid({
   gap?: string;
   padding?: string;
   breakpoint?: string;
-}) {
-  // 动态生成唯一类名
-  const className = `responsive-grid-${Math.random().toString(36).substr(2, 9)}`;
+}) => {
+  // 动态生成唯一类名 - 使用组件渲染时的固定前缀
+  const className = `responsive-grid-${String(minWidth)}-${String(gap).replace(
+    /\./g,
+    '-'
+  )}`;
 
   // 动态插入样式
   const styleSheet = `
@@ -31,7 +34,7 @@ export default function ResponsiveGrid({
         gap: ${gap};
         padding: ${padding};
       }
-      
+
       @media (max-width: ${breakpoint}) {
         .${className} {
           grid-template-columns: 1fr;
@@ -45,4 +48,4 @@ export default function ResponsiveGrid({
       <div className={className}>{children}</div>
     </>
   );
-}
+};

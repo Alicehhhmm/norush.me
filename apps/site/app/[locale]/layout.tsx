@@ -10,9 +10,9 @@ import { TailwindIndicator } from '@/components/tailwind-indicator';
 import { Toaster } from '@/components/ui/sonner';
 import { siteConfig } from '@/config/next.json.mjs';
 import { IBM_PLEX_MONO, OPEN_SANS } from '@/lib/next.fonts';
+import { cn } from '@/lib/utils';
 
 // TODO: Use dynamic routing configuration uniformly
-import { cn } from '@/lib/utils';
 
 import '#site/styles/globals.css';
 
@@ -34,7 +34,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function RootLayout({ children, params }: RootProps) {
+const RootLayout = async ({ children, params }: RootProps) => {
   const { locale } = await params;
 
   return (
@@ -53,4 +53,6 @@ export default async function RootLayout({ children, params }: RootProps) {
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

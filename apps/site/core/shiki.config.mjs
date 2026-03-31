@@ -10,7 +10,6 @@ import shellScriptLanguage from 'shiki/langs/shellscript.mjs';
 import shellSessionLanguage from 'shiki/langs/shellsession.mjs';
 import typeScriptLanguage from 'shiki/langs/typescript.mjs';
 import yamlLanguage from 'shiki/langs/yaml.mjs';
-
 // DOTO: dynamic change theme
 import shikiNordTheme from 'shiki/themes/nord.mjs';
 import oneDarkProTheme from 'shiki/themes/one-dark-pro.mjs';

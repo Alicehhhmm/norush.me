@@ -4,5 +4,4 @@ export * from './nav-user';
 export * from './nav-header';
 export * from './nav-main';
 export * from './nav-item';
-export * from './nav-sidebar';
 export * from './mobile-nav';

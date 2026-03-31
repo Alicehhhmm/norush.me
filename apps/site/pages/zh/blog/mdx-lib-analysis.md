@@ -72,14 +72,14 @@ date: 2025-03-20
 通过 Remark 插件链处理内容：
 
 ```javascript
-import remarkGfm from 'remark-gfm';
 import remarkHeadings from '@vcarl/remark-headings';
+import remarkGfm from 'remark-gfm';
 import remarkReadingTime from 'remark-reading-time';
 
 // 配置示例
 const processor = unified()
-  .use(remarkGfm)
   .use(remarkHeadings)
+  .use(remarkGfm)
   .use(remarkReadingTime);
 ```
 
@@ -99,8 +99,8 @@ const jsxCode = await compile(mdxContent);
 使用 Rehype 插件优化输出：
 
 ```javascript
-import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
 
 // 标题会变为: <h2 id="section"><a href="#section">#</a>Section</h2>
 const processor = unified()
