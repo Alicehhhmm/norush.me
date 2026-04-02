@@ -1,3 +1,5 @@
+import type { IntlMessageKeys } from '@/types/i18n';
+
 export type BookmarksCategory = IntlMessageKeys<'layouts.bookmarks.categories'>;
 
 export type BookmarkItemType = {

@@ -1,9 +1,8 @@
+import { defaultLocale } from '@nw/i18n';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import 'dayjs/locale/en';
 import relativeTime from 'dayjs/plugin/relativeTime';
-
-import { defaultLocale } from '@/i18n/lib';
 
 type DayjsOrString = dayjs.Dayjs | Date | string;
 type Format = string;

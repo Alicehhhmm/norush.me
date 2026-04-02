@@ -1,5 +1,6 @@
 'use client';
 
+import { defaultLocale } from '@nw/i18n';
 import { immer } from 'zustand/middleware/immer';
 import { createStore } from 'zustand/vanilla';
 
@@ -11,8 +12,6 @@ import type {
   CategoryOption,
   SortOption,
 } from '@/types/project';
-
-import { defaultLocale } from '@/i18n/lib';
 
 export type ProjectsState = {
   // Data

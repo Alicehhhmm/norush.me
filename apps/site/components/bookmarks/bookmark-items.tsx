@@ -1,5 +1,6 @@
 'use client';
 
+import { defaultLocale } from '@nw/i18n';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { ArrowBigDownDash } from 'lucide-react';
 import qs from 'query-string';
@@ -15,8 +16,6 @@ import { ScaleInWhenVisible } from '@/components/motions/scroll-animation';
 
 import type { BookmarkItemType } from '@/types';
 import type { FC } from 'react';
-
-import { defaultLocale } from '@/i18n/lib';
 
 type BookmarksPage = {
   list: Array<BookmarkItemType>;

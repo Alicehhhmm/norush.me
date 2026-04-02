@@ -1,4 +1,5 @@
 export type PostLayoutType = 'grid' | 'list';
+import type { IntlMessageKeys } from '@/types/i18n';
 
 /**
  * tabs 栏默认可预览类型
@@ -14,7 +15,7 @@ export type BlogPreviewType =
 /**
  * 博客文章的所有分类
  * 基于i18n中定义的categories字段
- * @type {import('@/i18n/messages/i18n.d.ts')}
+ * @type {import('./i18n.ts')}
  */
 export type BlogCategory = IntlMessageKeys<'layouts.blog.categories'>;
 
