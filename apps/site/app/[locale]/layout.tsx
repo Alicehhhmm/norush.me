@@ -44,7 +44,7 @@ const RootLayout = async ({ children, params }: RootProps) => {
   return (
     <html lang={hrefLang} dir={langDir} suppressHydrationWarning>
       <body
-        className={cn(OPEN_SANS.className, IBM_PLEX_MONO.variable)}
+        className={cn(OPEN_SANS.variable, IBM_PLEX_MONO.variable)}
         suppressHydrationWarning
       >
         <TailwindIndicator />
