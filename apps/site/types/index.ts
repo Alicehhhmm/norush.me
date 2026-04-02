@@ -11,3 +11,4 @@ export * from './website';
 export * from './links';
 export * from './bookmark';
 export * from './page';
+export * from './i18n';

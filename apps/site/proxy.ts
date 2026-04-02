@@ -1,10 +1,9 @@
+import { availableLocaleCodes, defaultLocale } from '@nw/i18n';
 import createMiddleware from 'next-intl/middleware';
 
-import { routing } from './i18n/routing';
-
 export default createMiddleware({
-  locales: routing.locales,
-  defaultLocale: routing.defaultLocale,
+  locales: availableLocaleCodes,
+  defaultLocale: defaultLocale.code,
   localePrefix: 'always',
   // providing alternate links on 'site/core/dynamic-route.mjs'
   alternateLinks: false,

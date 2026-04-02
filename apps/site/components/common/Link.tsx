@@ -1,4 +1,4 @@
-import { Link as LocalizedLink } from '@/i18n/routing';
+import { Link as LocalizedLink } from '#site/navigation.mjs';
 
 import type { FC, ComponentProps } from 'react';
 

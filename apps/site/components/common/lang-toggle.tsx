@@ -4,25 +4,25 @@ import { LanguagesIcon } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useTransition } from 'react';
 
+import { useRouter, usePathname } from '#site/navigation.mjs';
 import { UniversalDropdownMenu } from '@/components/common';
 import { availableLocales } from '@/core/next.locales.mjs';
-import { type Locale, useRouter, usePathname } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 
 import type { UniversalDropdownMenuProps } from '@/components/common';
 import type { FC } from 'react';
 
 type LanguageOption = {
-  value: Locale;
+  value: string;
   label: string;
 };
 
 type LanguageSwitcherProps = {
   className?: string;
-  currentLanguage?: Locale;
+  currentLanguage?: string;
   options?: Array<LanguageOption>;
   showLabel?: boolean;
-  onChange?: (lang: Locale) => void;
+  onChange?: (lang: string) => void;
 };
 
 export const LangToggle: FC<LanguageSwitcherProps> = ({
@@ -48,7 +48,7 @@ export const LangToggle: FC<LanguageSwitcherProps> = ({
     currentLanguage = locales;
   }
 
-  const handleLocaleChange = (newLocale: Locale) => {
+  const handleLocaleChange = (newLocale: string) => {
     if (!pathname || newLocale === currentLanguage) {
       return;
     }

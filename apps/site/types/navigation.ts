@@ -1,4 +1,9 @@
-import type { RIconType, UserType, FormattedMessage } from '@/types';
+import type {
+  RIconType,
+  UserType,
+  FormattedMessage,
+  IntlMessageKeys,
+} from '@/types';
 import type { HTMLAttributeAnchorTarget } from 'react';
 
 export type NavigationKeys =

@@ -1,3 +1,5 @@
+import type zhMessages from './locales/zh.json';
+
 export type LocaleConfig = {
   code: string;
   localName: string;
@@ -8,3 +10,5 @@ export type LocaleConfig = {
   enabled: boolean;
   default: boolean;
 };
+
+export type Locale = typeof zhMessages;

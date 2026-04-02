@@ -1,5 +1,6 @@
 'use client';
 
+import { defaultLocale } from '@nw/i18n';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { ArrowBigDownDash } from 'lucide-react';
 import qs from 'query-string';
@@ -12,7 +13,6 @@ import {
   EmptyState,
 } from '@/components/common';
 import { ScaleInWhenVisible } from '@/components/motions/scroll-animation';
-import { getDefaultLocale } from '@/i18n/lib';
 
 import type { BookmarkItemType } from '@/types';
 import type { FC } from 'react';
@@ -32,7 +32,7 @@ async function fetchBookmarks({
   pageParam = 1,
   pathname,
 }: FetchBookmarksProps): Promise<BookmarksPage> {
-  const locale = getDefaultLocale()?.code || 'zh';
+  const locale = defaultLocale?.code || 'zh';
   const apiPath = pathname
     ? `${locale}/api${pathname}`
     : `${locale}/api/bookmarks`;

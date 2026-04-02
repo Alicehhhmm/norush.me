@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl';
 import { siteNavigation } from '@/config/next.json.mjs';
 
 import type { FormattedMessage } from '@/types/formatted-message';
+import type { IntlMessageKeys } from '@/types/i18n';
 import type {
   NavigationKeys,
   NavigationEntry,

@@ -1,3 +1,4 @@
+import { availableLocales, defaultLocale } from '@nw/i18n';
 import { getTranslations } from 'next-intl/server';
 
 import { TopLoader } from '@/components/common';
@@ -37,14 +38,18 @@ export async function generateMetadata({
 const RootLayout = async ({ children, params }: RootProps) => {
   const { locale } = await params;
 
-  return (
-    <html lang={locale} suppressHydrationWarning>
-      {/* dev: react-scan */}
+  const { langDir, hrefLang } =
+    availableLocales.find(l => l.code === locale) || defaultLocale;
 
-      <body className={cn(OPEN_SANS.className, IBM_PLEX_MONO.variable)}>
+  return (
+    <html lang={hrefLang} dir={langDir} suppressHydrationWarning>
+      <body
+        className={cn(OPEN_SANS.className, IBM_PLEX_MONO.variable)}
+        suppressHydrationWarning
+      >
         <TailwindIndicator />
         <Toaster />
-        <LocaleProvider locale={locale}>
+        <LocaleProvider>
           <RThemeProvider>
             <TopLoader />
             <QueryProvider>{children}</QueryProvider>

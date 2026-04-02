@@ -1,17 +1,40 @@
 {
   "name": "@nw/i18n",
-  "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "lint": "eslint . --ext .ts,.js",
-    "type-check": "tsc --noEmit"
+  "version": "0.2.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alicehhhmm/norush.me.git",
+    "directory": "packages/i18n"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.12.1",
+  "main": "./src/index.mjs",
+  "module": "./src/index.mjs",
+  "exports": {
+    "./*": [
+      "./src/*",
+      "./src/*.d.ts",
+      "./src/*.mjs",
+      "./src/*.json"
+    ],
+    ".": "./src/index.mjs"
+  },
+  "scripts": {
+    "lint": "node --run lint:js",
+    "lint:fix": "node --run lint:js:fix",
+    "lint:js": "eslint \"**/*.{js,mjs,ts}\"",
+    "lint:js:fix": "node --run lint:js -- --fix",
+    "format": "prettier --check --write \"**/*.{js,mjs,ts,tsx,md,mdx,json,yml}\""
+  },
   "devDependencies": {
-    "typescript": "^5"
+    "typescript": "catalog:"
+  },
+  "lint-staged": {
+    "**/*.{js,mjs,ts,tsx,md,mdx}": [
+      "prettier --check --write",
+      "eslint --fix"
+    ],
+    "**/*.{json,yml}": [
+      "prettier --check --write"
+    ]
   }
 }
