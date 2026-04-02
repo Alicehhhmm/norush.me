@@ -1,4 +1,4 @@
-import type EnglishMessages from './locales/en.json';
+import type zhMessages from './locales/zh.json';
 
 export type LocaleConfig = {
   code: string;
@@ -11,4 +11,4 @@ export type LocaleConfig = {
   default: boolean;
 };
 
-export type Locale = typeof EnglishMessages;
+export type Locale = typeof zhMessages;
