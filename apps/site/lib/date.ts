@@ -3,7 +3,7 @@ import 'dayjs/locale/zh-cn';
 import 'dayjs/locale/en';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
-import { getDefaultLocale } from '@/i18n/lib';
+import { defaultLocale } from '@/i18n/lib';
 
 type DayjsOrString = dayjs.Dayjs | Date | string;
 type Format = string;
@@ -12,8 +12,8 @@ type Format = string;
 dayjs.extend(relativeTime);
 
 // 设置全局语言环境
-const defaultLocale = getDefaultLocale()?.code == 'zh' ? 'zh-cn' : 'en';
-dayjs.locale(defaultLocale);
+const defaultLocaleCode = defaultLocale.code == 'zh' ? 'zh-cn' : 'en';
+dayjs.locale(defaultLocaleCode);
 
 // 预设格式模板
 const DEFAULT_FORMATS = {

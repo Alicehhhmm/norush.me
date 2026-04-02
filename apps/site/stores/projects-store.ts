@@ -3,7 +3,6 @@
 import { immer } from 'zustand/middleware/immer';
 import { createStore } from 'zustand/vanilla';
 
-import { getDefaultLocale } from '@/i18n/lib';
 import { DEFAULT_PAGE_SIZE, DEMO_LOADING_DELAY } from '@/lib/constants';
 
 import type {
@@ -12,6 +11,8 @@ import type {
   CategoryOption,
   SortOption,
 } from '@/types/project';
+
+import { defaultLocale } from '@/i18n/lib';
 
 export type ProjectsState = {
   // Data
@@ -160,7 +161,7 @@ export const createProjectsStore = () =>
           });
 
           // 动态获取当前 locale
-          const locale = getDefaultLocale()?.code || 'zh';
+          const locale = defaultLocale.code || 'zh';
           const baseURL = process.env.NEXT_PUBLIC_DATA_URL;
 
           const fetchURL = `${baseURL}/${locale}/api/projects?${params.toString()}`;
