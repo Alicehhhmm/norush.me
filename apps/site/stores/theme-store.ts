@@ -1,15 +1,10 @@
+import { defaultLocale } from '@nw/i18n';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-
-import {} from 'next-intl';
-import { getDefaultLocale } from '@/i18n/lib';
-
-import type { Locale } from '@/i18n/routing';
 
 export type ColorTheme = 'default' | 'warm' | 'cool' | 'fluo' | 'claude';
 export type ViewMode = 'list' | 'grid' | 'card' | 'masonry';
 export type FontSize = 'small' | 'medium' | 'large';
-export type Language = Locale;
 
 type AppState = {
   // Remove theme management from store - let next-themes handle it
@@ -23,8 +18,8 @@ type AppState = {
   setFontSize: (size: FontSize) => void;
 
   // Language settings
-  language: Language;
-  setLanguage: (lang: Language) => void;
+  language: string;
+  setLanguage: (lang: string) => void;
 
   // UI settings
   sidebarCollapsed: boolean;
@@ -53,7 +48,7 @@ export const useAppStore = create<AppState>()(
       setFontSize: fontSize => set({ fontSize }),
 
       // Language settings
-      language: getDefaultLocale()?.code || 'zh',
+      language: defaultLocale.code || 'zh',
       setLanguage: language => set({ language }),
 
       // UI settings

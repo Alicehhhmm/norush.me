@@ -1,6 +1,7 @@
 'use strict';
 
 import localeConfig from './config.json' with { type: 'json' };
+import localeMessages from './locales/zh.json' with { type: 'json' };
 
 /**
  * A set of available and enabled locales for the website
@@ -21,3 +22,5 @@ export const defaultLocale = availableLocales.find(locale => locale.default);
 
 // Creates all supported locales
 export const allLocaleCodes = localeConfig.map(locale => locale.code);
+
+export const defaultMessages = localeMessages;
